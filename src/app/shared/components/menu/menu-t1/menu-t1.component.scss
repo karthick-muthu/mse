@@ -1,0 +1,121 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.menu-section {
+  .nav-style {
+    width: 130px;
+    height: 80px;
+    border-radius: 15px;
+    text-align: center;
+    overflow: hidden;
+    margin-right: 15px;
+    text-decoration: none;
+    display: block;
+    &:focus {
+      outline: none;
+    }
+  }
+  .nav-style.active {
+    opacity: 1;
+    .menu-icon-ct,
+    .menu-text {
+      opacity: 1;
+    }
+  }
+  .navbar {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  .navbar-nav {
+    flex-direction: row;
+    margin-bottom: 10px;
+  }
+  .menu-icon-ct {
+    height: 50px;
+    line-height: 50px;
+    opacity: 0.8;
+  }
+  .menu-text {
+    height: 30px;
+    color: $white;
+    text-transform: capitalize;
+    padding-top: 8px;
+    background: $menuBoxTitleBg;
+    opacity: 0.8;
+    h5 {
+      font-size: 18px;
+      font-family: 'BalooBhaina';
+    }
+  }
+  .home-menu {
+    background: $morningGloryShadow;
+    border: 1px solid $primaryShadowColor;
+  }
+  .topics-menu {
+    background: $blushRed;
+    border: 1px solid $blushRedShadow;
+  }
+  .worksheets-menu {
+    background: $goldenYellow;
+    border: 1px solid $dirty-orange;
+  }
+  .games-menu {
+    background: $lightish-green;
+    border: 1px solid $mid-green;
+  }
+  .myMindspark-menu {
+    background: $dark-sky-blue;
+    border: 1px solid $primaryColor;
+  }
+  .home-menu.active {
+    box-shadow: 0px 5px 0px $primaryShadowColor;
+  }
+  .topics-menu.active {
+    box-shadow: 0px 5px 0px $blushRedShadow;
+  }
+  .worksheets-menu.active {
+    box-shadow: 0px 5px 0px $dirty-orange;
+  }
+  .games-menu.active {
+    box-shadow: 0px 5px 0px $secondaryShadowColor;
+  }
+  .myMindspark-menu.active {
+    box-shadow: 0px 5px 0px $lightBlueOpacity;
+  }
+}
+
+.navbar {
+  justify-content: flex-end;
+  padding-right: 0px;
+}
+
+.navbar-expand-md {
+  margin-right: -15px;
+}
+
+
+/*@media queries**********/
+
+@media(max-width: 768px) {
+  .navbar {
+    background: transparent;
+    z-index: 99;
+  }
+  .menu-section {
+    .navbar-toggler-right.mobile {
+      position: fixed;
+      top: 18px;
+      left: 14px;
+    }
+    .navbar-nav {
+      flex-direction: column;
+      .nav-style {
+        width: auto;
+        height: auto;
+        margin-bottom: 20px;
+      }
+    }
+  }
+  .mobile-view #nav-icon1 span,
+  #nav-icon1 span {
+    background: $white;
+  }
+}

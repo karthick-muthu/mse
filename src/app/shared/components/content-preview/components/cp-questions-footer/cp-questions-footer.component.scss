@@ -1,0 +1,104 @@
+@import "../../../../../../assets/common/styles/global.variables.scss";
+.question-footer {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 15px 10px 15px;
+  min-height: 60px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #ffffff;
+  box-shadow: 0 -4px 10px 0 rgba(0, 0, 0, 0.1);
+  .footer-left {
+    .btn-comment {
+      height: 40px;
+      width: 40px;
+      border-radius: 25px;
+      border: 1px solid $primaryColor;
+      outline: none;
+      color: $primaryColor;
+      background: $white;
+      box-shadow: 0px 4px 0px $primaryColor;
+      font-size: 22px;
+      margin-right: 20px;
+    }
+    .btn-favourite {
+      @extend .btn-comment;
+    }
+  }
+  .footer-right {
+    display: flex;
+    flex-wrap: wrap;
+    .next-btn {
+      padding: 8px 20px;
+      background: #008fd5;
+      box-shadow: 0px 5px 0px #004282;
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 14px;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $white;
+        border-radius: 50%;
+        color: $primaryColor;
+        width: 28px;
+        height: 28px;
+        margin-right: 10px;
+      }
+    }
+    .skip-btn {
+      padding: 8px 20px;
+      background: #008fd5;
+      box-shadow: 0px 5px 0px #004282;
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 14px;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $white;
+        border-radius: 50%;
+        color: $primaryColor;
+        width: 28px;
+        height: 28px;
+        margin-right: 10px;
+      }
+    }
+    .submit-btn {
+      padding: 8px 20px;
+      background: $secondaryColor;
+      box-shadow: 0px 5px 0px $secondaryShadowColor;
+      color: #fff;
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 14px;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba($black, 0.4);
+        border-radius: 50%;
+        color: $secondaryColor;
+        width: 28px;
+        height: 28px;
+        margin-right: 10px;
+      }
+    }
+  }
+}

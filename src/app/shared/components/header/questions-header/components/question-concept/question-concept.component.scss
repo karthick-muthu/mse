@@ -1,0 +1,293 @@
+@import '../../../../../../../assets/common/styles/global.variables.scss';
+.question-concepts-ct {
+  padding: 5px 0px 8px 5px;
+  color: $white;
+  background: rgba(0, 0, 0, 0.12);
+  position: relative !important;
+  bottom: 0px;
+  margin-bottom: 0;
+  display: flex;
+  line-height: 20px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  .topics-icon {
+    width: 30px;
+    height: 30px;
+    background: $lightBlueGrey;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 1.8;
+    vertical-align: top;
+    margin-right: 12px;
+    display: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #004282;
+  }
+  .concept-title {
+    font-size: 16px; // max-width: 85%;
+    line-height: 28px;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    line-height: 20px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; // display: -webkit-box;
+    min-height: 34px;
+    max-height: 41px;
+    word-break: break-word;
+    justify-content: center;
+  }
+  .concepts-status-ct {
+    padding-top: 4px;
+    .concept-status-icon {
+      color: rgba($black, 0.6);
+      background: $goldenYellow;
+      padding-top: 2px;
+      margin-right: 15px;
+      font-weight: bold;
+    }
+    .completed-concepts-number {
+      font-size: 1.1rem;
+      margin-right: -3px;
+    }
+    .total-concepts-number {
+      font-size: .8rem;
+    }
+  }
+  .conecpts-message-ct {
+    font-size: 0.875rem; // padding: 5px 0 0 0px;
+    color: $yellow;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    .concept-text {
+      cursor: pointer;
+      padding-top: 8px;
+    }
+    i {
+      font-size: 1.2rem;
+      vertical-align: middle;
+      padding: 0 0 0 5px;
+      margin-top: -2px;
+    }
+    .concepts-list {
+      position: relative;
+      border: 1px solid $primaryColor;
+      border-top: none;
+      width: 315px;
+      top: 36px;
+      padding: 15px 10px 15px 20px;
+      left: -50px;
+      color: $gray;
+      border-bottom-left-radius: 6px;
+      border-bottom-right-radius: 6px;
+      background: $white;
+      z-index: 10;
+      background: $whiterGray;
+      box-shadow: 0 2px 15px 0 rgba($black, 0.2);
+      overflow-x: hidden;
+      overflow-y: auto;
+      max-height: calc(100vh - 120px);
+      cursor: default;
+      ul {
+        margin-bottom: 0px;
+      }
+      .concept-listItem {
+        display: inline-block;
+        width: 100%;
+        height: 34px;
+      }
+      .concept-listItem {
+        margin-bottom: 20px;
+        height: 34px;
+      }
+      .concept-listItem:last-of-type {
+        margin-bottom: 0px;
+      }
+      .image-circle {
+        float: left;
+        margin-right: 10px;
+        width: 32px;
+        height: 32px;
+        background: $white;
+        border-radius: 50%;
+        padding-top: 4px;
+        border: 1px solid $secondaryShadowColor;
+        text-align: center;
+        &::after {
+          content: "";
+          width: 1px;
+          height: 194%;
+          background: $secondaryShadowColor;
+          display: block;
+          position: relative;
+          top: 0px;
+          left: 14px;
+          z-index: -1;
+        }
+        i {
+          padding-left: 6px;
+        }
+      }
+      .completedConcept {
+        background: $secondaryColor;
+        border: 1px solid $gray;
+        .icon {
+          color: $secondaryShadowColor;
+        }
+        img {
+          opacity: 0.7;
+        }
+      }
+      .currentConcept {
+        background: $goldenYellow;
+        border: 1px solid $gray;
+        .icon {
+          color: $goldenYellowShadow;
+        }
+        img {
+          opacity: 0.7;
+        }
+      }
+      .failedConcept {
+        background: $blushRed;
+        border: 1px solid $gray;
+        .icon {
+          color: $blushRedShadow;
+        }
+        img {
+          opacity: 0.7;
+        }
+      }
+      .list-title {
+        display: -webkit-box;
+        span {
+          vertical-align: sub;
+          font-size: 14px;
+          line-height: 0px;
+          color: rgba($black, 0.9);
+        }
+      }
+    }
+  }
+  .left-arrow {
+    border-top: solid transparent;
+    border-left: 15px solid rgba(0, 0, 0, 0.12);
+    border-bottom: solid transparent;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    right: 0px;
+    top: 0;
+    z-index: 1;
+  }
+}
+
+li.concept-listItem:nth-last-of-type(1) .image-circle::after {
+  display: none !important;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.d-grid {
+  display: grid;
+  align-content: space-between;
+}
+
+.paddRightSpace {
+  padding-right: 10px;
+}
+
+.template1 {
+  .image-circle {
+    &::after {
+      top: 5px !important;
+    }
+  }
+}
+
+@media (max-width:998px) {
+  .d-grid {
+    display: block;
+  }
+  .d-flex {
+    // border-bottom-right-radius: 50px;
+  }
+}
+
+.question-concepts-ct.template1 {
+  background: transparent;
+}
+
+.template1 {
+  .left-arrow {
+    border-left-color: $questionConceptT2;
+  }
+  .concept-title,
+  .concept-text,
+  .concept-status-icon {
+    font-family: 'BalooBhaina';
+  }
+  .concept-title {
+    font-size: 18px;
+    margin-bottom: 0px;
+    max-height: 36px !important;
+  }
+  .concept-text {
+    font-size: 16px;
+    color: $white;
+  }
+  .concept-status-icon {
+    padding-top: 4px !important;
+  }
+  .concepts-list {
+    font-family: 'Arial Rounded MT', Arial, Helvetica, sans-serif; // top: 36px !important;
+    border-color: $questionConceptT2 !important;
+    .image-circle {
+      padding-top: 2px !important;
+    }
+  }
+  .fa-angle-down {
+    margin-top: -6px !important;
+  }
+}
+
+.concept-dropdown {
+  background: transparent;
+  border: 0px;
+  outline: none;
+  color: $goldenYellow;
+  line-height: 1;
+}
+
+.completedConcept .custom-icon {
+  color: #7FB700;
+}
+
+.currentConcept .custom-icon {
+  color: #CBAC1D;
+}
+
+.failedConcept .custom-icon {
+  color: #db5c5b;
+}
+
+.image-circle .custom-icon {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5px;
+}
+
+.template1 {
+  .image-circle .custom-icon {
+    padding-top: 6px !important;
+  }
+}

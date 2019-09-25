@@ -1,0 +1,14 @@
+<div>
+    <div class=" modal-header modal-header-container "></div>
+    <div class="modal-body modal-btn-container ">
+        <p>
+            This is your {{ attemptNumber | ordinalName }} topic attempt and you will not get any Sparkies or challenge questions now.
+        </p>
+        <button type="button " *ngIf="template === '1'" class="heading " class="btn modalbtns btn-yes " (click)="closeSparkieAlertModal()">
+      {{ "okay" | translate }}
+    </button>
+        <button type="button " *ngIf="template === '2'" class="heading " class="btn modalbtns btn-yes " (click)="closeSparkieAlertModal()">
+      {{ "okay got it" | translate }}
+    </button>
+    </div>
+</div>

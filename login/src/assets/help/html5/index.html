@@ -1,0 +1,98 @@
+﻿<html>
+<head>
+    <title>Mindspark</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Eid">
+     <link href="Vendor/Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="Vendor/Bootstrap/css/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="Vendor/Font-Awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="Styles/animate.css" rel="stylesheet" />
+    <link href="Vendor/Stagger/stagger.css" rel="stylesheet" />
+    <link href="Styles/framework.css" rel="stylesheet" />
+</head>
+<body>
+	<span id="landscape">
+		<div class="body body_{{selectedLang}}" id="body" ng-app="Framework">
+			<div ng-switch="isPreLoading">
+				<div class="pre-loader" ng-switch-when="true">
+					<div class="course-name-splsh-pg">				
+						<p>Loading</p>
+						<p>Please Wait ...</p>
+						<p ng-if="percentLoaded" ng-bind="percentLoaded+'%'"></p>				
+					</div>
+					<div id="circularG">
+						<div id="circularG_1" class="circularG"></div>
+						<div id="circularG_2" class="circularG"></div>
+						<div id="circularG_3" class="circularG"></div>
+						<div id="circularG_4" class="circularG"></div>
+						<div id="circularG_5" class="circularG"></div>
+						<div id="circularG_6" class="circularG"></div>
+						<div id="circularG_7" class="circularG"></div>
+						<div id="circularG_8" class="circularG"></div>
+					</div>
+				</div>
+				<div id="preloadericon"></div>
+				<div ng-switch-when="false" ng-switch="isPreLoadSuccessful">
+					<!--div class="pre-load-img"></div-->
+					<div ui-view style="position:relative;z-index:2;"></div>
+				</div>
+			</div>
+		</div>
+	</span>
+	<span id="portrait" class="visible-xs visible-sm animated fadeIn _1" style="background: #fff; display: block; padding: 20px;">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h3 style="color: #000; margin-bottom: 10px;">View enabled in Landscape mode for better experience</h3>
+				<img style="margin-top: 20px;" src="../course_images/pages/mobile.png" />
+            </div>
+        </div>
+    </span>
+    <script src="Vendor/JQuery/jquery-1.11.2.min.js"></script>
+    <script src="Vendor/Bootstrap/js/bootstrap.js"></script>
+    <script src="Vendor/Angular/angular.min.js"></script>
+    <script src="Vendor/Angular/angular-ui-bootstrap.js"></script>
+    <script src="Vendor/Angular/angular-bootstrap-select.js"></script>
+    <script src="Vendor/Angular/angular-resource.js"></script>
+    <script src="Vendor/Angular/angular-ui-router.js"></script>
+    <script src="Vendor/Angular/angular-animate.js"></script>
+    <script src="Vendor/Angular/angular-touch.min.js"></script>
+    <script src="Vendor/Angular/angular-resource.js"></script>
+    <script src="Vendor/Angular/angular-swipe.min.js"></script>
+    <script src="Vendor/Angular/angular-sanitize.min.js"></script>
+	<script src="Vendor/XMLToJSON/xml2json.js"></script>
+	<script src="Vendor/typedJs/typed.min.js"></script>
+    <script src="Scripts/app.js"></script>
+    <script src="Scripts/Controllers/framework_controller.js"></script>
+    <script src="Scripts/Controllers/page_controller.js"></script>
+	<script src="Scripts/Directives/framework_directive.js"></script>
+	<script src="Scripts/init/preloader.js"></script>
+	<script src="Scripts/Factories/framework_factory.js"></script>
+	<script type="text/javascript">
+		if(window.parent.orientation% 180 == 0){
+                    $("#portrait").show();
+                    $("#landscape").hide();
+		}else{
+			$("#portrait").hide();
+                    $("#landscape").show();
+                    
+		}
+		    window.onorientationchange = function (event) {
+            var portrait = (window.parent.orientation% 180 == 0);
+            blockLandscape(portrait);
+
+            function blockLandscape(val){
+                if (val == true) {
+                    $("#portrait").show();
+                    $("#landscape").hide();
+                    /*$("#portrait").css({'margin-top':'20%'});*/
+                }else {
+                    $("#portrait").hide();
+                    $("#landscape").show();
+                }                
+            }
+        }
+
+	</script>
+</body>
+</html>

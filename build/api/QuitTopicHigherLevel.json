@@ -1,0 +1,8 @@
+{
+  "resultCode": "C004",
+  "resultMessage": "redirect",
+  "redirectionCode": "TopicSessionReport",
+  "redirectionData": {
+    "topicID": "tt023"
+  }
+}

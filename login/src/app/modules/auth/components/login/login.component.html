@@ -1,0 +1,21 @@
+<div class="container-fluid login-page-ct">
+  <ms-auth-header></ms-auth-header>
+  <div class="container">
+    <div class="clearfix"></div>
+    <div class="row login-main-content">
+      <div class="col-lg-6 col-sm-12 col-md-12 leftSideAdsSpace">
+        <!-- <div class="marquee-content"> -->
+        <div>
+          <ms-ads *ngIf="showAdsSpace"></ms-ads>
+          <ms-wall-of-sparkies *ngIf="wallofSparkies"></ms-wall-of-sparkies>
+        </div>
+      </div>
+      <div class="col-lg-6 col-sm-12 col-md-12 rightSideLoginForm">
+        <ms-user-login></ms-user-login>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="login-footer">
+  <ms-auth-footer></ms-auth-footer>
+</div>

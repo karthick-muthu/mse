@@ -1,0 +1,18 @@
+<div [ngClass]="templateClass">
+  <div class="tabs-section">
+    <ul class="list-inline" style="display: -webkit-flex">
+      <li class="tab-link-item" *ngIf="permittedNavs?.reward">
+        <a routerLink="/my-mindspark/rewards" routerLinkActive="active">{{ 'rewards' | translate }}</a>
+      </li>
+      <li class="tab-link-item" *ngIf="permittedNavs?.mailbox">
+        <a routerLink="/my-mindspark/mailbox" routerLinkActive="active">{{ 'mailbox' | translate }}</a>
+      </li>
+      <li class="tab-link-item" *ngIf="permittedNavs?.myDetails">
+        <a routerLink="/my-mindspark/my-details" routerLinkActive="active">{{ 'my details' | translate }}</a>
+      </li>
+      <li class="tab-link-item" *ngIf="permittedNavs?.myFavourities">
+        <a class="router-ct" routerLink="/my-mindspark/starred-questions" routerLinkActive="active">{{ 'starred questions' | translate }}</a>
+      </li>
+    </ul>
+  </div>
+</div>

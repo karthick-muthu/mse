@@ -1,0 +1,34 @@
+<div class="week-reportSection" [ngClass]="{'current-week': (reportType==='current'), 'last-week-report': (reportType==='previous')}">
+  <div class="card">
+    <div class="card-header" *ngIf="reportType==='current'">{{'this week report' | translate}} ( {{weeklyData?.dateFrom | amDateFormat:'DD MMM YYYY'}} - {{weeklyData?.dateTo | amDateFormat:'DD
+      MMM YYYY'}} )
+    </div>
+    <div class="card-header" *ngIf="reportType==='previous'">{{'last week report' | translate}} ( {{weeklyData?.dateFrom | amDateFormat:'DD MMM YYYY'}} - {{weeklyData?.dateTo | amDateFormat:'DD
+      MMM YYYY'}} ) </div>
+    <div class="card-block" style="display: -webkit-flex;">
+      <div class="row">
+        <div class="col left-section">
+          <label class="won-badge">
+            <ng-container *ngIf="weeklyData?.correctAttempted >= weeklyData?.weeklyTarget else silverShield">
+              <img src="assets/common/images/ms-icons/achievementNew.png">
+            </ng-container>
+            <ng-template #silverShield>
+              <img src="assets/common/images/ms-icons/achievementNewDisable.png">
+            </ng-template>
+          </label>
+          <label class="won-text">
+            {{ 'correct answers out of' | translate:{correct:weeklyData?.correctAttempted, target:weeklyData?.weeklyTarget} }}
+          </label>
+        </div>
+        <div class="col right-section">
+          <label class="won-badge">
+            <div class="sparkie-badge" style="display: -webkit-flex;">
+              <img src="assets/common/images/coins_all.gif">
+            </div>
+          </label>
+          <label class="won-text">{{'you got' | translate}} {{weeklyData?.sparkie}} {{'sparkies' | translate}}.</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

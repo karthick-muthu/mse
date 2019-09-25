@@ -1,0 +1,9 @@
+{
+  "resultCode": "C001",
+  "resultMessage": "success",
+  "resultData": {
+    "currentPage": 2,
+    "limit": 20,
+    "topicId": "topic1"
+  }
+}

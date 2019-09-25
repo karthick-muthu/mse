@@ -1,0 +1,81 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.template1 {
+  //margin-top: 40px;
+  .tabs-section {
+    .tab-link-item {
+      display: inline-block;
+      a {
+        padding: 7px 15px 0px 15px;
+        cursor: pointer;
+        margin-right: 10px;
+        font-size: 18px;
+        color: $white;
+        background: $dark-sky-blue;
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        height: 42px;
+        text-decoration: none;
+        text-transform: capitalize;
+        font-family: BalooBhaina;
+        &:focus {
+          outline: none;
+        }
+      }
+      a.active {
+        background: $myMindsparkBgColor;
+        color: $dark-sky-blue;
+      }
+    }
+    ul {
+      margin-bottom: 4px;
+      z-index: 1;
+      position: relative;
+    }
+  }
+}
+
+.template2 {
+  width: 100%;
+  display: block;
+  .tab-link-item {
+    width: 100%;
+    a {
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      background: $greyishBrown;
+      color: $white;
+      padding: 10px 0 10px 0;
+      border-right: 1px solid $white;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+    a.active {
+      background: $yellow;
+      color: $black;
+      border-bottom: 2px solid $gray;
+      padding: 10px 0 8px 0;
+    }
+  }
+  .tab-link-item:first-child a {
+    border-top-left-radius: 5px;
+  }
+  .tab-link-item:last-child a {
+    border-top-right-radius: 5px;
+  }
+  .list-inline {
+    display: flex;
+    margin: 0px;
+  }
+}
+
+@media (max-width:700px) {
+  .higher-tabStyle {
+    .tab-link-item {
+      a {
+        font-size: 10px !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+<header class="row clearfix mindspark-header">
+  <div class=" col left-header-content pull-left widthAuto">
+    <div class="branding">
+      <ms-logo [trans]="true"></ms-logo>
+    </div>
+
+  </div>
+  <div class=" col right-header-content pull-right widthAuto">
+    <nav>
+      <ul class="nav nav-pills float-right">
+        <li class="nav-item chat" placement="bottom" title="{{ 'comment' | translate }}" *ngIf="permittedNavs?.message">
+          <a class="nav-link" style="display: -webkit-flex;" (click)="open()">
+            <i class="fa fa-commenting"></i>
+          </a>
+        </li>
+        <li class="nav-item notification" *ngIf="notificationPermitted">
+          <ng-template #popContent>
+            <ul class="notification-items" class="popup" (click)="$event.stopImmediatePropagation()" [ngClass]="{ 'popop-overflow':moreNotifications, 'popoverHeight': isHeight}">
+              <li *ngIf="notifications?.length === 0; else showNotifications" class="notication-list">
+                <p> {{ 'you dont have any notifications' | translate}}! </p>
+              </li>
+              <ng-template #showNotifications>
+                <div *ngFor="let notification of notifications; let i = index">
+                  <li class="notication-list" *ngIf="i<3">
+                    <a *ngIf=" notification?.typeOf?.toLowerCase()==='redirect' ; else withoutlink " class="not-message row
+                        notification " (click)="readNotification(notification);popover?.close()">
+                      <div class="col-sm-2 col-xs-2 notification-image ">
+                        <img [src]="imagePicker(notification?.category)" />
+                      </div>
+                      <div class="col-sm-10 col-xs-10 notification-content games-notification ">
+                        <div class="notification-title text-capitalize " [ngClass]="{ 'excecute-bold': notification?.isRead} ">
+                          {{ notification?.templateHeader | translate:{ endDate: notification?.data?.endDate, topicName: notification?.data?.topicName,
+                          topicId: notification?.data?.topicId, worksheetName: notification?.data?.worksheetName} }}
+                        </div>
+                      </div>
+                    </a>
+                    <ng-template #withoutlink>
+                      <div class="not-message row notification " [ngClass]="{ 'excecute-bold': notification?.isRead} ">
+                        <div class="col-sm-2 col-xs-2 notification-image ">
+                          <img [src]="imagePicker(notification?.category)" />
+                        </div>
+                        <div class="col-sm-10 col-xs-10 notification-content ">
+                          <div class="notification-title text-capitalize ">
+                            {{ notification?.templateHeader | translate:{endDate: notification?.data?.endDate, topicName: notification?.data?.topicName,
+                            topicId: notification?.data?.topicId, worksheetName: notification?.data?.worksheetName} }}
+                          </div>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </li>
+                </div>
+              </ng-template>
+            </ul>
+            <button class="view-all-notification " *ngIf="notifications?.length> 0" (click)="$event.stopImmediatePropagation(); showAllNotification()">{{'view all' | translate}}</button>
+          </ng-template>
+          <a class="nav-link" style="display: -webkit-flex;" title="{{ 'notifications' | translate }}" placement="bottom" #popover="ngbPopover"
+            (click)="$event.stopPropagation()" (document:click)="popover?.close()" [ngbPopover]="popContent" popoverTitle="{{'notifications' | translate}}">
+            <i class="fa fa-bell"></i>
+            <span class="dot" *ngIf="count && count>0"></span>
+          </a>
+          <span class="notification-badge badge badge-danger" *ngIf="unreadNotifications">
+            <i class="fa fa-circle"></i>
+          </span>
+        </li>
+        <li class="nav-item help" placement="bottom" title="{{'help' | translate}}" *ngIf="permittedNavs?.help">
+          <a class="nav-link" style="display: -webkit-flex;" href="javascript:void(0)">
+            <i class="fa fa-question-circle"></i>
+          </a>
+        </li>
+        <li class="nav-item logout" placement="bottom" title="{{'logout' | translate}}" (click)="logout()">
+          <a href="javascript:void(0)" class="btn btn-primary btn-logout d-sm-block d-none">{{'logout' | translate}}</a>
+          <a class="nav-link d-sm-none" style="display: -webkit-flex;" href="javascript:void(0)">
+            <i class="fa fa-sign-out"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+</header>

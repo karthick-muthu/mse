@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<contents>
+		<static>true</static>
+		<pageBG_01>../course_images/common_bg/commonbg_04.jpg</pageBG_01>
+		<pageBG_02>../course_images/common_bg/commonbg_04_b.jpg</pageBG_02>
+		<pageBG_03>../course_images/common_bg/commonbg_04_c.jpg</pageBG_03>
+		<paragraph_text1_1>My picture password is Dog. Please click it. </paragraph_text1_1>
+		<paragraph_text1_2>Click the picture of cake. </paragraph_text1_2>
+		<paragraph_text1_3>Click the Login button. </paragraph_text1_3>
+	</contents>
+</root>

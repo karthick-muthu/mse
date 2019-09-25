@@ -1,0 +1,22 @@
+@mixin theme-bg($name, $bgcolor) {
+  .#{$name} {
+    .header-bg {
+      background: $bgcolor;
+    }
+  }
+}
+
+@mixin theme-btn-start($name, $bgcolor, $shadowcolor, $color) {
+  .#{$name} {
+    .btn-start {
+      background: $bgcolor;
+      box-shadow: 0px 5px 0px $shadowcolor;
+      color: rgba($color, 1);
+    }
+  }
+}
+
+@include theme-bg(theme-sky, $primaryColor);
+@include theme-bg(theme-green, $secondaryColor);
+@include theme-btn-start(theme-sky, $primaryColor, $primaryShadowColor, $white);
+@include theme-btn-start(theme-green, $morningGloryShadow, $primaryShadowColor, $white);

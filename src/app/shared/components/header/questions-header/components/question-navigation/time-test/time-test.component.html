@@ -1,0 +1,14 @@
+<ul class="timetest-container">
+  <li>
+    <div>{{ 'attempted' | translate }}</div>
+    <div class="attempted">{{ padZero(timedTestData?.totalAttempts) }}</div>
+  </li>
+  <li>
+    <div>{{ 'correct' | translate }}</div>
+    <div class="correct">{{ padZero(timedTestData?.totalCorrect) }}</div>
+  </li>
+  <li>
+    <div>{{ 'total' | translate }}</div>
+    <div class="total">{{ padZero(timedTestData?.totalQuestions) }}</div>
+  </li>
+</ul>

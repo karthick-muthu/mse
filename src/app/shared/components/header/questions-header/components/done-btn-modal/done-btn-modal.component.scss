@@ -1,0 +1,185 @@
+@import '../../../../../../../assets/common/styles/global.variables.scss';
+.btn-done {
+  padding: 8px 22px 8px 22px;
+  background: $lightBlueGrey;
+  box-shadow: 0px 5px 0px $primaryShadowColor;
+  color: $primaryShadowColor;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 0.875rem;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+}
+
+.modal-header-container {
+  border: 0px;
+}
+
+.modal-btn-container {
+  text-align: center;
+  p {
+    padding: 0.5em 0.5em 2.5em 0.5em;
+    font-size: 20px;
+    width: 90%;
+    margin: 0 auto;
+    color: $greyishBrownShadow;
+  }
+  .modalbtns {
+    padding: 8px 22px 8px 22px;
+    color: rgba($black, 0.6);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.875rem;
+    border: 0px;
+    border-radius: 6px;
+    width: 40%;
+    height: 40px;
+    margin: 0px 8px 16px 8px;
+  }
+  &.revision {
+    .title-section p {
+      color: $black;
+      font-size: 20px;
+      padding-bottom: 1em;
+      font-weight: bold;
+    }
+    p {
+      font-size: 18px;
+    }
+  }
+}
+
+.btn-no {
+  background: $morningGlory;
+  box-shadow: 0px 5px 0px $primaryShadowColor;
+}
+
+.btn-yes {
+  background: $secondaryColor;
+  box-shadow: 0px 5px 0px $secondaryShadowColor;
+}
+
+.btn-done.template1 {
+  border-radius: 15px;
+  background: $lightish-green;
+  box-shadow: 0px 5px 0px $dark-pastel-green;
+  font-size: 18px;
+  font-family: 'BalooBhaina';
+  padding-top: 6px;
+  padding-bottom: 2px;
+  color: rgba($black, 0.6);
+}
+
+.scoresheet-modal {
+  font-family: 'Arial Rounded MT', Arial, Helvetica, sans-serif !important;
+  .title-section {
+    p {
+      font-size: 16px;
+      line-height: 1.38;
+      margin: 0;
+    }
+    p:first-child {
+      color: rgba($black, 0.5);
+    }
+  }
+  .question-result-section {
+    vertical-align: middle;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-start;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    vertical-align: middle;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: 15px 0 0 0;
+    .accuracy {
+      padding: 5px 10px 5px 10px;
+      height: 30px;
+      border-radius: 6px;
+      font-size: 14px;
+      color: $primaryColor;
+      line-height: 1.5;
+      background: rgba(0, 143, 213, 0.1);
+    }
+    .question-count {
+      margin-left: 20px;
+      .count {
+        font-size: 14px;
+        position: relative;
+        padding-left: 5px;
+        color: $black;
+      }
+      .fa-times {
+        color: $blushRedShadow;
+        background: $blushRed;
+      }
+      .fa-check {
+        color: $secondaryShadowColor;
+        background-color: $secondaryColor;
+      }
+    }
+    .right {
+      i.icon {
+        width: 27px;
+        height: 27px;
+        border-radius: 50%;
+        font-size: 14px;
+        padding: 6px;
+      }
+    }
+    .wrong {
+      i.icon {
+        width: 27px;
+        height: 27px;
+        border-radius: 50%;
+        font-size: 14px;
+        padding: 6px 8px;
+      }
+    }
+  }
+  .content {
+    border-radius: 5px;
+    background-color: rgba($black, 0.05);
+    padding: 20px;
+    font-size: 14px;
+    margin-top: 20px;
+    span[class^='result'] {
+      font-size: 16px;
+    }
+    .username {
+      line-height: 2;
+    }
+    .result-success {
+      color: $secondaryColor;
+    }
+    .result-failure {
+      color: $blushRed;
+    }
+  }
+  .action-btns {
+    margin: 15px 0;
+    text-align: center;
+    .btn-next {
+      padding: 8px 22px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      background: $primaryColor;
+      color: $white;
+      box-shadow: 0px 5px 0px $primaryShadowColor;
+      border: 0px;
+      text-transform: uppercase;
+      width: 100px;
+    }
+  }
+}

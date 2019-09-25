@@ -1,0 +1,42 @@
+<div class="container-fluid question-header-fluid" [ngClass]="getContainerClassNames()">
+  <div class="container questions-header">
+    <ng-container *ngIf="(headerContent?.pedagogyContentLeft?.type ==='activity' || contentDetails?.mode === 'revise') then activityHeader; else questionsHeader"></ng-container>
+    <ng-template #activityHeader>
+      <div id="questionHeader" class="topic-details-header" [ngClass]="templateClass">
+        <div class="header container">
+          <div class="left-header-content pull-left">
+            <div class="topic-detail">
+              <div class="gamePad custom-icon" [ngClass]="getIconClassName()"></div>
+              <span *ngIf="contentDetails?.mode !== 'revise'">{{ 'activity' | translate }}</span>
+              <span *ngIf="contentDetails?.mode === 'revise'">{{ contentDetails?.action | translate }}</span>
+            </div>
+            <div class="measurement-length" *ngIf="contentDetails?.mode !== 'revise'" [innerHtml]="contentDetails?.contentName" style="display: -webkit-flex;"></div>
+            <div class="measurement-length" *ngIf="contentDetails?.mode === 'revise'" [innerHtml]="contentDetails?.header?.pedagogyContentLeft?.name"
+              style="display: -webkit-flex;"></div>
+          </div>
+          <div class="right-header-content pull-right">
+            <div class="sparkie-badge">
+              <ms-sparkies [pedagogySparkie]="headerContent?.pedagogyContentRight?.sparkie"></ms-sparkies>
+            </div>
+            <div class="btn-close">
+              <ms-done-btn-modal *ngIf="from !== 'progress-modal'" [pedagogyContentMode]="headerContent?.pedagogyContentRight?.contentMode"
+                [pedagogyHigherLevel]="headerContent?.pedagogyContentRight?.higherLevelStatus"></ms-done-btn-modal>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template #questionsHeader>
+      <div id="questionHeader" class="custom-row" [ngClass]="templateClass">
+        <div *ngIf="toDisplay!=='worksheet'" class="col-lg-3 col-md-2 col-sm-2 concept-left-ct">
+          <ms-question-concept [toDisplay]="toDisplay" [pedagogyContent]="headerContent?.pedagogyContentLeft"></ms-question-concept>
+        </div>
+        <div class="navigation-right-ct" [ngClass]="{'col-lg-9 col-md-10 col-sm-10 question-navigation': toDisplay!=='worksheet', 'col-lg-12 col-md-12 col-sm-12': toDisplay==='worksheet'}">
+          <ms-question-navigation [from]="from" [toDisplay]="toDisplay" [pedagogyContent]="headerContent?.pedagogyContentRight"></ms-question-navigation>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

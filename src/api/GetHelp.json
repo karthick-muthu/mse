@@ -1,0 +1,38 @@
+{
+  "resultCode": "C001",
+  "resultMessage": "success",
+  "userInformation": {
+    "language": "en-IN",
+    "selectedTheme": "lowergrade",
+    "name": "Ramanujan",
+    "grade": 5,
+    "section": "C",
+    "avatar": "url",
+    "isRetail": false,
+    "gender": "female",
+    "groupID": "536518"
+  },
+  "sessionInformation": {
+    "sessionID": "345",
+    "sessionStartAt": "2017-06-21 05:04:35",
+    "sessionType": "Home"
+  },
+  "permittedNavs": {
+    "aqad": true,
+    "games": false,
+    "help": false,
+    "home": true,
+    "mailbox": true,
+    "message": true,
+    "myDetails": true,
+    "myFavourities": false,
+    "myMindspark": true,
+    "myTopics": true,
+    "notification": false,
+    "reward": false,
+    "sparkies": true,
+    "worksheets": false,
+    "searchBar": false
+  },
+  "helpContent": {}
+}

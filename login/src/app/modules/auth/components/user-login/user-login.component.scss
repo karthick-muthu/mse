@@ -1,0 +1,266 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.right-loginSection {
+  max-width: 400px;
+  min-height: 480px;
+  background: url(../../../../../assets/common/images/login-clouds-2.svg) no-repeat bottom $primaryColor;
+  border-radius: 15px;
+  width: 100%;
+  background-position-y: 110%;
+  position: fixed;
+  .user-login-ct {
+    border-bottom: 1px solid $white;
+    padding-bottom: 15px;
+    .details-btn {
+      height: 36px;
+      padding-top: 0px;
+      line-height: 36px;
+    }
+    .user-login-block {
+      width: 270px;
+      margin: 0 auto;
+      padding-top: 30px;
+      position: relative;
+    }
+    .user-login-title {
+      text-align: center;
+      color: $white;
+      font-size: 1.25rem;
+      font-weight: bold;
+      padding-bottom: 10px;
+    }
+    .back-arow {
+      position: absolute;
+      left: -40px;
+      font-size: 2.3rem;
+      top: 10px;
+      color: $white;
+      cursor: pointer;
+    }
+    .ask-teacher-message {
+      height: 100px;
+      p {
+        font-size: 18px;
+        color: $white;
+        padding-top: 22px;
+        text-align: center;
+      }
+    }
+    .forgot-paswrd a {
+      font-size: 0.875rem;
+      color: $secondaryColor;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-align: center;
+      display: block;
+    }
+    .form-group {
+      margin-bottom: 1.3rem;
+      input,
+      button {
+        width: 100%;
+        font-size: 12px; //color: $warm-gray2;
+      }
+    }
+    .password-section {
+      .form-group:last-child {
+        margin-bottom: 0px;
+      }
+    }
+    .grade1to3_section {
+      text-align: center;
+      width: 100%; // min-height: calc(100vh - 343px);
+      padding: 25px 25px 0 25px;
+      position: relative;
+      .back-arow {
+        left: 20px;
+      }
+      .user-login-title {
+        font-size: 1.25rem;
+        padding: 0px 0 10px 12px;
+      }
+      .grade1to3Form {
+        margin: 0 0 20px 0;
+      }
+      .formGroupStyle {
+        width: 75%;
+        margin: 0 auto 35px auto;
+      }
+      .chooseObject-ct {
+        margin: 15px 0 15px 0;
+        border: 1px solid $white;
+        border-radius: 6px;
+        padding: 12px;
+        .chooseObject-block {
+          display: inline-block;
+          justify-content: center;
+          .object-item {
+            width: 45px;
+            height: 45px;
+            margin-right: 10px;
+            padding: 0px;
+            background: $white;
+            border-radius: 5px;
+            cursor: pointer;
+            opacity: 1;
+            display: inline-block;
+            margin-bottom: 4px;
+            img {
+              vertical-align: middle;
+              width: 100%;
+              height: 100%;
+              border-radius: 5px;
+            }
+          }
+          .object-item.active {
+            opacity: 1 !important;
+            border: 1px solid $primaryShadowColor;
+            border-radius: 5px;
+          }
+          .object-item:last-child {
+            margin-right: 0px;
+          }
+        }
+        h5 {
+          font-size: 0.875rem;
+          color: $white;
+          margin-bottom: 10px;
+          text-align: left;
+        }
+      }
+      .buttonWidthStyle {
+        width: 70%;
+        margin: 15px auto 10px auto;
+      }
+    }
+  }
+  .loginstyle {
+    height: auto;
+    padding-bottom: 5px;
+  }
+  .loginBoxStyle {
+    border-radius: 0px; // min-height: calc(100% - 80px);
+  }
+  .loginBg {
+    // background: url("../../../../assets/common/images/clouds-pattern.png") no-repeat bottom;
+    background-size: cover;
+    border: 0px; // border-radius: 15px;
+  }
+}
+
+.animalBlock {
+  border-color: transparent !important;
+  .object-item {
+    opacity: 0.4 !important;
+  }
+}
+
+.animalBlock.active {
+  border-color: $white !important;
+  .object-item {
+    opacity: 1 !important;
+  }
+}
+
+input[name="username"]:disabled {
+  color: $white;
+  background-origin: content-box;
+  border: none;
+  font-weight: bold;
+  background-color: #4AA7DA !important;
+}
+
+input[name="password"].ng-touched,
+input[name="confirmPassword"].ng-touched {
+  border: 1px solid $blushRedShadow;
+  color: $black;
+  background: none !important;
+  background-origin: content-box;
+  font-weight: bold;
+  background: $white !important
+}
+
+input[name="password"].ng-valid,
+input[name="confirmPassword"].ng-valid {
+  border: 1px solid $greyishBrown;
+  color: $greyishBrownShadow;
+  background: none !important;
+  background-origin: content-box;
+  background: $white !important
+}
+
+.input-bg.password-bg {
+  background: none !important;
+  background-color: $white !important;
+}
+
+.password-input {
+  position: relative;
+  .password-toggle-text {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: $primaryColor;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+}
+
+/*******media queries********/
+
+// @media(max-width: 850px) {
+//   .right-loginSection {
+//     position: relative;
+//     margin: 0 auto;
+//   }
+// }
+@media(max-width: 991px) {
+  .right-loginSection {
+    position: relative;
+    margin: 0 auto;
+  }
+  .adSpace-block {
+    margin: 0 auto;
+  }
+}
+
+@media(max-width: 850px) and (min-width:768px) {
+  .object-item {
+    width: 40px !important;
+    height: 40px !important;
+    margin-right: 5px !important;
+  }
+}
+
+input.username:disabled {
+  background: $light-blue;
+}
+
+.warning-message.align-spacing {
+  padding-left: 10px;
+  margin-top: -10px;
+}
+
+.warning-message {
+  color: $white;
+  .error-icon {
+    width: 18px;
+    height: 18px;
+    background: $blushRed;
+    display: inline-flex;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid $blushRedShadow;
+  }
+}
+
+.help-for-kid {
+  font-size: 0.875rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+  padding-top: 50px;
+  a {
+    color: $secondaryColor;
+  }
+}

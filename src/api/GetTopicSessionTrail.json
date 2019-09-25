@@ -1,0 +1,231 @@
+{
+  "resultCode": "C001",
+  "resultMessage": "success",
+  "userInformation": {
+    "language": "en-IN",
+    "selectedTheme": "lowergrade",
+    "name": "Ramanujan",
+    "grade": 5,
+    "section": "C",
+    "avatar": "url",
+    "isRetail": false,
+    "gender": "female",
+    "groupID": "536518"
+  },
+  "sessionInformation": {
+    "sessionID": "345",
+    "sessionStartAt": "2017-06-21 05:04:35",
+    "sessionType": "Home"
+  },
+  "permittedNavs": {
+    "aqad": true,
+    "games": false,
+    "help": false,
+    "home": true,
+    "mailbox": true,
+    "message": true,
+    "myDetails": true,
+    "myFavourities": false,
+    "myMindspark": true,
+    "myTopics": true,
+    "notification": false,
+    "reward": false,
+    "sparkies": true,
+    "worksheets": false,
+    "searchBar": false
+  },
+  "topicDetails": {
+    "topicName": "Basic Understanding of half and quaters",
+    "topicId": "Topic123",
+    "currentAttempt": 6,
+    "totalCorrect": 2,
+    "totalWrong": 0,
+    "totalQuestion": 60,
+    "totalPages": 3,
+    "currentPage": 2,
+    "showingFrom": 41,
+    "showingTo": 60,
+    "accuracy": 70
+  },
+  "settings": {
+    "showWrongAnswer": false
+  },
+  "trailList": [
+    {
+      "conceptID": "CID",
+      "concept": "Basic Understanding of half and quaters",
+      "contentID": "SQ1234",
+      "langCode": "en",
+      "revisionNo": 3,
+      "contentType": "question",
+      "contentSeqNum": 1,
+      "contentMode": "wildcard",
+      "data": [
+        {
+          "_id": "59dc8e651c5edc24e405d46d_en_1",
+          "langCode": "en",
+          "questionBody": "<div> <div>Fill in the blanks<br><br> <div style=\"MARGIN: 0in 0in 10pt\">1) (<font><em>p + q</em>)<sup>2</sup> = <em>p</em><sup>2 </sup>+ ( [blank_1] ) + <em>q</em></font><sup>2<br><br></sup>2) (<font><em>p - q</em>)<sup>2</sup> = <em>p</em><sup>2 </sup>+ ( [blank_2] ) + <em>q</em></font><sup>2<br><br></sup>3) <font><em>p</em><sup>2 </sup><em>- q</em><sup>2</sup> =(<em>p + q</em>) ( [blank_3] )</font></div><br></div></div>",
+          "response": {
+            "blank_1": {
+              "type": "Blank",
+              "correctAnswers": [
+                "2pq",
+                "2qp",
+                "2*p*q",
+                "2*q*p"
+              ]
+            },
+            "blank_2": {
+              "type": "Blank",
+              "correctAnswers": [
+                " (-2pq)",
+                "-2pq",
+                "-2qp",
+                "-2*p*q",
+                "-2*q*p",
+                "-2xpxq",
+                "-2xqxp",
+                "(-2)pq",
+                "(-2)qp",
+                "2(-p)q",
+                "2(-q)p",
+                "2p(-q)",
+                "2q(-p)"
+              ]
+            },
+            "blank_3": {
+              "type": "Blank",
+              "correctAnswers": [
+                " p - q",
+                "-q + p"
+              ]
+            }
+          },
+          "revisionNo": "1",
+          "contentID": "59dc8e651c5edc24e405d46d",
+          "template": "Blank",
+          "contentType": "question"
+        }
+      ],
+      "userAttemptData": {
+        "result": "pass",
+        "timeTaken": 3,
+        "userResponse": {
+          "blank_1": {
+            "type": "Blank",
+            "userAnswer": "5"
+          },
+          "blank_2": {
+            "type": "Blank",
+            "userAnswer": "-2pq"
+          },
+          "blank_3": {
+            "type": "Blank",
+            "userAnswer": "5"
+          }
+        }
+      }
+    },
+    {
+      "conceptID": "CID",
+      "concept": "Basic Understanding of half and quaters",
+      "contentID": "59dc8c8f1c5edc24e405d277",
+      "contentType": "question",
+      "contentMode": "challenge",
+      "contentSeqNum": 2,
+      "langCode": "en",
+      "revisionNo": "1",
+      "data": [
+        {
+          "_id": "59dc8e641c5edc24e405d3e5_en_1",
+          "langCode": "en",
+          "questionBody": "Given below are the first three terms of an arithmetic progression, what is the 8<SUP>th</SUP> term of this arithmetic progression?<BR><BR><STRONG>0, 9, 18, . . .<BR><BR></STRONG>The 8<SUP>th</SUP> term = ",
+          "response": {
+            "mcqPattern": {
+              "type": "MCQ",
+              "choices": [
+                {
+                  "value": "9&nbsp;&#215; 6"
+                },
+                {
+                  "value": "9&nbsp;&#215; 7"
+                },
+                {
+                  "value": "9&nbsp;&#215; 8"
+                },
+                {
+                  "value": "9&nbsp;&#215; 9"
+                }
+              ],
+              "optionsVoiceOver": null,
+              "correctAnswer": 1
+            }
+          },
+          "revisionNo": "1",
+          "contentID": "59dc8e641c5edc24e405d3e5",
+          "template": "MCQ",
+          "contentType": "question"
+        }
+      ],
+      "userAttemptData": {
+        "result": "pass",
+        "timeTaken": 3,
+        "userResponse": {
+          "mcqPattern": {
+            "type": "MCQ",
+            "userAnswer": "0"
+          }
+        }
+      }
+    },
+    {
+      "conceptID": "CID",
+      "concept": "Basic Understanding of half and quaters",
+      "contentID": "SQ1234",
+      "contentType": "activity",
+      "contentSeqNum": 3,
+      "revisionNo": 1,
+      "data": [
+        {
+          "contentID": "59dc86a61c5edc24e405d01c",
+          "langCode": "en",
+          "revisionNo": "1",
+          "template": "Game",
+          "name": "Balloon bursting 'Adding up to make 10'",
+          "_id": "59dc86a61c5edc24e405d01c_en_1",
+          "contentType": "activity"
+        }
+      ],
+      "userAttemptData": {
+        "timeTaken": 3
+      }
+    },
+    {
+      "conceptID": "CID",
+      "concept": "Basic Understanding of half and quaters",
+      "contentID": "SQ1234",
+      "contentName": "Number Line game",
+      "revisionNo": 1,
+      "contentSeqNum": 4,
+      "contentType": "timedTest",
+      "data": [
+        {
+          "_id": "5a66c5f71c5edc41bc0182a3_en_1",
+          "contentID": "5a66c5f71c5edc41bc0182a3",
+          "langCode": "en",
+          "title": "Solving one step linear equations in one variable.",
+          "revisionNo": "1",
+          "template": "TimedTest",
+          "contentType": "group",
+          "durationClass": 1,
+          "totalQuestion": 20,
+          "noOfQuesClass": 1
+        }
+      ],
+      "userAttemptData": {
+        "timeTaken": 3,
+        "accuracy": 70
+      }
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+  @import '../../../../../assets/common/styles/global.variables.scss';
+  .week-reportSection {
+      .card {
+          background: $myProgressCard;
+          padding: 0px;
+          min-height: 147px;
+          font-size: 0.95rem;
+          margin-bottom: 25px !important;
+          border: 0px;
+          .card-header {
+              background: $morningGloryShadow;
+              border-top-left-radius: 8px;
+              border-top-right-radius: 8px;
+              text-align: left;
+              border-bottom-width: 0px;
+          }
+          .card-block {
+              border-left: 1px solid $morningGloryShadow;
+              border-right: 1px solid $morningGloryShadow;
+              border-bottom: 1px solid $morningGloryShadow;
+              border-bottom-left-radius: 8px;
+              border-bottom-right-radius: 8px;
+              color: $darkGrey;
+              min-height: 100px;
+              align-items: center;
+              display: flex;
+              padding: 0px 15px 0px 15px;
+              .row {
+                  width: 100%;
+                  margin: 0 auto;
+              }
+              label {
+                  display: table-cell;
+                  vertical-align: middle;
+              }
+          }
+          .right-section {
+              padding-left: 2rem;
+          }
+          .left-section {
+              border-right: 1px solid $lightBlueGrey;
+          }
+          .correct-number {
+              font-size: 1.8rem;
+              color: $morningGloryShadow;
+              padding-right: 10px;
+              vertical-align: middle;
+              letter-spacing: -3px;
+          }
+          .text {
+              vertical-align: super;
+          }
+          .won-badge {
+              padding-right: 8px;
+          }
+      }
+  }
+
+  .last-week-report {
+      .card {
+          background: $myProgressCard;
+          .card-header {
+              background: $greyishBrown;
+              border-top-left-radius: 8px;
+              border-top-right-radius: 8px;
+              color: $white;
+          }
+          .card-block {
+              border-left: 1px solid $morningGloryShadow;
+              border-right: 1px solid $morningGloryShadow;
+              border-bottom: 1px solid $morningGloryShadow;
+              border-bottom-left-radius: 8px;
+              border-bottom-right-radius: 8px;
+              color: $darkGrey;
+          }
+          .correct-number {}
+      }
+  }
+
+  .ms-table {
+      .month-title {
+          font-size: 1.1rem;
+          margin-bottom: 12px;
+          color: $primaryColor;
+      }
+      table {
+          text-align: center;
+          font-size: 0.95rem;
+      }
+      .table-info {
+          background: $primaryColor;
+          color: $white;
+      }
+      th {
+          border-color: $primaryColor;
+          text-align: center;
+      }
+      table {
+          color: $darkGrey;
+          border-radius: 3px;
+          margin-bottom: 0px;
+          overflow: hidden;
+          tbody {
+              td {
+                  border-top: 2px solid $ice-blue;
+              }
+              tr:nth-child(even) {
+                  background: #f6f6f6;
+              }
+              tr:nth-child(odd) {
+                  background: $white;
+              }
+              tr:last-of-type {
+                  border-bottom: 1px solid;
+              }
+          }
+      }
+      .table-responsive {
+          border-radius: 4px;
+          border: 1px solid $primaryColor !important;
+      }
+  }
+
+  .right-section {
+      .sparkie-badge {
+          width: 62px;
+          height: 62px;
+          border-radius: 50%;
+          background: $secondaryColor;
+          border: 2px solid $secondaryShadowColor;
+          display: flex;
+          align-items: center;
+          img {
+              width: 40px;
+              margin: 0 8px;
+          }
+      }
+  }

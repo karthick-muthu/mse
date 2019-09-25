@@ -1,0 +1,167 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.Profile-Ct {
+  display: flex;
+  display: -moz-box;
+  display: -webkit-flex;
+  -webkit-box-pack: justify;
+  -moz-box-pack: justify;
+  -ms-flex-pack: justify;
+}
+
+.profile {
+  // margin-top: 20px;
+  margin-bottom: -15px;
+  position: relative;
+  z-index: 2;
+  .profile-pic {
+    margin-right: 20px;
+    /*padding: 10px 10px 0px 10px;*/
+    background: $white;
+    border: 4px solid $yellow;
+    border-radius: 10px;
+    width: 140px;
+    height: 140px;
+    overflow: hidden;
+    img {
+      width: 100%;
+      border-radius: 6px;
+      max-width: 100%;
+      height: 100%;
+    }
+  }
+  .profile-details {
+    color: $white;
+    font-weight: bold;
+    p {
+      font-size: 14px;
+    }
+    .profile-name {
+      margin-bottom: 0px;
+      font-size: 1.5rem;
+      max-width: 250px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-height: 50px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+    .profile-grade {
+      max-width: 250px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      height: 20px;
+      -webkit-line-clamp: 1;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      word-break: break-word;
+    }
+    .grade-text {
+      margin-bottom: 35px;
+    }
+    .attempt-text {
+      margin-bottom: -5px;
+    }
+    .attempt-num-block {
+      padding: 0 12px 0 14px;
+    }
+    .profile-text {
+      font-weight: bold;
+      margin-bottom: -5px;
+    }
+    .attempts {
+      font-size: 14px;
+      font-weight: bold;
+      padding-bottom: 5px;
+      max-width: 300px;
+      span {
+        color: $goldenYellow;
+      }
+    }
+    .attempt-progress {
+      margin-top: 0px;
+      padding-left: 4px;
+      .progress {
+        background: rgba($black, 0.3);
+        border-radius: 7px;
+        .progress-bar {
+          border-radius: 7px;
+        }
+        .progress-bar-incomplete {
+          background: linear-gradient( to right, $goldenYellow, $secondaryColor);
+        }
+        .progress-bar-complete {
+          background: $secondaryColor;
+        }
+      }
+    }
+  }
+  .RewardsCt {
+    line-height: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .rewards {
+      // width: 35em;
+      width: 100%;
+      flex-direction: row-reverse; // float: right;  .sparkies {
+      //   border-right: 1px solid rgba(255, 255, 255, 0.4);
+      // }
+      // .shields {
+      //   border-right: 1px solid rgba(255, 255, 255, 0.4);
+      // }
+      .reward-badge {
+        display: block;
+        float: left;
+        height: 40px;
+        width: 40px;
+        img {
+          width: 100%;
+        }
+      }
+      .badge-text {
+        padding-left: 50px;
+        padding-right: 50px;
+        text-align: center;
+      }
+      .badge-number {
+        font-size: 2em;
+        display: block;
+        text-align: left;
+      }
+      .reward-text {
+        float: left;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.reward-item {
+  border-left: 1px solid rgba($white, 0.4);
+  padding: 0px 0px 0px 10px;
+}
+
+.reward-item:last-of-type {
+  border-left: none;
+}
+
+// .reward-item:nth-child(1) {
+//   order: 1
+// }
+// .reward-item:nth-child(2) {
+//   order: 2
+// }
+@media(max-width: 900px) and(min-width: 767px) {
+  .profile .RewardsCt {
+    align-items: flex-start;
+    margin-top: 10px;
+  }
+  .rewards {
+    flex-direction: column !important;
+  }
+}
+
+.spacingLeftNone {
+  margin-left: 0px !important;
+}

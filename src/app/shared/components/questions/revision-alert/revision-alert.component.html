@@ -1,0 +1,18 @@
+<div class="modal-content " style=" padding: 8px !important; min-height: 250px !important; min-width: 400px !important; overflow: hidden; border-radius: 7px; ">
+
+
+    <div style="margin-left:20px" class=" modal-body modal-btn-container">
+        <table class="sentence">
+            <td align="left" valign="top">
+                <div> You have not attempted the topics:
+                </div><br/>
+                <span *ngFor="let topics of topicName;let i=index">{{i+1}}.{{topics}} <br/></span><br/>
+                <div> Please complete the topics to attempt this worksheet.</div>
+            </td>
+
+        </table>
+        <button type="button " class="heading " class="btn modalbtns btn-yes " (click)="closeSparkieAlertModal() ">
+      {{ "okay got it" | translate }}
+    </button>
+    </div>
+</div>

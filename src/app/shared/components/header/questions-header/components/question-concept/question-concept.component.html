@@ -1,0 +1,70 @@
+<div class="question-concepts-ct d-flex" [ngClass]="templateClass" [ngStyle]="fluidHeight" style="display: -webkit-flex;">
+  <div class="">
+    <!--d-grid -->
+    <div class="topics-icon">{{ questionIcon[pedagogyContent?.type] }}</div>
+    <!-- <div class="concepts-status-ct ">
+      <label class="topics-icon concept-status-icon">
+        <span class="completed-concepts-number">{{ pedagogyContent?.progress?.currentUnitNum }}</span>
+        <span class="total-concepts-number">/{{ pedagogyContent?.progress?.totalUnits }}</span>
+      </label>
+    </div> -->
+  </div>
+  <div class="">
+    <!--d-grid -->
+    <div class="concept-title paddRightSpace" [innerHtml]="pedagogyContent?.name"></div>
+    <!-- <div class="conecpts-message-ct paddRightSpace">
+      <ng-container *ngIf="pedagogyContent?.higherLevelStatus === 'in-progress'; then higherLevel; else lowerLevel"></ng-container>
+      <ng-template #higherLevel>
+        <div>
+          <label class="concept-text">
+            <span>You are on higher level</span>
+          </label>
+        </div>
+      </ng-template>
+      <ng-template #lowerLevel>
+        <div #pedagogyConceptDropDown="ngbDropdown" ngbDropdown class="d-inline-block">
+          <button id="pedagogyConceptDropDown" ngbDropdownToggle class="concept-dropdown">
+            <label class="concept-text">
+              <span *ngIf="pedagogyContent?.progress?.totalUnits === 1">{{'you are on concept' | translate:{completed: pedagogyContent?.progress?.currentUnitNum || '0' | ordinalName,
+                total: pedagogyContent?.progress?.totalUnits} }} </span>
+              <span *ngIf="pedagogyContent?.progress?.totalUnits > 1">{{'you are on concepts' | translate:{completed: pedagogyContent?.progress?.currentUnitNum || '0' | ordinalName,
+                total: pedagogyContent?.progress?.totalUnits} }} </span>
+            </label>
+          </button>
+          <div ngbDropdownMenu aria-labelledby="pedagogyConceptDropDown">
+            <div class="concepts-list">
+              <ul class="list-unstyled">
+                <li class="concept-listItem" *ngFor="let unit of pedagogyContent?.progress?.unitList">
+                  <div class="image-circle" [ngClass]="{
+                    'completedConcept': unit?.unitStatus == 'completed', 
+                    'currentConcept': unit?.unitStatus == 'in-progress', 
+                    'failedConcept': unit?.unitStatus == 'failed'}">
+                    <span class="custom-icon" [ngClass]="{
+                    'icon-timed-test': unit?.unitType == 'timedTest',
+                    'icon-game': unit?.unitType == 'game',
+                    'icon-concept': unit?.unitType == 'concept',
+                    'icon-prepost-test': unit?.unitType == 'practice'
+                  }"></span>
+                  </div>
+                  <div class="list-title">
+                    <span [innerHtml]="unit?.unitName"></span>
+                  </div>
+                </li>
+                <!-- <li class="concept-listItem" *ngIf="pedagogyContent?.higherLevelStatus === 'available' || pedagogyContent?.higherLevelStatus === 'in-progress'">
+                <div class="image-circle" [ngClass]="{'currentConcept': pedagogyContent?.higherLevelStatus == 'in-progress'}">
+                  <img src="assets/common/images/higher-level-icon.png" />
+                </div>
+                <div class="list-title">
+                  <span>Go to higher grade</span>
+                </div>
+              </li> ->
+              </ul>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div> -->
+
+    <div class="left-arrow" [ngStyle]="borderStyle"></div>
+  </div>
+</div>

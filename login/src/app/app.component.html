@@ -1,0 +1,6 @@
+<div (contextmenu)="onRightClick($event)">
+  <div id="pageLoader" class="opacity-overlay" *ngIf="showLoader?.loader">
+    <i class="fa fa-spinner fa-spin spinner"></i>
+  </div>
+  <router-outlet></router-outlet>
+</div>

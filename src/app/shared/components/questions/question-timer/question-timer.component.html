@@ -1,0 +1,7 @@
+<div *ngIf="timed" class="question-timer-container" id="questionTimer">
+  <!-- <div class="question-timer timer-start"> -->
+  <div *ngIf="remainingTime && warningTime" class="question-timer" [ngClass]="{'timer-start': remainingTime > warningTime,'timer-end': remainingTime <= warningTime}">
+    <div class="timer-status">{{ remainingTime | minuteSecond:'mmss' }}</div>
+    <div class="timer-progress" [ngStyle]="{'width': decreaseWidthValue+'%'}"></div>
+  </div>
+</div>

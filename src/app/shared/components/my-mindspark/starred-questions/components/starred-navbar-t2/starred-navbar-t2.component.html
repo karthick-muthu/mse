@@ -1,0 +1,33 @@
+<div class="favourite-header-row">
+  <div class="row">
+    <div class="col-lg-4 col-md-4">
+      <div class="select-box">
+        <select class="form-control" (change)="selectTopicId()" #selectedTopic>
+          <option *ngFor="let topic of topicList; let i=index" [value]="topic?.topicID" [selected]="topic?.topicID === topicID">
+            {{topic?.topicName}}
+          </option>
+        </select>
+      </div>
+
+
+    </div>
+    <div class="col-lg-4 col-md-12 col-sm-12 pagination-ct">
+      <div class="float-right" *ngIf="totalPages>1">
+        <!-- pageItemCount -->
+        <!-- maxSize=5 , rotate=t rue, ellipses=f alse -->
+        <ngb-pagination [collectionSize]="favouritesQuestion?.favouritesCount" [maxSize]="maxPageSize" [pageSize]="pageItemCount"
+          [ngClass]="{ 'pagination-display-none-first':(page<4), 'pagination-display-none-last':(totalPages===page) || (totalPages<5) }"
+          [rotate]="true" [ellipses]="false" [page]="page" (pageChange)="loadPage($event)"></ngb-pagination>
+
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-8">
+
+      <!-- favouritesCount -->
+      <div *ngIf="favouritesQuestion?.favouritesCount">
+        <h4 class="header-text" *ngIf="favouritesQuestion?.favouritesCount===1">{{ favouritesQuestion?.favouritesCount }} {{ 'starred question' | translate }}</h4>
+        <h4 class="header-text" *ngIf="favouritesQuestion?.favouritesCount>1">{{ favouritesQuestion?.favouritesCount }} {{ 'starred questions' | translate }}</h4>
+      </div>
+    </div>
+  </div>
+</div>

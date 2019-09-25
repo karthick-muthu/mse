@@ -1,0 +1,17 @@
+<div class="modal-header modal-header-container">
+    <button type="button" class="close" (click)="closeWorksheet()" aria-label="Close" hidden>
+    <i class="fa fa-times" aria-hidden="true"></i>
+  </button>
+</div>
+
+<div class="modal-body modal-btn-container">
+    <p class="heading">{{'content type for' | translate: {name: worksheetName, type: contentType | translate} }}</p>
+    <p *ngIf="totalQuestions === 1">{{'have total question' | translate: {totalQuestions: totalQuestions } }}</p>
+    <p *ngIf="totalQuestions > 1">{{'have total questions' | translate: {totalQuestions: totalQuestions } }}</p>
+    <figure class="timer" *ngIf="showTimer">
+        <img src="assets/common/images/stopper-watch.png" alt="stopper-watch" width="65px" />
+        <figcaption>{{totalTime | minuteSecond:'mm' }}</figcaption>
+    </figure>
+    <!--<button type="button" class="btn modalbtns btn-no" (click)="c('Close click')">No</button>-->
+    <button type="button" class="btn modalbtns btn-start" (click)="startWorksheet()">{{ 'start' | translate }}</button>
+</div>

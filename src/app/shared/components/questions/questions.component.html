@@ -1,0 +1,40 @@
+<ng-template [ngIf]="showContentPreview && isMobile" [ngIfElse]="showTopics">
+    <div class="container-fluid" [style.minHeight.px]="screenHeight" [ngClass]="templateClass">
+        <div class="question-header-1">
+            <div class="title">{{contentDetails?.header?.pedagogyContentLeft.name}}</div>
+            <div class="done-button">
+                <button class="btn btn-done">
+                    {{'done' | translate}}
+                </button>
+            </div>
+        </div>
+        <div class="question-header-2">
+            <div class="units-complete">
+                <div class="units-circle">1/2</div>
+                <div class="units-title">Units</div>
+            </div>
+            <div class="sparkies">
+                <img src="assets/common/images/coins_all.gif" width="28" alt="{{'sparkies' | translate }}"
+                    title="{{'sparkies' | translate }}" class="sparkieCoin" />
+                <span class="won-label">{{contentDetails?.header?.pedagogyContentRight.sparkie}}</span>
+            </div>
+        </div>
+        <div class="question-body-section">
+            <div class="question-section" id="question-section" [style.minHeight.px]="screenHeight-140">
+                <ms-cp-questions-structure></ms-cp-questions-structure>
+            </div>
+        </div>
+        <ms-cp-questions-footer></ms-cp-questions-footer>
+    </div>
+</ng-template>
+
+
+<ng-template #showTopics>
+    <ms-questions-header></ms-questions-header>
+    <div class="container questions-container">
+        <div class="question-container-section">
+            <ms-questions-structure></ms-questions-structure>
+        </div>
+    </div>
+    <ms-questions-footer></ms-questions-footer>
+</ng-template>

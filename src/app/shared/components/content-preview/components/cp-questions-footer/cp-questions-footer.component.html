@@ -1,0 +1,45 @@
+<div class="question-footer">
+  <div class="footer-left">
+    <button type="button" (click)="commentActive()" class="btn-comment" *ngIf="question?.permittedNavs?.showComment">
+      <i class="fa fa-commenting"> </i>
+    </button>
+    <button type="button" (click)="addToFavourities()" [ngClass]="{'btn-active': isFavourite }" class="btn-favourite"
+      *ngIf="question?.contentType?.toLowerCase() !== 'activity' && questionTemplate!== 'timedtest' && question?.permittedNavs?.showComment">
+      <i class="fa fa-star"> </i>
+    </button>
+  </div>
+  <div class="footer-right">
+    <ng-container
+      *ngIf="result?.noMoreAttempts || activateNext || (result?.result === true || result?.result === 'correct'); then nextQuestion; else actionQuestion">
+    </ng-container>
+    <ng-template #nextQuestion>
+      <button *ngIf="from !== 'worksheet' && from !== 'games'" class="btn next-btn" (click)="loadNext()"
+        [disabled]="disableNext">
+        <div class="btn">
+          <i class="fa fa-arrow-right"></i>
+        </div>
+        <span>{{'next' | translate}}</span>
+      </button>
+    </ng-template>
+    <ng-template #actionQuestion>
+      <ng-container *ngIf="questionTemplate?.toLowerCase() === 'game' ; else submitQuestion">
+        <ng-container *ngIf="question?.contentType?.toLowerCase() === 'activity' && pedagogyType === 'topic'">
+          <button class="btn skip-btn" (click)="skipContent()">
+            <div class="btn">
+              <i class="fa fa-arrow-right"></i>
+            </div>SKIP
+          </button>
+        </ng-container>
+      </ng-container>
+      <ng-template #submitQuestion>
+        <button *ngIf="showSubmitButton()" class="btn submit-btn" (click)="submitFormAnswer()"
+          [ngClass]="{'submit-btn': from !== 'worksheet', 'next-btn': from === 'worksheet'}" [disabled]="disableSubmit">
+          <div class="btn">
+            <i class="fa fa-arrow-right"></i>
+          </div>
+          <span *ngIf="from !== 'worksheet'">{{ 'submit' | translate }}</span>
+        </button>
+      </ng-template>
+    </ng-template>
+  </div>
+</div>

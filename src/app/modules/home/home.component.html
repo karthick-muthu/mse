@@ -1,0 +1,54 @@
+<ms-header [template]="template" [isDetailed]="displayDetailedView" [isProfileVisible]="isProfileVisible"></ms-header>
+<!-- 
+<ng-container [ngSwitch]="template">
+  <ng-container *ngSwitchCase="'1'">
+    <ms-home-t1 [for]="for" [homeTileList]="homeTileList" [isProfileVisible]="isProfileVisible"></ms-home-t1>
+  </ng-container>
+  <ng-container *ngSwitchCase="'2'">
+    <ms-home-t2 [for]="for" [homeTileList]="homeTileList" [isProfileVisible]="isProfileVisible"></ms-home-t2>
+  </ng-container>
+</ng-container> -->
+<div [ngClass]="templateClass">
+  <div class="container-fluid gutterSpacing middle-container desktop" [ngClass]="{'header-bg-clouds-layer-position':isProfileVisible }">
+    <div class="container gutterSpacing loadsToleft" [class.empty-container]="!homeTileList">
+      <ng-container *ngIf="homeTileList?.length > 0; then homeContent; else emptyHomeContent"></ng-container>
+      <ng-template #homeContent>
+
+        <!-- For higher grades -->
+        <ng-container *ngIf="selectedTheme?.toLowerCase() === 'highergrade' else otherGrade">
+          <ms-topics-tile-t2 class="topics-container" [for]="for" [template]="template" [topicList]="homeTileList" [priorityContents]="priorityContents"></ms-topics-tile-t2>
+        </ng-container>
+
+        <ng-template #otherGrade>
+
+          <!-- For lower grades -->
+          <ng-container *ngIf="selectedTheme?.toLowerCase() === 'lowergrade' else unknownGrade">
+            <ms-topics-tile-t1 class="topics-container" [for]="for" [template]="template" [topicList]="homeTileList" [priorityContents]="priorityContents"></ms-topics-tile-t1>
+          </ng-container>
+
+          <!-- For unknown grades -->
+          <ng-template>
+            <ms-topics-tile-t1 class="topics-container" [for]="for" [template]="template" [topicList]="homeTileList" [priorityContents]="priorityContents"></ms-topics-tile-t1>
+          </ng-template>
+
+        </ng-template>
+      </ng-template>
+      <ng-template #emptyHomeContent>
+        <div class="container empty-container" [ngClass]="templateClass" *ngIf="homeTileList?.length<1">
+          <div class="row">
+            <div class="col-md-6 text-center">
+              <img src="assets/common/images/group-14.png" />
+            </div>
+            <div class="col-md-6 text-content">
+              <div class="heading-blue">{{ 'waiting for some topics' | translate }}...</div>
+              <div class="heading-grey">{{ 'ask your teacher to activate some topics' | translate}}</div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  <ms-notification *ngIf="selectedTheme?.toLowerCase() === 'lowergrade' && permittedNavs?.notification"></ms-notification>
+</div>
+
+<ms-footer [template]="template"></ms-footer>

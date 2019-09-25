@@ -1,0 +1,213 @@
+<div class="myDetails-section tab-space" [ngClass]="templateClass">
+  <div class="my-detailsProfile-row  left-border-style">
+    <div class="row">
+      <div class="col-md-6 col-sm-12 Profile-Ct">
+        <div class="profile-pic">
+          <img *ngIf="profileImage" [src]="profileImage" (error)="imageError()">
+          <label for="upload">
+            <div class="add-image-ct">
+              <i class="fa fa-camera camera-view" aria-hidden="true"></i>
+              <span>{{ 'change image' | translate }}</span>
+              <input type="file" accept=".jpg,.png" id="upload" hidden #avatarFile (change)="uploadProfilePic()" capture="filesystem">
+            </div>
+          </label>
+        </div>
+        <div class="profile-details-ct" style="display: -webkit-flex;">
+          <div class="profile-details">
+            <h3 class="profile-name">{{ myDetails?.profileInformation?.name }}</h3>
+            <p class="profile-grade text-capitalize">
+              {{ 'grade' | translate }} {{ myDetails?.profileInformation?.grade }}{{ myDetails?.profileInformation?.section }}
+            </p>
+            <div *ngIf="template === '1'" class="text-danger">{{ profilePicError }}</div>
+          </div>
+        </div>
+        <div *ngIf="template === '2'" class="col text-danger">{{ profilePicError }}</div>
+      </div>
+      <!-- right-section can come with col-md-6 or float-right -->
+      <div class="col-md-6 right-section">
+        <div class="float-right">
+          <div class="right-content">
+            <label class="text">{{ 'subscription' | translate }}</label>
+            <br>
+            <label class="date-range">{{ myDetails?.profileInformation?.subscriptionFrom | amDateFormat:'DD/MM/YYYY' }} - {{ myDetails?.profileInformation?.subscriptionTo
+              | amDateFormat:'DD/MM/YYYY' }}</label>
+          </div>
+          <div class="form-group" [ngClass]="{'picture-password': template === '1'}" *ngIf="myDetails?.profileInformation?.settings?.changePassword">
+            <label class="col-form-label title" style="display: -webkit-flex;">{{ 'do you want to change your password' | translate }}</label>
+            <div class="">
+              <ms-change-password></ms-change-password>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form [formGroup]="myDetail" (submit)="updateMyDetails()">
+    <div class="education-info mydetails-box-style">
+      <div class="left-border-style">
+        <div class="col noLeftSpace">
+          <h4 class="title">{{ 'my name and school information' | translate }}</h4>
+          <div class="form-section">
+            <div class="form-group row">
+              <label class="col-md-2 col-xs-6 col-sm-4 col-form-label">{{ 'i am a' | translate }}</label>
+              <div class="col-md-10 col-xs-6 col-sm-4">
+                <div class="gender-section" [class.disabled]="myDetails?.profileInformation?.gender?.toLowerCase() !== 'female'">
+                  <img [src]="genderPics[0]" />
+                </div>
+                <div class="gender-section" [class.disabled]="myDetails?.profileInformation?.gender?.toLowerCase() !== 'male'">
+                  <img [src]="genderPics[1]" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-2 col-sm-4 col-form-label">{{ 'my name is' | translate }}</label>
+              <div class="col-md-3 col-sm-4 mobile-bottom-space">
+                <input type="text" class="form-control" value="{{ myDetails?.profileInformation?.name }}" [attr.disabled]="true">
+              </div>
+              <div class="col-md-7 select-block topSpace">
+                <label class="col-form-label">{{ 'i was born on' | translate }}</label>
+                <div class="float-left">
+                  <!--<div class="col-md-2 col-sm-3">-->
+                  <select class="form-control form-inputBox-style select-bg" [class.ng-invalid]="myDetail?.errors?.dob" formControlName="dateOfBirth">
+                    <option value="">{{ 'date' | translate }}</option>
+                    <option *ngFor="let date of createDateRange('date')" [value]="date">{{ date }}</option>
+                  </select>
+                  <!--</div>-->
+                  <!--<div class="col-md-2 col-sm-3">-->
+                  <select class="form-control form-inputBox-style select-bg" [class.ng-invalid]="myDetail?.errors?.dob" formControlName="monthOfBirth">
+                    <option value="">{{ 'month' | translate }}</option>
+                    <option *ngFor="let month of createDateRange('month'); let i = index" [value]="i+1">{{ month | translate }}</option>
+                  </select>
+                  <!--</div>
+                  <div class="col-md-2 col-sm-3">-->
+                  <select class="form-control form-inputBox-style select-bg" [class.ng-invalid]="myDetail?.errors?.dob" formControlName="yearOfBirth">
+                    <option value="">{{ 'year' | translate }}</option>
+                    <option *ngFor="let year of createDateRange('year')" [value]="year">{{ year }}</option>
+                  </select>
+                  <!-- <label class="col-form-label">I was born on</label> -->
+                  <div class="text-danger" *ngIf="myDetail?.errors?.dob?.invalid">{{'enter a valid date of birth' | translate}}</div>
+                  <div class="text-danger" *ngIf="myDetail?.errors?.dob?.greater">Date of birth cannot be greater than today.</div>
+                  <!--</div>-->
+                </div>
+              </div>
+            </div>
+            <div class="form-group row" style="display: -webkit-flex;">
+              <label class="align-info col-form-label">{{ 'i stay in this city' | translate }}</label>
+              <div class="padd-left">
+                <input type="text" class="form-control" value="{{ myDetails?.profileInformation?.place }}" [attr.disabled]="true">
+              </div>
+              <label class="align-info col-form-label">{{ 'and study at' | translate }}</label>
+              <div class="padd-left">
+                <input type="text" class="form-control" value="{{ myDetails?.profileInformation?.organization }}" [attr.disabled]="true">
+              </div>
+              <label class="align-info col-form-label">{{ 'in' | translate }}</label>
+              <div class="padd-left">
+                <input type="text" class="form-control grade-class" value="{{ myDetails?.profileInformation?.grade }}{{ myDetails?.profileInformation?.section }}"
+                  [attr.disabled]="true">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="parentDetails-info mydetails-box-style">
+      <div class="left-border-style">
+        <div class="col noLeftSpace">
+          <h4 class="title">{{ 'my parents details' | translate }}</h4>
+          <div class="form-section">
+            <div class="form-group row">
+              <label class="col-sm-4 col-md-2 col-form-label">{{ 'mothers name' | translate }}</label>
+              <div class="col-sm-8 col-md-4">
+                <input type="text" class="form-control form-inputBox-style" placeholder="{{ 'enter name' | translate }}" formControlName="motherName">
+                <div *ngIf="getFormElement('motherName').invalid" class="text-danger">
+                  <div *ngIf="getFormElement('motherName').errors?.pattern">{{'enter only alphabets in the name' | translate}}.</div>
+                </div>
+              </div>
+              <label class="col-sm-4 col-md-2 col-form-label topSpace">{{ 'fathers name' | translate }}</label>
+              <div class="col-sm-8 col-md-4">
+                <input type="text" class="form-control form-inputBox-style topSpace" placeholder="{{ 'enter name' | translate }}" formControlName="fatherName">
+                <div *ngIf="getFormElement('fatherName').invalid" class="text-danger">
+                  <div *ngIf="getFormElement('fatherName').errors?.pattern">{{'enter only alphabets in the name' | translate}}.</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-4 col-md-2 col-form-label">{{ 'parents email id' | translate }}</label>
+              <div class="col-sm-8 col-md-4 mobile-bottom-space">
+                <input type="email" class="form-control form-inputBox-style" placeholder="{{ 'enter email' | translate }}" formControlName="parentEmail">
+                <div *ngIf="getFormElement('parentEmail').invalid" class="text-danger">
+                  <div *ngIf="getFormElement('parentEmail').errors?.pattern">{{'enter a valid emailid' | translate}}.</div>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-12 three-form-elements">
+                <label class="col-form-label" style="display: -webkit-flex;">{{ 'parents mobile number' | translate }}</label>
+                <div class="parent-mobile">
+                  <div>
+                    <div class="countryFlags" style="display: -webkit-flex;">
+                      <div class="dropholder">
+                        <div class="dropdown" #countryDropdown (click)="toggleCountryDropdown()">
+                          <p>Select</p>
+                        </div>
+                        <ul class="dropdownMenu" #countryDropdownMenu>
+                          <li *ngFor="let country of countries" (click)="selectCountry(country)">
+                            <span class="flag" [ngClass]="country[1]"></span>
+                            <div class="country" [innerHtml]="country[0]"></div>
+                            <span class="code">{{ country[2] }}</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="phoneNumber">
+                        <input type="text" class="form-control form-inputBox-style" formControlName="parentMobile" onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+                          placeholder="{{ 'enter mobile number' | translate }}" maxlength="10">
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="getFormElement('parentMobile').invalid" class="text-danger" [ngClass]="{'float-left':template === '2'}">
+                    <div *ngIf="getFormElement('parentMobile').errors?.pattern">{{ 'enter a valid mobile number' | translate }}.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="question-answers-section mydetails-box-style" *ngIf="myDetails?.profileInformation?.settings?.secretQuestion">
+      <div class="left-border-style">
+        <div class="col noLeftSpace">
+          <h4 class="title" *ngIf="template === '1'">{{ 'secret question' | translate }}</h4>
+          <div class="form-section">
+            <div class="form-group row">
+              <label class="col-sm-4 col-md-2 col-form-label">{{ 'secret question' | translate }}</label>
+              <div class="col-sm-8 col-md-4">
+                <select class="form-control form-inputBox-style select-bg" formControlName="securityQuestion">
+                  <option *ngFor="let question of securityQuestions" [ngValue]="question">{{ question | translate }}</option>
+                </select>
+              </div>
+              <label class="col-sm-4 col-md-2 col-form-label topSpace">{{ 'secret answer' | translate }}</label>
+              <div class="col-sm-8 col-md-4">
+                <input type="text" class="form-control form-inputBox-style topSpace" placeholder="{{ 'enter answer' | translate }}" formControlName="securityAns">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-footer">
+      <button type="submit" class="details-btn save-button" [disabled]="checkMyDetailIsInvalid()">{{ 'save' | translate }}</button>
+    </div>
+  </form>
+</div>
+<div class="change-password-modal">
+  <ng-template #successDetails let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <div class="modal-body changePasswordModal successCt">
+        <div class="modal-form-section">
+          <p>{{ 'great' | translate }}
+            <br>Details successfully updated!</p>
+          <button type="button" class="details-btn save-button close-button" (click)="d('Cross click')">{{'close' | translate}}</button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

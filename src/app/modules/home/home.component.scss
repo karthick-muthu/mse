@@ -1,0 +1,100 @@
+// component css goes here
+@import '../../../assets/common/styles/global.variables.scss';
+.header-bg {
+  height: auto;
+  width: 100%;
+  position: relative;
+  padding-bottom: 70px;
+  .header-content-area {
+    position: relative;
+  }
+  .header-bg-layer {
+    background-size: cover;
+    height: 280px;
+    width: 100%;
+    z-index: 0;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+  }
+}
+
+.middle-container {
+  display: inline-block;
+}
+
+.empty-container {
+  // padding: 100px 0px;
+  transform: translate(1%, 30%);
+  img {
+    padding-bottom: 20px;
+  }
+  .text-content {
+    padding-top: 50px;
+    .heading-blue {
+      font-size: 18px;
+      font-weight: bold;
+      color: $primaryColor;
+    }
+    .heading-grey {
+      font-size: 18px;
+      color: $greyishBrown;
+    }
+  }
+}
+
+.template1 {
+  .middle-container {
+    padding-top: 5%;
+    min-height: calc(100vh - 200px);
+    background: url('../../../assets/common/images/train-track-upper.png'), url('../../../assets/common/images/train-track-lower.png');
+    background-position: 0% 0%, 100% 180%;
+    background-repeat: no-repeat;
+    background-size: 25%, 75%;
+    padding-bottom: 80px;
+  }
+  &.empty-container {
+    transform: translate(1%, 30%);
+    font-family: BalooBhaina !important;
+    img {
+      padding-bottom: 20px;
+    }
+    .text-content {
+      padding-top: 50px;
+      .heading-blue {
+        font-size: 24px;
+        font-weight: bold;
+        color: $black !important;
+      }
+      .heading-grey {
+        font-size: 18px;
+        font-weight: bold;
+        color: $black;
+      }
+    }
+  }
+}
+
+.homeStyler {
+  .header-bg {
+    height: auto;
+    width: 100%;
+    position: relative;
+    padding-bottom: 50px;
+    .header-content-area {
+      position: relative;
+      .profile {
+        display: none;
+      }
+    }
+    .header-bg-layer {
+      background-size: cover;
+      height: 350px;
+      width: 100%;
+      z-index: 0;
+      position: absolute;
+      left: 0px;
+      right: 0px;
+    }
+  }
+}

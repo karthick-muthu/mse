@@ -1,0 +1,41 @@
+<div class="second-row high-score-section template1" *ngIf="currentMonth">
+  <div class="row">
+    <div class="col col-lg-6 col-md-6 col-sm-12" *ngIf="groupSparkieData?.length>0">
+      <ms-leaderboard [boardtype]="'sparkies-style'" [title]=" 'high score for the month of' | translate:{month : currentMonth | amParse:'YYYY-MM' | amDateFormat:'MMM' | translate , year: currentMonth | amParse:'YYYY-MM' | amDateFormat:'YYYY' }"
+        [sparkies]="'sparkies'" [size]="displaySize" [data]="groupSparkieData"></ms-leaderboard>
+
+    </div>
+    <div class="col col-lg-6 col-md-6 col-sm-12" *ngIf="sparkiesStarsMonth?.length>0">
+      <!-- <ms-leaderboard [boardtype]="'sparkies-style'" [title]="'Sparkie Stars for each month'" [size]="displaySize" [data]="maxSparkieForMonth"></ms-leaderboard> -->
+
+
+      <ul class="list-group sparkies-style">
+        <li class="list-group-header justify-content-between">
+
+          <label>{{ 'sparkie stars for each month' | translate }}</label>
+        </li>
+        <li class="list-group-item justify-content-between" style="display: -webkit-flex;" *ngFor="let sparkie of sparkiesStarsMonth | slice:0:displaySize;"
+          [ngClass]="{'first-list higlighted-user': sparkie?.starOftheMonth?.thisUser}">
+          <div>
+            <span class="list-name" style="display: -webkit-flex;">
+              <span [innerHtml]="sparkie?.starOftheMonth?.name"></span>
+              <span ngbDropdown class="more" *ngIf="sparkie?.othercount>0" (click)="toggleMorePopover(i, sparkie?.othernames)">
+                <span ngbDropdownToggle>
+                  +{{sparkie?.othercount}}
+                </span>
+                <div ngbDropdownMenu class="more-name">
+                  <ul>
+                    <li *ngFor="let leaders of leaderData" [innerHtml]="leaders"></li>
+                  </ul>
+                </div>
+              </span>
+            </span>
+          </div>
+          <span class="list-number">
+            <span [innerHtml]="sparkie?.month | amParse:'YYYY-MM' | amDateFormat:'MMM' | translate"></span>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

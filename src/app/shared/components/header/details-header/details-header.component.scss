@@ -1,0 +1,82 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.topic-details-header {
+  background-color: $primaryColor;
+  padding-left: 0px;
+  padding-right: 0px;
+  .header {
+    height: 80px;
+    margin: 0 auto;
+    padding: 20px;
+    .left-header-content {
+      display: inline-flex;
+      .topic-detail {
+        border-radius: 15px;
+        background-color: rgba(0, 0, 0, 0.15);
+        font-size: 14px;
+        color: $white;
+        padding: 5px 10px 5px 10px;
+      }
+      .measurement-length {
+        font-size: 18px;
+        color: $white;
+        margin-left: 15px;
+      }
+    }
+    .right-header-content {
+      padding-top: 2px;
+      .badge {
+        float: left;
+        .logo {
+          width: 24px;
+        }
+      }
+      .layer {
+        height: 30px;
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 30px;
+        text-align: left;
+        color: $white;
+        float: left;
+        margin: 0 10px;
+      }
+      .btn-close {
+        float: left;
+        .btn {
+          background: $morningGlory;
+          color: $primaryShadowColor;
+          box-shadow: 0px 5px 0px $primaryShadowColor;
+          padding: 8px 15px 8px 15px;
+          border: 0px;
+          margin-left: 10px;
+          text-transform: uppercase;
+          font-size: 0.8rem;
+          float: left;
+        }
+      }
+    }
+  }
+}
+
+// css for lower grade
+.topic-details-header.template1 {
+  background-color: $questionConceptT2 !important;
+}
+
+.template1 {
+  font-family: 'BalooBhaina';
+  .right-header-content {
+    .btn-close {
+      float: left;
+      .btn {
+        border-radius: 15px;
+        background-color: $lightish-green !important;
+        box-shadow: 0px 5px 0px rgba($black, 0.2) !important;
+        padding: 12px 15px 8px 15px !important;
+      }
+    }
+  }
+  .left-header-content {
+    align-items: center;
+  }
+}

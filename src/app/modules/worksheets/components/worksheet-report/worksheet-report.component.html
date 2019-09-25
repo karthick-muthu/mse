@@ -1,0 +1,141 @@
+<ms-details-header [from]="from" [trailHeaderData]="worksheetName"></ms-details-header>
+<div class="container-fluid container-fluid-bg" [ngClass]="templateClass">
+    <div class="container">
+
+        <div class="worksheet-ct">
+            <div class="accuracy-header row">
+                <div class="col questions-info" style="display: -webkit-flex;">
+                    <div class="col question-caption-title pull-left">{{'topic wise summary' | translate}}</div>
+                    <div class="col question-result-section" style="display: -webkit-flex;">
+                        <div class="accuracy">{{ worksheetReportData?.accuracy }}% {{'accuracy' | translate}}</div>
+                        <div class="question-count right">
+                            <i class="icon fa fa-check"></i>
+                            <span class="count">{{ worksheetReportData?.totalCorrect }}</span>
+                        </div>
+                        <div class="question-count wrong">
+                            <i class="icon fa fa-times" aria-hidden="true"></i>
+                            <span class="count">{{ worksheetReportData?.totalWrong }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="repeat-li">
+                    <ul class="timeline">
+                        <li class="timeline-inverted" *ngFor="let topic of topicList">
+                            <div class="timeline-panel" style="display: -webkit-flex;">
+                                <div class="timeline-title  text-left">
+                                    <span [innerHtml]="topic?.topicName"></span>
+                                </div>
+                                <div class=" text-right Accuracy">
+                                    <span>{{ topic?.accuracy }}%</span>
+                                    <em>{{'accuracy' | translate}}</em>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class=" questions-info-row" style="display: -webkit-flex; justify-content: space-between;">
+            <div>
+                <!-- <div class="list-label"> {{ 'showing list for' | translate }}</div> -->
+                <div class="list-label"> {{ 'showing' | translate }}</div>
+                <div class="attempt-count" *ngIf="worksheetReportData?.totalQuestion>1"> {{ 'questions total' | translate:{showingFrom:worksheetReportData?.showingFrom, showingTo:worksheetReportData?.showingTo, totalQuestion:worksheetReportData?.totalQuestion } }}</div>
+                <div class="attempt-count" *ngIf="worksheetReportData?.totalQuestion==1"> {{ 'question total' | translate:{totalQuestion:worksheetReportData?.totalQuestion } }}</div>
+            </div>
+            <div class="col topictrails-pagination" *ngIf="totalPages>1">
+                <ngb-pagination [collectionSize]="collectionSize" aria-label="Default pagination" (pageChange)="loadPage($event)" [page]="currentPage" [maxSize]='5' [pageSize]="totalPagesCount" [rotate]="true" [ellipses]="false" [ngClass]="{ 'pagination-display-none-first':(currentPage<4),
+  'pagination-display-none-last':(totalPages===currentPage) || (totalPages<5)} "></ngb-pagination>
+
+            </div>
+            <div class="check-box-container" style="display: -webkit-flex;">
+                <ng-container *ngIf="settings?.showWrongQuestions">
+                    <ng-container *ngIf="showWrongAnswers else noWrongAnswers">
+                        <div class="label" (click)="check()">{{'show wrongly answered questions' | translate}}</div>
+                        <div class="checkbox" [ngClass]="{'checked': showWronglyAnsweredQuestions }" (click)="check()">
+                            <input type="checkbox" [(ngModel)]="showWronglyAnsweredQuestions">
+                            <i class="fa fa-check"></i>
+                        </div>
+                    </ng-container>
+                    <ng-template #noWrongAnswers>
+                        <div class="label">
+                            {{ 'no wrong answers on this page' | translate}}
+                        </div>
+                        <!-- {{'show wrongly answered questions' | translate}}</div> -->
+                    </ng-template>
+                </ng-container>
+            </div>
+        </div>
+        <div class="question-container concept" *ngFor="let trail of displayContent | filterWrong:showWronglyAnsweredQuestions; let i=index">
+            <div class="question row">
+                <div class="question-number-wrapper">
+                    <p class="question-number">{{ showingFrom + trail?.index }}</p>
+                </div>
+                <p class="col-sm-8 col-md-10 question-type text-left">
+                    <!-- <strong>Q{{ showingFrom + trail?.index }}</strong> -->
+                    <span [msMaths]="trail?.questionField"></span>
+                </p>
+                <div class="col-md-1 col-sm-2 status-symbol text-right">
+                    <div class="question-state right" style="display: -webkit-flex;" *ngIf="trail?.userAnswer?.result==='pass'">
+                        <i class="fa fa-check"></i>
+                    </div>
+                    <div class="question-state wrong" style="display: -webkit-flex;" *ngIf="trail?.userAnswer?.result==='fail'">
+                        <i class="fa fa-times"></i>
+                    </div>
+                </div>
+            </div>
+            <ng-container *ngIf="trail?.contentType === 'question' else notAQuestion">
+                <div class="options row">
+                    <div class="option col-md-6" *ngFor="let choice of trail?.responseElements?.mcqPattern?.choices;let i=index">
+                        <div class="option-key">{{ generateOptionString(i) }}</div>
+                        <span [msMaths]="choice?.value" class="choice-items"></span>
+                    </div>
+                </div>
+                <div class="row answer result-section">
+                    <div class="col" *ngIf="trail?.userAnswer">
+                        <div class=" answer-title">{{ 'your answer' | translate }}</div>
+                        <div class="selected-answer">
+                            <ng-container *ngIf="trail?.templateContent?.toLowerCase() === 'mcq' && trail?.userAnswer?.userAnswer!=null; else notAMCQ">
+                                {{ generateOptionString(trail?.userAnswer?.userAnswer) }}
+                            </ng-container>
+                            <ng-template #notAMCQ>
+                                <span *ngIf="trail?.userAnswer?.userAnswer!=null" [msMaths]="trail?.userAnswer?.userAnswer"></span>
+                                <span *ngIf="trail?.userAnswer?.userAnswer==null">{{'not attempted' | translate}}</span>
+                            </ng-template>
+                        </div>
+                    </div>
+                    <div class="col" *ngIf="trail?.correctAnswer">
+                        <div class="answer-title">{{ 'right answer' | translate }}</div>
+                        <div class="selected-answer">
+                            <ng-container *ngIf="trail?.templateContent?.toLowerCase() === 'mcq' ; else notAMCQ">
+                                {{ generateOptionString(trail?.correctAnswer) }}
+                            </ng-container>
+                            <ng-template #notAMCQ>
+                                <span [msMaths]="trail?.correctAnswer"></span>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            <ng-template #notAQuestion>
+                <div *ngIf="trail?.contentType==='activity'">
+                </div>
+                <div *ngIf="trail?.contentType==='timedTest'">
+                    <div class="row result-section">
+                        <div class="accuracy">
+                            <div class="label">{{ 'no of qs' | translate }}</div>
+                            <div class="count">{{ trail?.userAnswer?.totalQuestion }}</div>
+                        </div>
+                        <div class="accuracy">
+                            <div class="label">{{ 'accuracy' | translate }}</div>
+                            <div class="count">{{ trail?.userAnswer?.accuracy }}%</div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>
+
+<ms-footer [template]="template "></ms-footer>

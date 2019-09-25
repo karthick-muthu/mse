@@ -1,0 +1,237 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.btns-container-fixed {
+    position: fixed;
+    ul {
+        list-style-type: none;
+        text-align: right;
+        .btn-container {
+            width: 70px;
+            height: 120px;
+            border-top-left-radius: 8px;
+            text-align: center;
+            border-bottom-left-radius: 8px;
+            padding: 25px 6px 5px 6px;
+            font-size: 14px;
+            line-height: 40px;
+            color: rgba($black, 0.5);
+            outline: none;
+            border: 0px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            .btn {
+                height: 50px;
+                width: 50px;
+                border-radius: 25px;
+                border: 0px;
+                outline: none;
+                font-size: 22px;
+                padding: 12px 0px;
+            }
+        }
+        .btn-comment {
+            height: 50px;
+            width: 50px;
+            border-radius: 25px;
+            border: 1px solid $primaryColor;
+            outline: none;
+            color: $primaryColor;
+            background: $lightgray;
+            box-shadow: 0px 4px 0px $primaryColor;
+            font-size: 22px;
+            margin-right: 8px;
+        }
+        .btn-favourite {
+            @extend .btn-comment
+        }
+    }
+}
+
+.other-btns {
+    display: grid;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    // height: 80px;
+    width: 70px; // height: 160px; // button {
+    //   margin-bottom: 20px;
+    // }
+    .btn-comment-box {
+        padding-top: 12px;
+        padding-bottom: 15px
+    }
+    .btn-favourite-box {
+        padding-top: 12px; // border-top: 1px solid $white;
+        padding-bottom: 15px;
+    }
+}
+
+.other-btn {
+    margin-bottom: 2px;
+    background: rgba($black, 0.1);
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+    border: 0.6px solid rgba($black, 0.1);
+}
+
+.favourite-box {
+    margin-top: -12px;
+}
+
+.submit-btn {
+    box-shadow: 0px 3px 0px $secondaryShadowColor;
+    background: $secondaryColor;
+    .btn {
+        color: $secondaryColor;
+        background: rgba($black, 0.4);
+    }
+}
+
+.next-btn {
+    box-shadow: 0px 3px 0px $primaryShadowColor;
+    background: $primaryColor;
+    .btn {
+        color: $primaryColor;
+        background: $white;
+    }
+    span {
+        color: $white;
+    }
+}
+
+.skip-btn {
+    box-shadow: 0px 3px 0px $primaryShadowColor;
+    background: $primaryColor;
+    .btn {
+        color: $primaryColor;
+        background: $white;
+    }
+}
+
+.btn-active {
+    box-shadow: 0px 3px 0px $primaryShadowColor !important;
+    background: $primaryColor !important;
+    color: $white !important;
+}
+
+.template1 {
+    font-family: 'BalooBhaina';
+    .submit-btn {
+        box-shadow: 0px 5px 0px $primaryColor;
+        background: rgba($primaryColor, 0.75);
+        color: $white !important;
+        font-size: 16px !important;
+        /* border-top-left-radius: 15px !important;
+        border-bottom-left-radius: 15px !important; */
+        border: 1px solid $primaryColor !important;
+        .btn {
+            color: rgba($primaryColor, 0.75);
+            background: $white;
+            i {
+                padding-top: 2px;
+            }
+        }
+    }
+    .skip-btn {
+        box-shadow: 0px 5px 0px $primaryColor;
+        background: rgba($primaryColor, 0.75);
+        color: $white !important;
+        border-top-left-radius: 15px !important;
+        font-size: 16px !important;
+        border-bottom-left-radius: 15px !important;
+        border: 1px solid $primaryColor !important;
+        .btn {
+            color: rgba($primaryColor, 0.75);
+            background: $white;
+            i {
+                padding-top: 2px;
+            }
+        }
+    }
+    .next-btn {
+        box-shadow: 0px 5px 0px $secondaryShadowColor;
+        background: $secondaryColor;
+        font-size: 16px !important;
+        border: 1px solid $secondaryShadowColor !important;
+        .btn {
+            color: $secondaryColor;
+            background: rgba($black, 0.4);
+            i {
+                padding-top: 2px;
+            }
+        }
+    }
+    .btn-comment {
+        i {
+            padding-top: 10px;
+        }
+    }
+    .btn-favourite {
+        @extend .btn-comment
+    }
+    .other-btns {
+        border-bottom-left-radius: 20px !important;
+        border-top-left-radius: 20px !important;
+        .other-btn {
+            background: rgba($secondaryColor, 0.6);
+        }
+    }
+}
+
+.btns-stages {
+    height: 125px;
+    width: 70px;
+}
+
+.main-btn-container {
+    position: absolute;
+    right: 70px;
+    top: 50px;
+}
+
+@media (max-width:575px) {
+    .btns-stages {
+        height: 110px;
+        width: 60px;
+        .btn-container {
+            height: 110px !important;
+            width: 60px !important;
+            position: relative;
+            right: -20px;
+            .btn {
+                height: 40px !important;
+                width: 40px !important;
+                border-radius: 20px !important;
+                padding: 6px 0px !important;
+                font-size: 22px !important;
+            }
+        }
+    }
+    .other-btns {
+        width: 60px !important; // height: 145px !important;
+        position: relative;
+        right: -20px;
+        .btn-comment {
+            height: 40px !important;
+            width: 40px !important;
+            border-radius: 20px !important;
+            font-size: 20px !important;
+            margin-right: 8px !important;
+        }
+    }
+}
+
+@media (max-height:360px) and (max-width:575px) {
+    .main-btn-container {
+        position: absolute;
+        right: 20px !important;
+        .btns-container-fixed {
+            position: static;
+            ul {
+                display: flex;
+                .other-btns {
+                    margin-top: 0px !important;
+                }
+            }
+        }
+    }
+}

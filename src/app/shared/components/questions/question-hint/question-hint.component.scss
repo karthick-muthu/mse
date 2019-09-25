@@ -1,0 +1,78 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.hint-btn {
+  border: 0px;
+  background: $primaryColor;
+  color: $white;
+  height: 36px;
+  width: 110px;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0px 5px 0px $primaryShadowColor;
+  text-transform: uppercase;
+}
+
+.fullWidth {
+  .hint-popup {
+    width: calc(100% - 80px);
+  }
+}
+
+.hint-popup {
+  font-family: 'Arial Rounded MT', Arial, Helvetica, sans-serif !important;
+  position: relative;
+  font-size: 18px;
+  font-weight: bold;
+  color: rgba($black, 0.7);
+  border-radius: 8px;
+  box-shadow: 4px 4px 25px 0px $gray;
+  overflow: hidden;
+  border: 1px solid $greyishBrownShadow;
+  .hint-header {
+    padding: 10px 20px;
+    height: 40px;
+    background: $goldenYellow;
+    text-align: center;
+    text-transform: uppercase;
+    .close {
+      float: right;
+      border: 0px;
+      background: transparent;
+      outline: none;
+    }
+  }
+  .hint-content {
+    word-wrap: break-word;
+    height: 76%;
+    padding: 10px 20px;
+    background: $white;
+  }
+}
+
+.btn-container {
+  .btn-hint {
+    padding: 8px 22px 8px 22px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.875rem;
+    margin: 10px;
+    border: 0px;
+    border-radius: 6px;
+    margin-bottom: 1.8em;
+  }
+}
+
+.btn-next {
+  float: right;
+  background: $secondaryColor;
+  box-shadow: 0px 5px 0px $secondaryShadowColor;
+  color: rgba($black, 0.4);
+}
+
+.btn-prev {
+  float: left;
+  background: $questionTypeTimeTest;
+  box-shadow: 0px 5px 0px $primaryShadowColor;
+  color: $white;
+}

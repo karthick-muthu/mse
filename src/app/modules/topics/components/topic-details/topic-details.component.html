@@ -1,0 +1,200 @@
+<ms-details-header [from]="from"></ms-details-header>
+<div class="container-fluid overlay-section"></div>
+<div class="container">
+  <div class="main-content">
+    <div class="topic-detail-content">
+      <div class="row topic-details-row">
+        <div class="col-md-4 col-sm-12 col-xs-12 overlay">
+          <ms-topics-tile-t2 class="topics-container" [topicList]="topicTileDetails" [search]="''" [for]="'topicDetails'"></ms-topics-tile-t2>
+          <div *ngIf="topicMetrics">
+            <div class="report-section">
+              <div class="report-details">
+                <span class="accuracy">{{topicMetrics?.accuracy}}%</span>
+                <span class="label">{{'topic accuracy' | translate}}</span>
+              </div>
+              <div class="report-details">
+                <span class="count">{{topicMetrics?.attempt || '0' | ordinalName }}</span>
+                <span class="label">{{'attempt' | translate}}</span>
+              </div>
+              <div *ngIf="topicMetrics?.buttons && topicMetrics?.buttons?.length>0">
+                <hr>
+                <div class="action-btns form-group" *ngFor="let button of topicMetrics?.buttons; let i = index;">
+                  <button class="details-btn howIDid-btn" (click)="openTopicTrails()" *ngIf="button?.type === 'report'">{{'how i did' | translate}}</button>
+                  <button class="details-btn  next-button" (click)="openFavourites()" *ngIf="button?.type === 'favourites' && button?.state === 'enabled'">{{'favourites' | translate}}</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="line-seperator"></div> -->
+          <!-- <div class="summary-section">
+            <h3>{{'challenge summary' | translate}}</h3>
+            <div class="summary-details won-summary">
+              <div class="label">
+                You won a challenge against bipratim.saha
+              </div>
+            </div>
+            <div class="summary-details lost-summary">
+              <div class="label">
+                You lost a challenge against bipratim.saha
+              </div>
+            </div>
+          </div> -->
+        </div>
+        <div class="col-md-8 col-sm-12 col-xs-12 noLeftSpace">
+          <div class="right-content full-strength" *ngIf="topicData?.topicStatus!==null && topicData?.topicStatus!==undefined">
+            <!-- <div class="challange-card">
+              <div class="timeline-inverted" >
+                <div class="timeline-badge">
+                  <img class="" alt="sparkie-logo" src="assets/common/images/challenge icon.png" title="sparkie-logo">
+                </div>
+                <div class="timeline-panel" >
+                  <div class="timeline-heading">
+                    <span class="timeline-title">{{ 'completing a topic has earned you a challenge' | translate }}</span>
+                  </div>
+                  <div class="pull-right link">
+                    <a href="javascript:void(0);">{{'challenge a friend' | translate}}</a>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+            <div class="repeat-card challange-card" *ngIf="topicData?.repeatTopic">
+              <div class="timeline-inverted">
+                <div class="timeline-badge repeat-image">
+                  <img class="" alt="sparkie-logo" src="assets/common/images/repeat_topic_icon.png" title="sparkie-logo">
+                  <label>T</label>
+                </div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <span class="timeline-title">{{'repeat topic' | translate}}</span>
+                  </div>
+                  <div class="pull-right link" (click)="startTopic()">
+                    <a *ngIf="topicData?.topicStatus==='completed'"> {{ 'start attempt' | translate:{attemptNumber: topicData?.topicAttemptNumber+1 || '0' | ordinalName}
+                      }}
+
+                    </a>
+
+                    <a *ngIf="topicData?.topicStatus==='in-progress'"> {{ 'continue attempt' | translate:{attemptNumber: topicData?.topicAttemptNumber || '0' | ordinalName}
+                      }}
+
+                    </a>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="right-content">
+            <div class="panel">
+              <div class="panel-body">
+                <h4 class="panel-title">{{'units in this topic' | translate}}</h4>
+                <div class="repeat-li">
+                  <ul class="timeline">
+                    <li class="timeline-inverted" [ngClass]="{'one-unit': (unitList?.length === 1) }" *ngFor="let unitData of unitList">
+                      <div class="timeline-badge" [ngClass]="{ 
+                        'completed': unitData?.unitStatus == 'completed', 
+                        'in-progress': unitData?.unitStatus == 'in-progress', 
+                        'failed': unitData?.unitStatus == 'failed' }">
+                        <span class="custom-icon" [ngClass]="{
+                                            'icon-timed-test': unitData?.unitType == 'timedTest',
+                                            'icon-game': unitData?.unitType == 'activity',
+                                            'icon-concept': unitData?.unitType == 'concept',
+                                            'icon-prepost-test': unitData?.unitType == 'practice'
+                                          }">
+                        </span>
+                      </div>
+                      <div class="timeline-panel">
+                        <div class="timeline-heading" [ngClass]="{ 'in-progress-heading': (unitData?.unitStatus == 'in-progress' || unitData?.unitStatus == null) }">
+                          <span class="timeline-title" [innerHTML]="unitData?.unitName"></span>
+
+                          <div class="Accuracy" *ngIf="unitData?.unitStatus == 'completed' || unitData?.unitStatus == 'failed'">
+                            <span>{{unitData?.contentAccuracy}}% {{ 'accuracy' | translate }}</span>
+                          </div>
+                        </div>
+                        <div class="actions">
+                          <div class="timeline-panel-type" *ngIf="unitData?.unitType==='activity' && unitData?.state === 'unlocked'">
+
+                            <div class="pull-right link">
+                              <a (click)="openActivity(unitData?.unitID)">{{'play' | translate}}</a>
+                            </div>
+                          </div>
+                          <div class="timeline-panel-type" *ngIf="unitData?.unitType==='practice' && unitData?.state === 'unlocked'">
+
+                            <div class="pull-right link">
+                              <a href="javascript:void(0);">{{'start practice' | translate}}</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="right-content expand-section" *ngIf="topicData?.higherLevelStatus">
+            <div class="panel">
+              <div class="panel-body">
+                <div class="expand">
+                  <div class="timeline-badge">
+                    <img class="" alt="sparkie-logo" src="assets/common/images/higher_level icon.png" title="sparkie-logo">
+                  </div>
+                  <div class="timeline-panel timeline-panel-type">
+                    <div class="timeline-heading">
+                      <span class="timeline-title">{{ 'expand your knowledge by going to higher level' | translate}}</span>
+
+                    </div>
+                    <div class="pull-right link">
+                      <a href="javascript:void(0);" (click)="startHigherLevel()" *ngIf="topicData?.higherLevelButton === 'start'">{{'start higher level' | translate}}</a>
+                      <a href="javascript:void(0);" (click)="startHigherLevel()" *ngIf="topicData?.higherLevelButton === 'continue'">{{'continue higher level' | translate}}</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="repeat-li">
+                  <ul class="timeline">
+                    <li class="timeline-inverted" [ngClass]="{'one-unit': (higherDetailsList?.length === 1) }" *ngFor="let higherlevelData of higherDetailsList">
+                      <div class="timeline-badge" [ngClass]="{ 
+                                              'completed': higherlevelData?.unitStatus == 'completed', 
+                                              'in-progress': higherlevelData?.unitStatus == 'in-progress', 
+                                              'failed': higherlevelData?.unitStatus == 'failed' }">
+                        <span class="custom-icon" [ngClass]="{
+                                                              'icon-timed-test': higherlevelData?.unitType == 'timedTest',
+                                                              'icon-game': higherlevelData?.unitType == 'activity',
+                                                              'icon-concept': higherlevelData?.unitType == 'concept',
+                                                              'icon-prepost-test': higherlevelData?.unitType == 'practice'
+                                                              }">
+                        </span>
+                      </div>
+                      <div class="timeline-panel">
+                        <div class="timeline-heading" [ngClass]="{ 'in-progress-heading': (higherlevelData?.unitStatus == 'in-progress' || higherlevelData?.unitStatus == null) }">
+                          <span class="timeline-title" [innerHTML]="higherlevelData?.unitName"></span>
+
+                          <div class="Accuracy" *ngIf="higherlevelData?.unitStatus == 'completed' || higherlevelData?.unitStatus == 'failed'">
+                            <span>{{ higherlevelData?.contentAccuracy}}% {{'accuracy' | translate}}</span>
+                          </div>
+                        </div>
+                        <div class="actions">
+                          <div class="timeline-panel-type" *ngIf="higherlevelData?.unitType==='activity' && higherlevelData?.state === 'unlocked'">
+                            <div class="pull-right link">
+                              <a (click)="openActivity(higherlevelData?.unitID)">{{'play' | translate}}</a>
+                            </div>
+                          </div>
+                          <div class="timeline-panel-type" *ngIf="higherlevelData?.unitType==='practice' && higherlevelData?.state === 'unlocked'">
+                            <div class="pull-right link">
+                              <a href="javascript:void(0);">{{'start practice' | translate}}</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ms-questions-footer></ms-questions-footer>

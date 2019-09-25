@@ -1,0 +1,71 @@
+<!-- <div class="profile clearfix" *ngIf="userProfileBlock"> -->
+<div class="profile clearfix">
+  <div class="row">
+    <div class="col-lg-7 col-xl-7 col-sm-8  col-xs-12 Profile-Ct" style="display: -webkit-flex;">
+      <a routerLink="/my-mindspark/my-details" class="profile-pic">
+        <img *ngIf="profilePic" [src]="profilePic" (error)="imageError()" />
+      </a>
+      <div class="profile-details">
+        <h3 class="profile-name">{{profileInfo?.name}}</h3>
+        <p class="profile-grade text-capitalize">{{ 'grade' | translate }} {{profileInfo?.grade}}{{profileInfo?.section}}</p>
+        <div class="row spacingLeftNone">
+          <div class="noLeftSpace noRightSpace">
+            <img *ngIf="!goldenAchivement" [src]="silverSheild">
+            <img *ngIf="goldenAchivement" [src]="goldenSheild">
+          </div>
+          <div class="noLeftSpace noRightSpace progress-container">
+            <div class="attempt-progress">
+              <div class="attempts text-capitalize">
+                {{'correct answers' | translate}}
+                <span>{{questionDetail?.correctAttempt}}</span> | {{'weekly target' | translate }}
+                <span>{{questionDetail?.weeklyTarget}}</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" [ngClass]="{'progress-bar-incomplete':!goldenAchivement}" role="progressbar" [style.width.%]="progressValue"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-5 col-xl-5 col-sm-4 col-xs-12 RewardsCt" style="display: -webkit-flex;">
+      <div class="row rewards">
+
+        <div class="col-sm-4 reward-item achievements" *ngIf="rewardsList?.achievements!==null && rewardsList?.achievements!== undefined">
+          <div class="reward-badge">
+            <img src="assets/common/images/ms-icons/achievement.png">
+          </div>
+          <div class="badge-text">
+            <span class="badge-number" *ngIf="rewardsList?.achievements!=null">
+              <span *ngIf="rewardsList?.achievements<10">0</span>{{rewardsList?.achievements}}</span>
+            <!-- <span class="badge-number" *ngIf="rewardsList?.achievements!=null">{{rewardsList?.achievements}}</span> -->
+            <span class="reward-text text-capitalize">{{'achievements' | translate}}</span>
+          </div>
+        </div>
+
+        <div class="col-sm-4 reward-item shields" *ngIf="rewardsList?.shields!==null && rewardsList?.shields!== undefined">
+          <div class="reward-badge">
+            <img src="assets/common/images/ms-icons/shield-new.png">
+          </div>
+          <div class="badge-text">
+            <span class="badge-number" *ngIf="rewardsList?.shields!=null">
+              <span *ngIf="rewardsList?.shields<10">0</span>{{rewardsList?.shields}}</span>
+            <span class="reward-text text-capitalize">{{'shields' | translate}}</span>
+          </div>
+        </div>
+
+        <div class="col-sm-4 float-right reward-item sparkies" *ngIf="rewardsList?.sparkies!==null && rewardsList?.sparkies!== undefined">
+          <div class="reward-badge">
+            <img src="assets/common/images/sparkiecoin.png">
+          </div>
+          <div class="badge-text">
+            <span class="badge-number" *ngIf="rewardsList?.sparkies!=null">
+              <span *ngIf="rewardsList?.sparkies<10">0</span>{{rewardsList?.sparkies}}</span>
+            <span class="reward-text text-capitalize"> {{'sparkies' | translate}}</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

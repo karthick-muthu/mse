@@ -1,0 +1,26 @@
+<div class="worksheet-nav" [ngClass]="templateClass">
+  <label class="concept-title">
+    <!-- <div class="topics-icon">{{ questionIcon[toDisplay] }}</div> -->
+    <span class="title" [innerHtml]="unitName"></span>
+  </label>
+  <div class="navigation-section questionNav">
+    <ul class="list-inline">
+      <div class="nav-arrow-shade" (click)="changeQuestions('prev')" [style.display]="startQuesRange > 0 ?'block':'none'">
+        <span class="nav-arrow">
+          <i class="fa fa-arrow-left"></i>
+        </span>
+      </div>
+      <div class="nav-arrow-shade" (click)="changeQuestions('next')" [style.display]="max_range < totalQues?'block':'none'">
+        <span class="nav-arrow">
+          <i class="fa fa-arrow-right"></i>
+        </span>
+      </div>
+      <div class="main-nav-container" [style.margin-left]="startQuesRange > 0 ?'34px':'0'" [style.margin-right]="max_range < totalQues?'34px':'0'">
+        <li class="list-inline-item" [ngClass]="getProgressClass(quesNum)" *ngFor="let quesNum of quesNumTotal | slice: startQuesRange : max_range;let i = index;"
+          (click)="displayQues(quesNum)">
+          {{ quesNum?.unitSequenceNo }}
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>

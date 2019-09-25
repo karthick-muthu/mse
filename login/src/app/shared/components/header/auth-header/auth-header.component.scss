@@ -1,0 +1,58 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.login-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  height: 55px;
+  z-index: 99;
+  background: transparent;
+  .box-style {
+    width: 25%;
+    height: 10px;
+    margin: 0;
+    padding: 0;
+    float: left;
+  }
+  .first-block {
+    background: $dark-sky-blue;
+  }
+  .second-block {
+    background: $yellow;
+  }
+  .third-block {
+    background: $orange;
+  }
+  .fourth-block {
+    background: $secondaryColor;
+  }
+  .login-header-logo {
+    margin-top: 20px;
+    a {
+      position: relative;
+      display: inline-block;
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+    }
+    object {
+      width: 190px;
+    }
+  }
+}
+
+.help-que {
+  float: right;
+  background: #3b5998;
+  color: $white;
+  box-shadow: 0 5px #49468c;
+  padding: 6px 14px 2px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  text-transform: uppercase;
+}

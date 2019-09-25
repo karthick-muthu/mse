@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~font-awesome/css/font-awesome.css";
+@import './assets/themes/default/styles.scss';
+@import './assets/themes/default/media-queries.scss';
+@import './assets/themes/default/themes.scss';
+@media(max-height: 300px) {
+  .right-loginSection {
+    position: static !important;
+  }
+}

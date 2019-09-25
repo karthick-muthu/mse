@@ -1,0 +1,25 @@
+<div *ngIf="myProgress?.monthlyReport?.length > 0" class="ms-table month-report-section">
+  <h4 class="month-title">{{ 'monthly report' | translate }}</h4>
+  <div class="table-responsive">
+    <table class="table">
+      <thead class="table-info">
+        <tr>
+          <th>{{ 'month' | translate }}</th>
+          <th>{{ 'no. of targets' | translate }}</th>
+          <th>{{ 'sparkies' | translate }}</th>
+          <th>{{ 'correct answers' | translate }}</th>
+          <th>{{ 'mindspark score' | translate }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let monthlyReport of myProgress?.monthlyReport ">
+          <td>{{ monthlyReport?.month | amDateFormat:'MMM' | translate }}</td>
+          <td>{{ monthlyReport?.weeklyAchievement }}</td>
+          <td>{{ monthlyReport?.sparkie }}</td>
+          <td>{{ monthlyReport?.correctAttempts }} / {{monthlyReport?.totalQuestions }}</td>
+          <td>{{ monthlyReport?.score }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

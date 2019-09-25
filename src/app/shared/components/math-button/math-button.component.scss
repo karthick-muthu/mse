@@ -1,0 +1,249 @@
+@import '../../../../assets/common/styles/global.variables.scss';
+.math-button {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 5px;
+  border: #999999 1px solid;
+  border-radius: 10px;
+  background: $white;
+}
+
+.row1 .math-button {
+  margin-bottom: 0px;
+}
+
+.mq-math-mode .mq-empty {
+  background: $white !important;
+  border: #999 1px solid !important;
+  width: 20px !important;
+  height: 20px !important;
+  margin: 1px !important;
+}
+
+.math-button:hover {
+  cursor: pointer;
+}
+
+/* For numeric */
+
+.row-0.button-numeric,
+.row-1.button-numeric {
+  width: 55px;
+  height: 55px;
+}
+
+.row-1.button-numeric.button-4 {
+  font-weight: bold;
+  width: 110px;
+}
+
+.row-0.button-numeric.button-11,
+.row-1.button-numeric.button-9 {
+  font-weight: bold;
+  background-color: #bdbfbc;
+}
+
+.row-0.button-numeric.button-12 {
+  font-weight: bold;
+  background-color: #5074f2;
+  color: $white;
+}
+
+/* For alpha */
+
+.row-0.button-alpha,
+.row-0.button-smallAlpha {
+  width: 85px;
+  height: 75px;
+}
+
+.row-0.button-alpha.button-10,
+.row-0.button-smallAlpha.button-10 {
+  font-weight: bold;
+  background-color: #5074f2;
+  color: $white;
+}
+
+.row-1.button-alpha,
+.row-1.button-smallAlpha {
+  width: 80px;
+  height: 75px;
+}
+
+.row-2.button-alpha,
+.row-2.button-smallAlpha {
+  width: 75px;
+  height: 75px;
+}
+
+.row-2.button-alpha.button-9,
+.row-2.button-smallAlpha.button-9 {
+  font-weight: bold;
+  background-color: #bdbfbc
+}
+
+.row-3.button-alpha,
+.row-3.button-smallAlpha {
+  height: 45px;
+}
+
+.row-3.button-alpha.button-2,
+.row-3.button-smallAlpha.button-2 {
+  font-weight: bold;
+  width: 200px;
+}
+
+.row-3.button-alpha.button-1,
+.row-3.button-alpha.button-3,
+.row-3.button-smallAlpha.button-1,
+.row-3.button-smallAlpha.button-3 {
+  width: 75px;
+}
+
+.row-3.button-alpha.button-0,
+.row-3.button-alpha.button-4,
+.row-3.button-smallAlpha.button-0,
+.row-3.button-smallAlpha.button-4 {
+  font-weight: bold;
+  width: 120px;
+  background-color: #bdbfbc
+}
+
+/* Media queries for keyboard */
+
+@media screen and (min-width: 961px) {
+  /* For alpha */
+  .row-0.button-alpha,
+  .row-0.button-smallAlpha {
+    width: 60px;
+    height: 50px;
+  }
+  .row-1.button-alpha,
+  .row-1.button-smallAlpha {
+    width: 55px;
+    height: 50px;
+  }
+  .row-2.button-alpha,
+  .row-2.button-smallAlpha {
+    width: 50px;
+    height: 50px;
+  }
+  .row-3.button-alpha.button-2,
+  .row-3.button-smallAlpha.button-2 {
+    width: 180px;
+  }
+  .row-3.button-alpha.button-1,
+  .row-3.button-alpha.button-3,
+  .row-3.button-smallAlpha.button-1,
+  .row-3.button-smallAlpha.button-3 {
+    width: 65px;
+  }
+  .row-3.button-alpha.button-0,
+  .row-3.button-alpha.button-4,
+  .row-3.button-smallAlpha.button-0,
+  .row-3.button-smallAlpha.button-4 {
+    width: 90px;
+  }
+  /* For smallalpha */
+}
+
+@media screen and (max-width: 960px) {
+  /* For alpha */
+  .row-0.button-alpha,
+  .row-0.button-smallAlpha {
+    width: 60px;
+    height: 50px;
+  }
+  .row-1.button-alpha,
+  .row-1.button-smallAlpha {
+    width: 52px;
+    height: 50px;
+  }
+  .row-2.button-alpha,
+  .row-2.button-smallAlpha {
+    width: 50px;
+    height: 50px;
+  }
+  .row-3.button-alpha.button-2,
+  .row-3.button-smallAlpha.button-2 {
+    width: 150px;
+  }
+  .row-3.button-alpha.button-1,
+  .row-3.button-alpha.button-3,
+  .row-3.button-smallAlpha.button-1,
+  .row-3.button-smallAlpha.button-3 {
+    width: 50px;
+  }
+  .row-3.button-alpha.button-0,
+  .row-3.button-alpha.button-4,
+  .row-3.button-smallAlpha.button-0,
+  .row-3.button-smallAlpha.button-4 {
+    width: 80px;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .row-0.button-numeric,
+  .row-1.button-numeric {
+    width: 45px;
+    height: 45px;
+  }
+  .row-1.button-numeric.button-4 {
+    width: 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* For numeric */
+  .row-0.button-numeric,
+  .row-1.button-numeric {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+  }
+  .row-1.button-numeric.button-4 {
+    width: 72px;
+  }
+  /* .row-1.button-numeric.button-0,
+  .row-1.button-numeric.button-11 {
+    text-align: initial;
+    font-size: 12px;
+    font-weight: bold;
+  } */
+  .row-1.button-numeric {
+    font-size: 12px;
+    text-align: center;
+  }
+  /* For alpha */
+  .row-0.button-alpha,
+  .row-0.button-smallAlpha {
+    width: 50px;
+    height: 50px;
+  }
+  .row-1.button-alpha,
+  .row-1.button-smallAlpha {
+    width: 47px;
+    height: 50px;
+  }
+  .row-2.button-alpha,
+  .row-2.button-smallAlpha {
+    width: 45px;
+    height: 50px;
+  }
+  .row-3.button-alpha.button-2,
+  .row-3.button-smallAlpha.button-2 {
+    width: 120px;
+  }
+  .row-3.button-alpha.button-1,
+  .row-3.button-alpha.button-3,
+  .row-3.button-smallAlpha.button-1,
+  .row-3.button-smallAlpha.button-3 {
+    width: 45px;
+  }
+  .row-3.button-alpha.button-0,
+  .row-3.button-alpha.button-4,
+  .row-3.button-smallAlpha.button-0,
+  .row-3.button-smallAlpha.button-4 {
+    width: 75px;
+  }
+}

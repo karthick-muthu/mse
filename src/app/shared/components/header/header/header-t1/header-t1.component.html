@@ -1,0 +1,57 @@
+<div class="header1to3-section">
+  <div class="row">
+    <div class="col left-header-content">
+      <div class="branding d-md ">
+        <a routerLink="/home">
+          <img src="assets/common/images/logo_dark.png" alt="Mindspark" title="Mindspark" />
+        </a>
+      </div>
+      <div class="branding d-sm mobile-brand">
+        <a routerLink="/home">
+          <img src="assets/common/images/logo.png" alt="mindspark" title="mindspark" />
+        </a>
+      </div>
+      <div class="sparkies-content d-md" *ngIf="rewardSummary?.sparkies!==null && rewardSummary?.sparkies!==undefined" style="display: -webkit-flex;">
+        <!-- <img src="assets/common/images/flight.png" alt="Sparkies-flight" title="Sparkies-flight" />
+        <img src="assets/common/images/aeroplane.png" alt="Sparkies-flight" title="Sparkies-flight" /> -->
+        <div class="aeroplane-text">
+          <div class="text">{{'you have' | translate}}</div>
+          <div class="sparkieText">
+            <span class="own-label">
+              <span *ngIf="rewardSummary?.sparkies<10">0</span>{{ rewardSummary?.sparkies }}</span>
+            {{ 'sparkies' | translate }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col right-header-content pull-right">
+      <nav>
+        <ul class="nav nav-pills float-right">
+          <li class="d-md " *ngIf="permittedNavs?.help">
+            <button class="btn btn-sm-style btnHelp">
+              <i class="fa fa-question-circle" aria-hidden="true"></i>
+              <span>{{ 'help' | translate }}</span>
+            </button>
+          </li>
+          <li class="d-sm mobile-btn">
+            <a class="btn-link btn-sm-style" title="Help">
+              <i class="fa fa-question-circle" aria-hidden="true"></i>
+            </a>
+          </li>
+          <li class="d-md" (click)="logout()">
+            <button class="btn btn-sm-style btnLogout">
+              <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+              <span>{{ 'logout' | translate }}</span>
+            </button>
+          </li>
+          <li class="d-sm mobile-btn" (click)="logout()">
+            <a class="btn-link btn-sm-style" title="{{ 'logout' | translate }}">
+              <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

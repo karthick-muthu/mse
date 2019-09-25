@@ -1,0 +1,227 @@
+<style>
+	
+	/*Scene 1*/
+	
+	.paragraph-text1{
+		font-size: 30px;
+		font-weight: bold;
+	}
+	
+	.character1{
+		position: absolute;
+		display: block;
+		z-index: 3;
+		top: 135px;
+		left: 3%;
+	}
+	
+	.callout_01{
+		width: 486px;
+		height: 76px;
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 69%;
+		left: 19%;
+		background: #fff;
+		border: #dc3509 solid 10px;
+		border-radius: 20px;
+		padding: 10px 0px 0px 30px;
+		/*box-shadow: 0px 25px 18px rgba(0, 0, 0, 0.2);*/
+	}
+	
+	
+	.btn_01{
+		width: 62px;
+		height: 62px;
+		display: block;
+		position: absolute;
+		z-index: 3;
+		top: 182px;
+		right: 32.4%;
+		cursor: pointer;
+		border: #e2bd0e 3px solid;
+		border-radius: 50px;
+	}
+	
+	
+	/*Scene 2*/
+	
+	.white_border{
+		width: 760px;
+		height: 560px;
+		position: absolute;
+		display: block;
+		overflow: hidden;
+		left: 20px;
+		top: 20px;
+	}
+	
+	.callout_02{
+		    width: 486px;
+		height: 86px;
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 60%;
+		left: 43%;
+		background: #fff;
+		border: #dc3509 solid 10px;
+		border-radius: 20px;
+		padding: 15px 100px 0px 30px;
+		/*box-shadow: 0px 25px 18px rgba(0, 0, 0, 0.2);*/
+	}
+	
+	.cutOutCircle_01{
+		width: 800px;
+		width: 600px;
+		z-index: 3;
+		margin:0 auto;
+		overflow:hidden;
+	}
+	
+	.cutOutCircle_01:after{
+		content: '';
+		position: absolute;
+		left: 1%;
+		top: 35%;
+		border-radius: 200px;
+		width: 200px;
+		height: 200px;
+		box-shadow: 0px 0px 0px 800px rgba(0,0,0,0.5);
+		-webkit-box-shadow: 0px 0px 0px 800px rgba(0,0,0,0.5);
+	}
+	
+	/*Scene 3*/
+	
+	.callout_03{
+		width: 296px;
+		height: 96px;
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 20%;
+		left: 37%;
+		background: #fff;
+		border: #dc3509 solid 10px;
+		border-radius: 20px;
+		padding: 20px 0px 0px 30px;
+		/*box-shadow: 0px 25px 18px rgba(0, 0, 0, 0.2);*/
+	}
+	
+	.callout_pointer_03{
+		content: "";
+		display: block;
+		position: absolute;
+		z-index: 4;
+		top: 20%;
+		left: 315px;
+		width: 0;
+		border-width: 90px 18px 0px;
+		border-style: solid;
+		border-color: #db3407 transparent;
+		transform: rotate(270deg);
+	}
+	
+	.btn_02{
+		width: 75px;
+		height: 128px;
+		display: block;
+		position: absolute;
+		z-index: 3;
+		top: 95px;
+		right: -1%;
+		cursor: pointer;
+		border: #e2bd0e 3px solid;
+		border-radius: 10px;
+	}
+	
+	.cutOutCircle_02{
+		width: 800px;
+		width: 600px;
+		z-index: 3;
+		margin:0 auto;
+		overflow:hidden;
+	}
+	
+	.cutOutCircle_02:after{
+		content: '';
+		position: absolute;
+		left: 85%;
+		top: 15%;
+		border-radius: 200px;
+		width: 150px;
+		height: 150px;
+		box-shadow: 0px 0px 0px 800px rgba(0,0,0,0.5);
+		-webkit-box-shadow: 0px 0px 0px 800px rgba(0,0,0,0.5);
+	}
+	
+	.speachBubble{
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 20%;
+		left: 40%;
+	}
+	
+
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			var animationEndCheck = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';
+
+			/*$('#div_01').removeClass('displayNone')
+			$('#div_01').addClass('displayBlock')*/
+
+			$('#content01_01').addClass('visibilityVisible animated oneSecondDuration bounceInDown').one(animationEndCheck,function(){
+				$('#content01_02').addClass('visibilityVisible animated flash infiniteAnimation _1')
+			})
+			
+
+			$("#content01_02").click(function(){
+    			$('#div_01').removeClass('displayBlock')
+				$('#div_02').removeClass('displayNone')
+				$('#div_01').addClass('displayNone')
+				$('#div_02').addClass('displayBlock')
+		   		
+				$('#content02_01_02').addClass('visibilityVisible animated fadeIn')
+		   		$('#content02_01_01').addClass('visibilityVisible animated bounceInRight')
+		   	});
+
+			$('#content02_01_01').one(animationEndCheck,function(){
+				$('#content02_01_01,#content02_01_02').addClass('visibilityVisible animated fadeOut characterDelay').one(animationEndCheck,function(){
+				$('#content02_01_02').removeClass('visibilityVisible').addClass('visibilityHidden')
+					$('#content02_02_02').addClass('visibilityVisible animated fadeIn')
+					$('#content02_02_01').addClass('visibilityVisible animated bounceInLeft')
+				})
+				
+			})
+			$('#content02_02_01').one(animationEndCheck,function(){
+				$('#content02_03').addClass('visibilityVisible animated flash infiniteAnimation')
+			})
+		})
+	</script>
+
+
+<div id="div_01" class="Page-BG" ng-style="{'background-image': 'url(' + CourseContent.pageBG_01 + ')'}">
+    <div class="col-sm-12 page-content">      
+        <div id="content01_01" class="callout_01 visibilityHidden"><p class="paragraph-text1" bind-html-compile="CourseContent.paragraph_text1_1"></p></div>
+		<div id="content01_02" class="visibilityHidden btn_01"></div>
+    </div>
+</div>
+
+<div id="div_02" class="Page-BG displayNone" ng-style="{'background-image': 'url(' + CourseContent.pageBG_02 + ')'}">
+    <div class="col-sm-12 page-content">      
+		<div class="white_border">
+		<div id="content02_01_01" class="callout_02 visibilityHidden"><p class="paragraph-text1 " bind-html-compile="CourseContent.paragraph_text1_2"></p></div>
+		<div id="content02_01_02" class="cutOutCircle_01 visibilityHidden"></div>
+		<span id="content02_02_01" class="speachBubble speachBubble visibilityHidden">
+			<div class="callout_03"><p class="paragraph-text1" bind-html-compile="CourseContent.paragraph_text1_3"></p></div>
+			<div class="callout_pointer_03"></div>
+		</span>
+			<div id="content02_02_02" class="cutOutCircle_02 visibilityHidden"></div>
+			<div id="content02_03" class="btn_02 visibilityHidden" ng-click="gotoNextPage()"></div>
+		</div>
+    </div>
+</div>

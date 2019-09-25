@@ -1,0 +1,43 @@
+<div *ngIf="hints?.length > 0 && (result?.noOfTrialRemaning == 1 || showHint)" [ngClass]="{'fullWidth': (viewType == 'fullWidth'), 'halfWidth': (viewType == 'halfWidth')}">
+  <button id="hint-original" class="hint-btn" (click)="toggleHintPopup()" *ngIf="!showHintPopUp && display === 'original'">{{ hintText?.showHint }}</button>
+  <button id="hint-translated" class="hint-btn" (click)="toggleHintPopup()" hidden *ngIf="display === 'translated'">{{ hintText?.showHint }}</button>
+  <div class="hint-popup" *ngIf="showHintPopUp">
+    <div class="hint-header">{{ hintText?.hint }}
+      <button id="hint-close-original" type="button" class="close" *ngIf="display === 'original'" (click)="toggleHintPopup()">
+        <i class="fa fa-times"></i>
+      </button>
+      <button id="hint-close-translated" type="button" class="close" hidden *ngIf="display === 'translated'" (click)="toggleHintPopup()">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+    <div class="hint-content" [ngClass]="display">
+      <ng-container *ngIf="display === 'translated'; then translatedHint; else originalHint"></ng-container>
+      <ng-template #translatedHint>
+        <div *ngIf="translatedHints?.length > 0">
+          <ngb-carousel>
+            <ng-template ngbSlide *ngFor="let hint of translatedHints">
+              <p [msMaths]="hint" style="visibility:hidden; position:absolute"></p>
+            </ng-template>
+          </ngb-carousel>
+          <!-- <div class="btn-container" *ngIf="translatedHints.length > 1">
+            <button type="button" class="btn-hint btn-prev" (click)="slide('prev', display)">{{ 'previous hint' | translate }}</button>
+            <button type="button" class="btn-hint btn-next" (click)="slide('next', display)">{{ 'next hint' | translate }}</button>
+          </div> -->
+        </div>
+      </ng-template>
+      <ng-template #originalHint>
+        <div *ngIf="hints?.length > 0">
+          <ngb-carousel>
+            <ng-template ngbSlide *ngFor="let hint of hints">
+              <p [msMaths]="hint" style="visibility:hidden; position:absolute"></p>
+            </ng-template>
+          </ngb-carousel>
+          <div class="btn-container" *ngIf="hints?.length > 1">
+            <button type="button" class="btn-hint btn-prev" (click)="slide('prev', display)">{{ hintText?.previousHint }}</button>
+            <button type="button" class="btn-hint btn-next" (click)="slide('next', display)">{{ hintText?.nextHint }}</button>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

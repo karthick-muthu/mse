@@ -1,0 +1,43 @@
+// @import "../../../../assets/common/styles/global.variables.scss";
+//  CONTENT - PREVIEW
+.content-preview {
+  display: flex;
+  overflow: hidden;
+}
+.view-area {
+  width: 80%;
+  overflow-x: auto;
+  background: #dcdcdc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .view-box {
+    max-width: 1047px;
+    max-height: 657px;
+    overflow: auto;
+  }
+}
+
+.control-area {
+  width: 20%;
+  background: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  h3 {
+    font-size: 18px;
+    text-align: center;
+    margin: 10px 0px;
+  }
+  .row-div {
+    display: flex;
+    flex-direction: column;
+    .row-title {
+      display: flex;
+      justify-content: space-evenly;
+      input {
+        text-align: center;
+      }
+    }
+  }
+}

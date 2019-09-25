@@ -1,0 +1,70 @@
+<div class="mail-box-section tab-space mailbox-tab-space" *ngIf="mailCount !== undefined && mailCount !== null">
+  <ng-container *ngIf="mailCount > 0; then mailList; else mailEmpty"></ng-container>
+  <ng-template #mailList>
+    <div [ngClass]="templateClass">
+      <div class="float-right">
+        <button class="btn btn-md comment-btn" (click)="open()">
+          <span class="fa fa-plus"></span>{{'new comment' | translate}}</button>
+      </div>
+      <div class="clearfix"></div>
+      <div class="mailbox-table">
+        <div class="mail-messages" *ngFor="let mail of mailBox?.mails" (click)="readMail(mail)">
+          <div class="row right-space-none">
+            <div class="col-7 col-xs-7 spacing-none" [ngClass]="{'read':!mail?.unread , 'unread':mail?.unread}">
+              <div class="image">
+                <img [src]="imagePicker(mail?.category)" alt="{{ mail?.category }}" />
+              </div>
+              <label *ngIf="mail?.type?.toLowerCase() === 'comment'">{{ mail?.messagePreview | shorten: textlimit : '...'}}</label>
+              <label *ngIf="mail?.type?.toLowerCase() === 'notification'">
+                <span *ngIf="mail?.category?.toLowerCase() === 'alerts'">
+                  {{ mail?.templateHeader | translate:{ endDate: mail?.data?.endDate, worksheetID:mail?.data?.worksheetID, worksheetName:mail?.data?.worksheetName,
+                  topicName: mail?.data?.topicName, topicId: mail?.data?.topicId } }}
+                </span>
+                <span *ngIf="mail?.category?.toLowerCase() === 'promotional'">
+                  {{ mail?.templateHeader | translate:{ endDate: mail?.data?.endDate, worksheetID:mail?.data?.worksheetID, worksheetName:mail?.data?.worksheetName,
+                  topicName: mail?.data?.topicName, topicId: mail?.data?.topicId } }}
+                </span>
+                <span *ngIf="mail?.category?.toLowerCase() === 'information'">
+                  {{ mail?.templateHeader | translate | shorten: textlimit : '...'}}
+                </span>
+              </label>
+            </div>
+            <div class="col-3 col-xs-3 spacing-none">
+              <div class="comment-count" *ngIf="mail?.replies">
+                <div class="comments"></div> {{ mail?.replies }}
+                <span *ngIf="mail?.replies===1">
+                  {{'comment' | translate}}
+                </span>
+
+                <span *ngIf="mail?.replies>1">
+                  {{'comments' | translate}}
+                </span>
+
+              </div>
+            </div>
+            <div class="col-2 col-xs-3 spacing-none">
+              <h6 *ngIf="mail?.lastUpdatedDate">
+                <i class="fa fa-clock-o"></i> {{ mail?.lastUpdatedDate | amParse:'YYYY-MM-DD hh:mm:ss A' | amDateFormat:'DD/MM/YYYY HH:mm:ss' }}
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <ng-template #mailEmpty>
+    <div class="mail-blank-state" [ngClass]="templateClass">
+      <div class="row container">
+        <div class="col-md-4 text-right">
+          <img src="assets/common/images/mail-blank-state.png" />
+        </div>
+        <div class="col-md-8 text-left">
+          <h6 class="heading">{{ 'no conversations yet' | translate }}!</h6>
+          <p class="sub-heading">{{ 'communicate with mindspark by new conversation' | translate }}</p>
+          <button class="btn btn-md comment-btn" (click)="open()">{{ 'start conversation' | translate }}</button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+<router-outlet></router-outlet>

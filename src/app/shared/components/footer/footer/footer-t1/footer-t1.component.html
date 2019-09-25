@@ -1,0 +1,13 @@
+<div class="footer1to3-bg">
+  <div class="container">
+    <footer>
+      <div class="row align-items-end">
+        <div class="col">Session ID: {{sessionInformation?.sessionID}} | {{sessionInformation?.sessionStartAt | amDateFormat:'Do MMM' }} |
+          {{sessionInformation?.sessionStartAt | amDateFormat:'hh:mm A' }}</div>
+        <div class="col footer">
+          <span [innerHtml]="appSettings?.COPYRIGHT"></span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>

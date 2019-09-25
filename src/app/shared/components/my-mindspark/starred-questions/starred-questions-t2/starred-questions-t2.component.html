@@ -1,0 +1,70 @@
+<div class="favourites-section tab-space" *ngIf="favouritesQuestion !== undefined && favouritesQuestion !== null">
+    <ng-container *ngIf="favouritesList?.length > 0; then favouritesQuestionList; else favouritesQuestionEmpty">
+    </ng-container>
+    <ng-template #favouritesQuestionList>
+        <ms-starred-navbar-t2 [favouritesQuestion]='favouritesQuestion'></ms-starred-navbar-t2>
+        <div class="question-container concept" *ngFor="let trail of displayContent; let i=index;">
+            <p class="category" style="display: -webkit-flex;"> {{ favouritesList[i]?.concept }} </p>
+            <div class="question row">
+                <p class="col">
+                    <strong>Q{{ showingFrom+i }}:</strong>
+                    <span [msMaths]="trail?.questionField" style="visibility:hidden; position:absolute"></span>
+                </p>
+                <div class="col col-md-1 text-right">
+                    <div class="delete" (click)="removeFromFavourites(favouritesList[i])">
+                        <i class="fa fa-trash"></i>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="trail?.templateContent?.toLowerCase() ==='mcq'">
+                <div class="options row">
+                    <div class="option col-md-6"
+                        *ngFor="let choice of trail?.responseElements?.mcqPattern?.choices; let i=index;">
+                        <div class="option-key">{{ generateOptionString(i) }}</div>
+                        <span class="category" [msMaths]="choice?.value"
+                            style="visibility:hidden; position:absolute; display: -webkit-flex;"></span>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="favouritesList[i]?.settings?.showAnswer">
+                <ng-container *ngIf="showExplanation">
+                    <div class="question-explanation" *ngIf="moreExplanation[i]">
+                        <div class="correct-answer">{{ 'correct answer' | translate }}
+                            <span class="result"
+                                *ngIf="trail?.templateContent?.toLowerCase() ==='mcq'">{{ generateOptionString(trail?.correctAnswer) }}</span>
+                            <span class="result"
+                                *ngIf="trail?.templateContent?.toLowerCase() !=='mcq'">{{ trail?.correctAnswer }}</span>
+                        </div>
+                        <hr>
+                        <div class="question-explanation-container">
+                            <div class="question-explanation-heading"> {{ 'explanation' | translate }} </div>
+                            <div class="question-explanation-content">
+                                <span [msMaths]="trail?.explanation"
+                                    style="visibility:hidden; position:absolute"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="explanation-text" (click)="toggleExplanation(i)">
+                        <ng-container *ngIf="moreExplanation[i]; then hideText; else showText"></ng-container>
+                        <ng-template #hideText>{{ 'hide explanation' | translate }}</ng-template>
+                        <ng-template #showText>{{ 'show explanation' | translate }}</ng-template>
+                    </p>
+                </ng-container>
+                <hr class="question-container-ends">
+            </div>
+        </div>
+
+    </ng-template>
+    <ng-template #favouritesQuestionEmpty>
+        <div class="blank-state-container">
+            <div class="row">
+                <div class="col text-right">
+                    <img src="assets/common/images/trail-blank-state.png" />
+                </div>
+                <div class="col text-left">
+                    <p class="blank-state-text"> {{ 'try some questions first' | translate }}</p>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>

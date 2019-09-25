@@ -1,0 +1,463 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.shield {
+  position: absolute;
+  right: 6px;
+  top: -26px;
+  z-index: 8;
+  img {
+    width: 100px;
+  }
+}
+
+.tag-status {
+  position: absolute;
+  z-index: 8;
+  top: 15px;
+  left: 2px;
+  img {
+    width: 115px;
+  }
+}
+
+.date-status {
+  position: absolute;
+  z-index: 8;
+  right: 30px;
+  top: 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: $goldenYellow;
+  font-family: 'BalooBhaina';
+}
+
+.tile-text-area {
+  .card-title {
+    position: relative;
+    z-index: 9;
+  }
+}
+
+.revise-card {
+  border-color: $goldenYellow;
+  position: relative;
+  .btn-revise {
+    background: $goldenYellow;
+    box-shadow: 0px 5px 0px $goldenYellowShadow;
+    .status-label {
+      color: #8b740f;
+    }
+  }
+}
+
+.card {
+  margin-bottom: 1em !important;
+  box-shadow: none;
+  border-radius: 1rem;
+  padding: 5%;
+  height: 250px;
+  overflow: hidden;
+  font-family: BalooBhaina;
+  .btn-holder {
+    height: 45px;
+    border-radius: 15px;
+  }
+  .btn-attempt {
+    background: $morningGloryShadow;
+    box-shadow: 0px 5px 0px $primaryShadowColor;
+    color: $white;
+    border-radius: 8px;
+  }
+  .btn-view-details {
+    width: 100%;
+  }
+  .card-title {
+    font-size: 28px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 65px;
+    white-space: pre-line;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+  }
+  .status-label {
+    top: -3px;
+    font-size: 20px;
+    font-family: BalooBhaina;
+  }
+  .shield {
+    position: absolute;
+    right: 6px;
+    top: -26px;
+    z-index: 8;
+    img {
+      width: 100px;
+    }
+  }
+  .tag-status {
+    position: absolute;
+    z-index: 8;
+    bottom: 14px;
+    left: -16px;
+    img {
+      width: 115px;
+    }
+  }
+  .btn-start {
+    background: $morningGloryShadow;
+    box-shadow: 0px 5px 0px $primaryShadowColor;
+    width: 100%;
+    color: $white;
+  }
+  .btn-continue {
+    background: $morningGloryShadow;
+    box-shadow: 0px 5px 0px $primaryShadowColor;
+    border: 0px;
+    .status-label {
+      color: $white;
+    }
+    .progress-bar-striped {
+      border-top-left-radius: 16px !important;
+      border-bottom-left-radius: 16px !important;
+      box-shadow: none !important;
+      height: 45px !important;
+    }
+  }
+  .btn-continue-redo {
+    background: $secondaryColor;
+    box-shadow: 0px 5px 0px $secondaryShadowColor;
+    border: 0px;
+    .status-label {
+      color: rgba($black, 0.6);
+    }
+    .progress-bar-striped {
+      border-top-left-radius: 16px !important;
+      border-bottom-left-radius: 16px !important;
+      box-shadow: none !important;
+      height: 45px !important;
+    }
+  }
+  .progress-bar {
+    background-color: rgba($green, 0) !important;
+  }
+  .overlay-container-disabled {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: rgba($gray, 0.3);
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+  }
+  .overlay-container {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: rgba($black, 0.3);
+    width: 100%;
+    height: 100%;
+    z-index: 8;
+    border-radius: 6px;
+    .btn-container {
+      position: absolute;
+      width: 100%;
+      top: 18%;
+      padding: 5%;
+      .btn-inner-container {
+        width: 90%;
+        position: absolute;
+        bottom: 30%;
+        .btn-holder {
+          width: 100%;
+        }
+      }
+      .btn-back-container {
+        position: absolute;
+        top: 63% !important;
+        .btn-toggle-overlay {
+          border-radius: 15px;
+          width: 92%;
+          height: 100%;
+        }
+      }
+      .btn-holder {
+        /* width: 96%;*/
+        margin-bottom: 10px;
+      }
+    }
+  }
+  .btn-container {
+    position: absolute;
+    width: 90%;
+    bottom: 0px;
+    display: flex;
+    display: -moz-box;
+    display: -webkit-flex;
+    -webkit-box-pack: justify;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    .btn-holder {
+      position: relative;
+      padding: 0px;
+      border-radius: 16px;
+      height: 45px;
+      font-size: 24px;
+      bottom: 28px;
+      line-height: 54px;
+      border-radius: 16px !important;
+    }
+  }
+  .btn-locked {
+    background: rgba(158, 158, 158, 0.44);
+    color: $white;
+    cursor: default;
+  }
+  .btn-left {
+    width: 78% !important;
+  }
+  .btn-right {
+    width: 20%;
+    margin-left: 2%;
+    .status-label {
+      .fa {
+        font-size: 24px;
+        padding-top: 12px;
+        color: $white;
+      }
+    }
+  }
+  .btn-back {
+    width: 20% !important;
+    margin-right: 3%;
+    background: transparent;
+    .status-label {
+      .fa {
+        font-size: 24px;
+        color: $white;
+      }
+    }
+  }
+  .btn-view-details {
+    background: $lightish-green;
+    box-shadow: 0px 5px 0px $mid-green;
+    color: $white;
+  }
+  .btn-toggle-overlay {
+    background: $greyishBrown;
+    box-shadow: 0px 5px 0px $greyishBrownShadow;
+    z-index: 1;
+  }
+  .btn-revise {
+    background: $goldenYellow;
+    box-shadow: 0px 5px 0px $dirty-orange; // color: rgba($black, 0.6);
+    .status-label {
+      color: #8b740f;
+    }
+  }
+  .btn-strengthen {
+    background: $morningGloryShadow;
+    box-shadow: 0px 5px 0px $primaryShadowColor;
+    color: $white;
+  }
+  .topic-card-layer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%; // background: url(../../../../../assets/common/images/topic-overlay.png);
+    border-radius: 10px;
+  }
+  .topic-card-ct-area {
+    z-index: 1;
+  }
+}
+
+.question-type {
+  padding: 3px 20px;
+  left: 4px;
+  top: 0;
+  position: relative;
+  width: 100%;
+  color: #fff;
+  border-top-right-radius: 13px;
+  font-size: 16px;
+  border-bottom-right-radius: 13px;
+  font-weight: bold;
+  height: 26px;
+  font-family: 'BalooBhaina';
+  .arrow {
+    width: 0;
+    height: 0;
+    line-height: 0;
+    border-left: 8px solid transparent;
+    top: 100%;
+    left: 0;
+    position: absolute;
+  }
+}
+
+p {
+  margin-bottom: 0px;
+}
+
+.work-sheet {
+  background: $blushRed;
+  text-transform: capitalize;
+  .arrow {
+    border-top: 10px solid $blushRedShadow;
+  }
+}
+
+.higher-grade {
+  background: $goldenYellow;
+  color: rgba($black, 0.4);
+  .arrow {
+    border-top: 10px solid $dirty-orange;
+  }
+}
+
+.available-home {
+  position: absolute;
+  top: 0;
+  width: 99%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #94d6da;
+  background: rgba($black, 0.5);
+  border-radius: 10px 10px 0 0;
+}
+
+.overlay-section {
+  padding: 30px 20px;
+  background: rgba(0, 0, 0, 0.9) !important;
+  position: absolute;
+  left: 0px;
+  top: 100%;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  border-radius: 6px;
+  animation: down-tooggle 500ms linear forwards;
+  .overlay-text {
+    color: rgba($white, 0.5);
+    padding-bottom: 5px;
+    font-size: 14px;
+  }
+  &.toggle {
+    animation: tooggle 500ms linear forwards;
+  }
+  .overlay-text:last-child {
+    color: $white;
+  }
+}
+
+@-webkit-keyframes tooggle {
+  from {
+    top: 100%;
+  }
+  to {
+    top: 0%;
+  }
+}
+
+@keyframes tooggle {
+  from {
+    top: 100%;
+  }
+  to {
+    top: 0%;
+  }
+}
+
+@keyframes down-tooggle {
+  from {
+    top: 0%;
+  }
+  to {
+    top: 100%;
+  }
+}
+
+// .custom-row {
+//   display: inline-block;
+//   width: 100%;
+// }
+.custom-col {
+  float: left; // display: inline-block;
+}
+
+.custom-row {
+  display: block; // padding-left: 15px;
+  // padding-right: 15px;
+}
+
+/**********media queries***********/
+
+@media(max-width: 1400px) {
+  .card {
+    margin-bottom: 30px !important;
+  }
+}
+
+@media(max-width: 1070px) {
+  .btn-holder {
+    .status-label {
+      font-size: 18px;
+      top: -3px;
+    }
+  }
+}
+
+@media(max-width: 920px) {
+  .btn-holder {
+    .status-label {
+      font-size: 16px;
+    }
+  }
+}
+
+@media(max-width: 845px) {
+  .btn-holder {
+    .status-label {
+      font-size: 14px;
+    }
+  }
+}
+
+@media(max-width: 764px) {
+  .btn-holder {
+    .status-label {
+      font-size: 17px;
+    }
+  }
+}
+
+@media(max-width: 600px) {
+  .btn-holder {
+    .status-label {
+      font-size: 14px;
+    }
+  }
+}
+
+@media(max-width: 574px) {
+  .btn-holder {
+    .status-label {
+      font-size: 17px;
+    }
+  }
+}
+
+@media (max-width:768px)and (min-width:574px) {
+  .date-status {
+    font-size: 14px;
+  }
+  .tag-status {
+    p {
+      height: 23px;
+      font-size: 14px;
+    }
+  }
+}

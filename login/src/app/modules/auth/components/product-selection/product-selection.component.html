@@ -1,0 +1,22 @@
+<ms-auth-header></ms-auth-header>
+<div class="container">
+  <div class="form-section password-main-page-content">
+    <div class="password-block">
+      <div class="top-title">
+        <h4>{{'hello welcome to mindpark' | translate:{ firstName: firstName} }}</h4>
+        <hr>
+      </div>
+      <h5 class="sub-title">
+        {{ 'which subject would you like to do now' | translate }}
+      </h5>
+
+      <div class="image-container">
+        <div class="option" *ngFor=" let product of productList; let i = index">
+          <img [src]="getProductImage(product)" width="160" height="130" (click)='productSelected(i)' />
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<ms-auth-footer></ms-auth-footer>

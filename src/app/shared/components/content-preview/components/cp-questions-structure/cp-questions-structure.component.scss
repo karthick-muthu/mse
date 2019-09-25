@@ -1,0 +1,199 @@
+@import "../../../../../../assets/common/styles/global.variables.scss";
+.alert-section {
+  width: 100%;
+  padding: 0px 15px;
+}
+.questions-header-section {
+  width: 100%;
+  padding: 20px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  .header-left {
+    display: flex;
+    flex-direction: column;
+    .question-number {
+      height: 30px;
+      width: 40px;
+      border-radius: 14.5px;
+      background-color: #d8d8d8;
+      color: #565656;
+      text-align: center;
+      line-height: 27px;
+      font-size: 18px;
+      display: inline-block;
+    }
+  }
+  .header-center {
+    padding: 0px 15px;
+    display: flex;
+  }
+  .header-right {
+    .read-out-loud {
+      color: $primaryColor;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      .btn-read {
+        height: 32px;
+        width: 32px;
+        border-radius: 20px;
+        border: 1px solid $primaryColor;
+        outline: none;
+        color: $primaryColor;
+        background: $lightgray;
+        box-shadow: 0px 4px 0px $primaryColor;
+        font-size: 20px;
+        margin-right: 5px;
+      }
+    }
+    label.read-out-loud {
+      cursor: pointer;
+    }
+  }
+}
+.question-body {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  .question-content {
+    font-size: 16px;
+    font-weight: bold;
+    color: rgba($black, 0.7);
+    padding: 15px;
+    display: inline-block;
+    margin: 0;
+    input[type="text"] {
+      height: 30px;
+      border-radius: 2px;
+      background-color: $white;
+      box-shadow: 0 1px 7px 0 rgba(22, 148, 210, 0.2), inset 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+      border: solid 1px $primaryColor;
+      margin-bottom: 4px;
+      div {
+        input[type="text"] {
+          height: 30px;
+          border-radius: 2px;
+          background-color: $white;
+          box-shadow: 0 1px 7px 0 rgba(22, 148, 210, 0.2), inset 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+          border: solid 1px $primaryColor;
+          margin-bottom: 4px;
+        }
+      }
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    iframe {
+      max-width: 100%;
+    }
+  }
+  .IDontKnow {
+    padding: 12px 24px;
+    max-width: 150px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    background: $primaryColor;
+    color: $white;
+    box-shadow: 0px 4px 0px $primaryShadowColor;
+    border: 0px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0px 15px 20px 15px;
+  }
+}
+.option-body {
+  padding: 0px 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  .options {
+    li {
+      list-style-type: none;
+      width: auto;
+      label {
+        display: inline-block;
+        .questions {
+          display: flex;
+        }
+      }
+      .option {
+        min-width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        border-radius: 25px;
+        text-align: center;
+        padding: 4px 10px;
+        margin: 15px 15px 15px 0px;
+        font-size: 24px;
+        color: $white;
+        font-weight: bold;
+      }
+      input[type="radio"] {
+        display: none;
+      }
+      span {
+        font-size: 18px;
+        font-weight: bold;
+        text-align: left;
+        color: rgba($black, 0.7); // max-width: 75%;
+        width: auto;
+        padding: 25px 0; // cursor: pointer;
+        word-break: break-word;
+        /deep/ img {
+          max-width: 100%;
+          height: auto;
+        }
+      }
+      .correct {
+        padding-left: 35px;
+        color: $secondaryShadowColor;
+        font-size: 22px;
+      }
+      .incorrect {
+        @extend .correct;
+        color: $reddish;
+      }
+    }
+  }
+
+  .option-default {
+    background: $primaryColor;
+    border: 3px solid $morningGloryShadow;
+    cursor: pointer;
+  }
+
+  .option-default + span {
+    cursor: pointer;
+  }
+
+  .option-incorrect {
+    background: $reddish;
+    border: 3px solid $blushRed;
+  }
+
+  .option-correct {
+    background: $secondaryShadowColor;
+    border: 3px solid $secondaryColor;
+    cursor: pointer;
+  }
+
+  .option-correct + span {
+    cursor: pointer;
+  }
+
+  .option-disabled {
+    background: $gray;
+    border: 3px solid $gray;
+  }
+
+  .option-selected {
+    background: rgba($morningGloryShadow, 0.4);
+    border: 3px solid $morningGloryShadow;
+    color: rgba($black, 0.5) !important;
+    cursor: pointer;
+  }
+}

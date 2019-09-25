@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-md navbar-light">
+  <div class="menu-section">
+    <button class="navbar-toggler navbar-toggler-right desktop" id="navbar-toggler" type="button" aria-controls="exCollapsingNavbar2"
+      (click)="toggleMenu()" aria-expanded="false" aria-label="Toggle navigation">
+      <!--<span class="navbar-toggler-icon"></span>-->
+      <div id="nav-icon1 mobile-top-icon" [class.open]="!collapseMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </button>
+    <button class="navbar-toggler navbar-toggler-right mobile" id="navbar-toggler-mobile" type="button" aria-controls="exCollapsingNavbar2"
+      (click)="toggleMenu()" aria-expanded="false" aria-label="Toggle navigation">
+      <!--<span class="navbar-toggler-icon"></span>-->
+      <div id="nav-icon1" [class.open]="!collapseMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </button>
+    <div class="collapse navbar-collapse" style="display: -webkit-flex;" [class.collapse]="collapseMenu">
+      <div class="navbar-nav" (click)="toggleMenu()">
+        <a class="nav-item nav-style home-menu" routerLink="/home" routerLinkActive="active" *ngIf="menus?.home">
+          <div class="menu-icon-ct d-md">
+            <img src="assets/common/images/ms-icons/home.png" class="menu-icon" alt="home" title="home" />
+          </div>
+          <div class="menu-text">
+            <h5>{{ 'home' | translate }}</h5>
+          </div>
+        </a>
+        <a class="nav-item nav-style topics-menu" routerLink="/topics" routerLinkActive="active" *ngIf="menus?.myTopics">
+          <div class="menu-icon-ct d-md">
+            <img src="assets/common/images/ms-icons/topics.png" class="menu-icon" alt="topics" title="topics" />
+          </div>
+          <div class="menu-text">
+            <h5>{{ 'topics' | translate }}</h5>
+          </div>
+        </a>
+        <a class="nav-item nav-style worksheets-menu" routerLink="/worksheets" routerLinkActive="active" *ngIf="menus?.worksheets">
+          <div class="menu-icon-ct d-md">
+            <img src="assets/common/images/ms-icons/worksheet.png" class="menu-icon" alt="worksheets" title="worksheets" />
+          </div>
+          <div class="menu-text">
+            <h5>{{ 'worksheets' | translate }}</h5>
+          </div>
+        </a>
+        <a class="nav-item nav-style games-menu" routerLink="/games" routerLinkActive="active" *ngIf="menus?.games">
+          <div class="menu-icon-ct d-md">
+            <img src="assets/common/images/ms-icons/game.png" class="menu-icon" alt="games" title="games" />
+          </div>
+          <div class="menu-text">
+            <h5>{{ 'games' | translate }}</h5>
+          </div>
+        </a>
+        <a class="nav-item nav-style myMindspark-menu" routerLink="/my-mindspark" routerLinkActive="active" *ngIf="menus?.myMindspark">
+          <div class="menu-icon-ct d-md">
+            <img src="assets/common/images/ms-icons/my-mindspark.png" class="menu-icon" alt="my-mindspark" title="my-mindspark" />
+          </div>
+          <div class="menu-text">
+            <h5>{{ 'my mindspark' | translate }}</h5>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>

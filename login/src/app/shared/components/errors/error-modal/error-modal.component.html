@@ -1,0 +1,35 @@
+<div class="main-container">
+  <div class="modal-custom-header">
+    <img src="assets/common/images/parent-connect-logo.png" alt="parent-connect-logo" />
+  </div>
+
+  <div class="modal-body multiple-session-modal">
+    <div class="" *ngIf="error === 'parentrestrictedpage'">
+      <div class="message multiple-tabs-error">
+        <p>
+          Dear Parent,
+        </p>
+        <p>
+          We are currently re-evaluating our Parent Connect offering.
+        </p>
+
+        <p>
+          Meanwhile, you will receive regular updates about your child’s learning through mail on the 1st of every month.
+        </p>
+
+        <p>
+          Please make sure that your contact details are updated in your child’s account.
+        </p>
+
+        <p>
+          For further assistance, mail us at {{ parentRestrictedPageData?.email }} or call us at {{ parentRestrictedPageData?.mobile
+          }}
+        </p>
+
+      </div>
+    </div>
+  </div>
+  <button class="close-btn" (click)="closeWindow()">
+    <i class="fa fa-times"></i>
+  </button>
+</div>

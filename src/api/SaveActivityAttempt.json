@@ -1,0 +1,11 @@
+{
+	"resultCode": "C004",
+	"resultMessage": "redirect",
+	"redirectionCode": "CloseContent",
+	"redirectionData": {
+		"sessionTimeExceededFlag": true,
+		"endTopicFlag": false,
+		"endTopicHigherLevel": false,
+		"userTriggered": false
+	}
+}

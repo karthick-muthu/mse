@@ -1,0 +1,176 @@
+{
+  "resultCode": "C001",
+  "resultMessage": "success",
+  "userInformation":
+  {
+    "language": "en-IN",
+    "selectedTheme": "lowergrade",
+    "name": "Ramanujan",
+    "grade": 5,
+    "section": "C",
+    "avatar": "url",
+    "isRetail": false,
+    "gender": "male",
+    "groupID": "536518"
+  },
+  "sessionInformation":
+  {
+    "sessionID": "345",
+    "sessionStartAt": "2017-06-21 05:04:35",
+    "sessionType": "Home"
+  },
+  "permittedNavs":
+  {
+    "aqad": true,
+    "games": false,
+    "help": false,
+    "home": true,
+    "mailbox": true,
+    "message": true,
+    "myDetails": true,
+    "myFavourities": false,
+    "myMindspark": true,
+    "myTopics": true,
+    "notification": false,
+    "reward": false,
+    "sparkies": true,
+    "worksheets": false,
+    "searchBar": false
+  },
+  "totalCorrect": 90,
+  "totalWrong": 10,
+  "totalQuestion": 100,
+  "totalPages": 5,
+  "currentPage": 3,
+  "showingFrom": 61,
+  "showingTo": 80,
+  "accuracy": 90,
+  "settings":
+  {
+    "showWrongQuestions": true
+  },
+  "topicList": [
+  {
+    "topicName": "Basic Understanding of half and quaters",
+    "topicId": "Topic123",
+    "accuracy": 70
+  },
+  {
+    "topicName": "Basic Understanding of half and quaters",
+    "topicId": "Topic123",
+    "accuracy": 70
+  }],
+  "trailList": [
+  {
+    "contentID": "SQ1234",
+    "langCode": "en",
+    "revisionNo": 3,
+    "contentType": "question",
+    "contentSeqNum": 1,
+    "data": [
+    {
+      "_id": "59dc8e651c5edc24e405d46d_en_1",
+      "langCode": "en",
+      "questionBody": "<div> <div>Fill in the blanks<br><br> <div style=\"MARGIN: 0in 0in 10pt\">1) (<font><em>p + q</em>)<sup>2</sup> = <em>p</em><sup>2 </sup>+ ( [blank_1] ) + <em>q</em></font><sup>2<br><br></sup>2) (<font><em>p - q</em>)<sup>2</sup> = <em>p</em><sup>2 </sup>+ ( [blank_2] ) + <em>q</em></font><sup>2<br><br></sup>3) <font><em>p</em><sup>2 </sup><em>- q</em><sup>2</sup> =(<em>p + q</em>) ( [blank_3] )</font></div><br></div></div>",
+      "response":
+      {
+        "blank_1":
+        {
+          "type": "Blank",
+          "correctAnswers": ["2pq", "2qp", "2*p*q", "2*q*p"]
+        },
+        "blank_2":
+        {
+          "type": "Blank",
+          "correctAnswers": [" (-2pq)", "-2pq", "-2qp", "-2*p*q", "-2*q*p", "-2xpxq", "-2xqxp", "(-2)pq", "(-2)qp", "2(-p)q", "2(-q)p", "2p(-q)", "2q(-p)"]
+        },
+        "blank_3":
+        {
+          "type": "Blank",
+          "correctAnswers": [" p - q", "-q + p"]
+        }
+      },
+      "revisionNo": "1",
+      "contentID": "59dc8e651c5edc24e405d46d",
+      "template": "Blank",
+      "encrypted": false,
+      "contentType": "question"
+    }],
+    "userAttemptData":
+    {
+      "result": "pass",
+      "timeTaken": 3,
+      "userResponse":
+      {
+        "blank_1":
+        {
+          "type": "Blank",
+          "userAnswer": "5"
+        },
+        "blank_2":
+        {
+          "type": "Blank",
+          "userAnswer": "-2pq"
+        },
+        "blank_3":
+        {
+          "type": "Blank",
+          "userAnswer": "5"
+        }
+      }
+    }
+  },
+  {
+    "contentID": "59dc8c8f1c5edc24e405d277",
+    "contentType": "question",
+    "contentSeqNum": 2,
+    "langCode": "en",
+    "revisionNo": "1",
+    "data": [
+    {
+      "_id": "59dc8e641c5edc24e405d3e5_en_1",
+      "langCode": "en",
+      "questionBody": "Given below are the first three terms of an arithmetic progression, what is the 8<SUP>th</SUP> term of this arithmetic progression?<BR><BR><STRONG>0, 9, 18, . . .<BR><BR></STRONG>The 8<SUP>th</SUP> term = ",
+      "response":
+      {
+        "mcqPattern":
+        {
+          "type": "MCQ",
+          "choices": [
+          {
+            "value": "9&nbsp;&#215; 6"
+          },
+          {
+            "value": "9&nbsp;&#215; 7"
+          },
+          {
+            "value": "9&nbsp;&#215; 8"
+          },
+          {
+            "value": "9&nbsp;&#215; 9"
+          }],
+          "optionsVoiceOver": null,
+          "correctAnswer": 1
+        }
+      },
+      "revisionNo": "1",
+      "contentID": "59dc8e641c5edc24e405d3e5",
+      "template": "MCQ",
+      "encrypted": false,
+      "contentType": "question"
+    }],
+    "userAttemptData":
+    {
+      "result": "fail",
+      "timeTaken": 3,
+      "userResponse":
+      {
+        "mcqPattern":
+        {
+          "type": "MCQ",
+          "userAnswer": "0"
+        }
+      }
+    }
+  }]
+}

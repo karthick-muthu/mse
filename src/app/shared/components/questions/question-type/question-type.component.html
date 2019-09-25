@@ -1,0 +1,11 @@
+<p class="question-type" [ngClass]="getTypeClass()">
+    <ng-container [ngSwitch]="type">
+        <ng-container *ngSwitchCase="'timedtest'">{{ 'timed test' | translate }}</ng-container>
+        <ng-container *ngSwitchCase="'challenge'">{{ 'challenge question' | translate }}</ng-container>
+        <ng-container *ngSwitchCase="'wildcard'">{{ 'wildcard question' | translate }}</ng-container>
+        <ng-container *ngSwitchCase="'higherlevel'">Higher Level Question</ng-container>
+        <ng-container *ngSwitchCase="'practice'">Practice Question</ng-container>
+        <ng-container *ngSwitchCase="'test'">{{'worksheet' | translate}}</ng-container>
+    </ng-container>
+    <span class="arrow"></span>
+</p>

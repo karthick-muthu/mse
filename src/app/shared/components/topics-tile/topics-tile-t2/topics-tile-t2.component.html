@@ -1,0 +1,338 @@
+<div class="custom-row tiles-container">
+  <div *ngIf="for==='topics' && (topicList | searchFilter:search).length === 0">
+    <div class="container empty-container">
+      <div class="row">
+        <div class="col-md-6 text-center">
+          <img src="assets/common/images/group-14.png" />
+        </div>
+        <div class="col-md-6 text-content">
+          <div class="heading-blue">{{ 'no topics found' | translate}} !</div>
+          <div class="heading-grey">{{ 'try different topic' | translate }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div [ngClass]="{'custom-col col-md-4 col-sm-6 col-xs-12' :for !=='topicDetails'}" *ngFor="let topic of topicList | searchFilter:search; let i = index"
+    (click)="triggerOverlayForLockedTopics(topic, i)">
+    <!-- | searchFilter:search ; let i = index -->
+    <ng-template [ngIf]="topic?.grades === undefined || (topic?.grades !== undefined && showHigherGrades)">
+      <!--  Red and yellow shields  -->
+      <div class="shield" *ngIf="topic?.shieldState?.toLowerCase() === 'full'">
+        <img src="assets/common/images/yellow-shield.png" />
+      </div>
+      <div class="shield" *ngIf="topic?.shieldState?.toLowerCase() === 'half'">
+        <img src="assets/common/images/red-shield.png" />
+      </div>
+
+      <ng-template [ngIf]="topic?.contentType?.toLowerCase() === 'worksheet' && for==='home'">
+        <!-- Worksheet tag and data -->
+        <div class="tag-status">
+          <p class="question-type work-sheet">{{ topic?.contentType | translate }}
+            <span class="arrow"></span>
+          </p>
+        </div>
+        <div class="date-status">{{'ends on' | translate: { endDate: topic?.expiryDate | amDateFormat:'Do', month : topic?.expiryDate | amDateFormat:'MMM'
+          | translate } }}</div>
+      </ng-template>
+
+      <!-- higherGrades Tags -->
+      <div class="tag-status" *ngIf="topic?.grades && showHigherGrades">
+        <p class="question-type higher-grade">{{ topic?.grades[0] }} - {{ topic?.grades[1] }} {{ 'grade' | translate }}
+          <span class="arrow"></span>
+        </p>
+      </div>
+      <!-- Tiles creation -->
+      <div class="card topic-card" [ngClass]="{'revise-card':  topic?.shieldState?.toLowerCase() === 'full' && (for==='topics' || for==='topicDetails')}"
+        [ngStyle]="{'background': topic?.contentImage ? ('url('+topic?.contentImage+') no-repeat center center/cover') : ('url('+topicImageDefault+')  no-repeat center center/cover')}">
+        <span class="available-home" *ngIf="topic?.contentType !== 'worksheet' && hasLockedTopic && topic?.lock">{{ 'available at home' | translate }} </span>
+        <div class="overlay-container" *ngIf="moreOptions[i]">
+
+          <div class="btn-container" style="display: -webkit-flex;">
+            <div class="btn-inner-container">
+              <ng-container *ngFor="let button of topic?.buttons; let buttonIndex = index">
+                <div class="report-btn" *ngIf="button?.type?.toLowerCase() === 'report'">
+                  <button type="button" class="btn-holder btn-view-details" (click)="goToDetailsPage(topic)">
+                    <span *ngFor="let button of topic?.buttons">
+                      <span class="status-label" *ngIf="button?.state?.toLowerCase() === 'viewdetails' || button?.state?.toLowerCase() === 'view details'">
+                        {{ 'view details' | translate}}</span>
+                    </span>
+                  </button>
+                </div>
+              </ng-container>
+              <ng-container *ngFor="let button of topic?.buttons; let buttonIndex = index">
+
+                <div class="learn-btn" *ngIf="button?.type?.toLowerCase() === 'learn' && buttonIndex > 0">
+                  <button type="button" class="btn-holder" [ngClass]="{
+                        'btn-start':  button?.state?.toLowerCase()=='start',
+                        'btn-attempt':  button?.state?.toLowerCase()=='redo',
+                        'btn-continue': button?.state?.toLowerCase() === 'continue',
+                        'report-btn': button?.state?.toLowerCase() === 'viewdetails' || button?.state?.toLowerCase() === 'view details'
+                       }" (click)="startTopic(topic, button)">
+                    <span>
+                      <span class="status-label" *ngIf="button?.type?.toLowerCase() === 'learn'">
+                        <span *ngIf="button?.state?.toLowerCase() === 'start'">
+                          {{ 'start attempt' | translate:{attemptNumber:topic?.contentAttemptNumber || '0' | ordinalName } }}
+                        </span>
+                        <span *ngIf="button?.state?.toLowerCase() === 'continue'">
+                          {{ 'continue attempt' | translate:{attemptNumber:topic?.contentAttemptNumber || '0' | ordinalName } }}
+                        </span>
+                        <span *ngIf="button?.state?.toLowerCase() === 'redo'">
+                          {{ 'start attempt' | translate:{attemptNumber: topic?.contentAttemptNumber+1 || '0' | ordinalName } }}</span>
+                      </span>
+                      <span *ngIf="button?.state?.toLowerCase() === 'viewdetails' || button?.state?.toLowerCase() === 'view details'">
+                        {{ 'view details' | translate}}
+                      </span>
+                      <div class="progress" *ngIf="button?.state?.toLowerCase() === 'continue'">
+                        <div class="progress-bar progress-bar-striped" role="progressbar" [style.width.%]="getTopicProgress(topic?.unitsCleared,topic?.unitsOverall)"></div>
+                      </div>
+                    </span>
+                  </button>
+                </div>
+              </ng-container>
+            </div>
+            <button type="button" class="btn-back-container btn-holder btn-back" (click)="showOverlay(topic?.contentID,i)">
+              <div class="btn-toggle-overlay">
+                <span class="status-label">
+                  <i class="fa fa-caret-down"></i>
+                </span>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="overlay-container overlay-section" *ngIf="lockedTopicsOptions[i]" [ngClass]="{ 'toggle':lockedTopicsOptions[i]  }">
+          <div class="overlay-text"> {{ 'unlock on completing' | translate }} </div>
+          <div class="overlay-text" [innerHtml]='priorityContents[0]'></div>
+        </div>
+
+        <div class="topic-card-layer"></div>
+        <div class="topic-card-ct-area">
+          <h3 class="card-title" [innerHTML]="topic?.contentName"></h3>
+          <ng-container *ngIf="topic?.buttons?.length > 1 else oneButtonTile">
+            <div *ngIf="(for==='topics' || for==='topicDetails')">
+              <span [ngClass]="{ 'overlay-container-disabled':  topic?.contentStatus?.toLowerCase()==='deactive' && !(topic?.contentStatus?.toLowerCase() === 'deactive' && for==='topicDetails') }"></span>
+            </div>
+            <div *ngFor="let button of topic?.buttons;let buttonIndex=index">
+              <ng-container *ngIf="!topic?.lock else lockedTileProgress">
+                <div class="tile-text-area" *ngIf="button?.type === 'learn' && buttonIndex==0">
+                  <p class="card-text">
+                    <span class="categories-cleared" *ngIf="button?.state =='start' || button?.state =='redo'">
+                      <span class="concept-tagline">{{topic?.unitsOverall}}</span>
+                      <span class="concept-tagline" *ngIf="topic?.unitsOverall===1">{{ 'concept' | translate }}</span>
+                      <span class="concept-tagline" *ngIf="topic?.unitsOverall>1">{{ 'concepts' | translate }}</span>
+                    </span>
+                    <span class="categories-cleared" *ngIf="button?.state =='continue'">
+                      <span class="total-concept-cleared" *ngIf="!(topic?.contentStatus?.toLowerCase() === 'deactive' && for==='topicDetails')">
+                        <span *ngIf="topic?.unitsOverall === 1">
+                          {{ 'concept completed out of' | translate:{ completed: topic?.unitsCleared, total: topic?.unitsOverall } }}
+                        </span>
+                        <span *ngIf="topic?.unitsOverall>1">
+                          {{ 'concepts completed out of' | translate:{ completed: topic?.unitsCleared, total: topic?.unitsOverall } }}
+                        </span>
+                      </span>
+                    </span>
+                  </p>
+                </div>
+              </ng-container>
+              <ng-template #lockedTileProgress>
+                <div class="tile-text-area" *ngIf="buttonIndex==0">
+                  <p class="card-text">
+                    <span class="categories-cleared">
+                      <span class="concept-tagline">{{topic?.unitsOverall}}</span>
+                      <span class="concept-tagline" *ngIf="topic?.unitsOverall===1">{{ 'concept' | translate }}</span>
+                      <span class="concept-tagline" *ngIf="topic?.unitsOverall>1">{{ 'concepts' | translate }}</span>
+                    </span>
+                  </p>
+                </div>
+              </ng-template>
+
+              <ng-container *ngIf="!topic?.lock else forLockTopic">
+
+                <div class="btn-container" style="display: -webkit-flex;">
+                  <ng-container *ngFor="let button of topic?.buttons; let buttonIndex = index">
+                    <button *ngIf="buttonIndex === 0" type="button" class="btn-holder btn-left" [ngClass]="{ 
+                      'btn-start': button?.state?.toLowerCase() ==='start',
+                      'btn-continue': button?.state?.toLowerCase() ==='continue', 
+                      'btn-attempt': button?.state?.toLowerCase() ==='redo', 
+                      'btn-revise': button?.state?.toLowerCase() === 'revise', 
+                      'btn-strengthen': button?.state?.toLowerCase() === 'strengthen',
+                      'btn-view-details': button?.state?.toLowerCase() === 'viewdetails' || button?.state?.toLowerCase() === 'view details'
+                    }" (click)="startTopic(topic, button)">
+                      <span>
+                        <span class="status-label" *ngIf="((topic?.contentStatus==='deactive') && (button?.type?.toLowerCase() === 'report'))">{{ 'view details' | translate }}</span>
+                        <span class="status-label" *ngIf="((button?.state?.toLowerCase() ==='start') && (button?.type?.toLowerCase() === 'learn'))">{{ button?.state?.toLowerCase() | translate }}</span>
+                        <span class="status-label" *ngIf="((button?.state?.toLowerCase() ==='continue') && (button?.type?.toLowerCase() === 'learn'))">{{ button?.state?.toLowerCase() | translate }}</span>
+                        <span class="status-label" *ngIf="(button?.type?.toLowerCase() === 'revise')"> {{ button?.state?.toLowerCase() | translate }}</span>
+                        <!-- <span class="status-label" *ngIf="(button?.state?.toLowerCase() === 'redo')"> {{ 'start' | translate}} {{ button?.state?.toLowerCase() | translate }} {{'attempt'}} </span> -->
+                        <span class="status-label" *ngIf="(button?.state?.toLowerCase() === 'redo')"> {{ 'start attempt' | translate:{ attemptNumber: topic?.contentAttemptNumber+1 || '0' | ordinalName
+                          } }}
+                        </span>
+                      </span>
+                      <div class="progress" *ngIf="button?.state?.toLowerCase() === 'continue'">
+                        <div class="progress-bar progress-bar-striped" role="progressbar" [style.width.%]="getTopicProgress(topic?.unitsCleared,topic?.unitsOverall)"></div>
+                      </div>
+                    </button>
+                  </ng-container>
+                  <button type="button" class="btn-holder btn-toggle-overlay btn-right" (click)="showOverlay(topic?.contentID,i)">
+                    <span class="status-label">
+                      <i class="fa fa-caret-up"></i>
+                    </span>
+                  </button>
+                </div>
+
+
+              </ng-container>
+
+              <ng-template #forLockTopic>
+                <div class="btn-container" style="display: -webkit-flex;" *ngIf="buttonIndex==0">
+                  <button class="btn-holder btn-locked">
+                    <span class="status-label "> {{ 'locked' | translate}}</span>
+                  </button>
+                </div>
+              </ng-template>
+
+            </div>
+          </ng-container>
+          <ng-template #oneButtonTile>
+            <div *ngIf="(for==='topics' || for==='topicDetails' ) ">
+              <span [ngClass]="{ 'overlay-container-disabled': (topic?.contentStatus?.toLowerCase()==='deactive' && for!=='topicDetails'
+                    ) } "></span>
+            </div>
+            <div *ngIf="topic?.lock">
+              <div *ngIf="topic?.contentType !== 'worksheet'">
+                <div class="tile-text-area">
+                  <p class="card-text">
+                    <span class="categories-cleared">
+                      <span class="total-concept-cleared">
+                        {{topic?.unitsOverall}}
+                        <span class="concept-tagline " *ngIf="topic?.unitsOverall===1 ">{{ 'concept' | translate }}</span>
+                        <span class="concept-tagline " *ngIf="topic?.unitsOverall>1">{{ 'concepts' | translate }}</span>
+                      </span>
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div *ngFor="let button of topic?.buttons; let buttonIndex = index">
+              <div class="tile-text-area" *ngIf="button?.type==='learn' && buttonIndex==0 ">
+
+                <ng-container *ngIf="topic?.lock else progressForLockedSingleButtonTile">
+                  <p class="card-text">
+                    <span class="categories-cleared">
+                      <span class="total-concept-cleared ">
+                        {{topic?.unitsOverall}}
+                        <span class="concept-tagline " *ngIf="topic?.unitsOverall===1">{{ 'concept' | translate }}</span>
+                        <span class="concept-tagline " *ngIf="topic?.unitsOverall>1">{{ 'concepts' | translate }}</span>
+                      </span>
+                    </span>
+                  </p>
+                </ng-container>
+                <ng-template #progressForLockedSingleButtonTile>
+                  <p class="card-text">
+                    <span class="categories-cleared">
+                      <ng-container *ngIf="topic?.contentType?.toLowerCase() !== 'worksheet' else worksheetTile">
+                        <ng-container *ngIf=" button?.state?.toLowerCase() === 'continue' else numberOfConceptsOnly ">
+                          <span class=" concept-tagline " *ngIf="!(topic?.contentStatus?.toLowerCase() === 'deactive' && for==='topicDetails')">
+                            <span *ngIf="topic?.unitsOverall === 1">
+                              {{ 'concept completed out of' | translate:{ completed: topic?.unitsCleared, total: topic?.unitsOverall } }}
+                            </span>
+                            <span *ngIf="topic?.unitsOverall>1">
+                              {{ 'concepts completed out of' | translate:{ completed: topic?.unitsCleared, total: topic?.unitsOverall } }}
+                            </span>
+                          </span>
+                        </ng-container>
+                        <ng-template #numberOfConceptsOnly>
+                          <span class="total-concept-cleared ">
+                            {{topic?.unitsOverall}}
+                            <span class="concept-tagline " *ngIf="topic?.unitsOverall===1">{{ 'concept' | translate }}</span>
+                            <span class="concept-tagline " *ngIf="topic?.unitsOverall>1">{{ 'concepts' | translate }}</span>
+                          </span>
+                        </ng-template>
+                      </ng-container>
+                      <ng-template #worksheetTile>
+                        <div *ngIf="!topic?.lock">
+                          <ng-container *ngIf="button?.state?.toLowerCase() === 'start' else outOfQuestions">
+                            <span class="categories-cleared">
+                              <span class="concept-tagline">{{topic?.unitsOverall}}</span>
+                              <span class="concept-tagline" *ngIf="topic?.unitsOverall===1">{{ 'question' | translate }}</span>
+                              <span class="concept-tagline" *ngIf="topic?.unitsOverall>1">{{ 'questions' | translate }}</span>
+                            </span>
+                          </ng-container>
+                          <ng-template #outOfQuestions>
+                            <span class="categories-cleared" *ngIf="button?.type==='learn'">
+                              <span class="total-concept-cleared">
+                                <span *ngIf="topic?.unitsOverall === 1">
+                                  {{ 'question completed out of' | translate:{ completed: topic?.unitsCleared, total: topic?.unitsOverall } }}
+                                </span>
+                                <span *ngIf="topic?.unitsOverall > 1">
+                                  {{ 'questions completed out of' | translate:{ completed: topic?.unitsCleared, total: topic?.unitsOverall } }}
+                                </span>
+                              </span>
+                            </span>
+                          </ng-template>
+                        </div>
+                      </ng-template>
+                    </span>
+                  </p>
+                </ng-template>
+              </div>
+
+              <ng-container *ngIf="(!topic?.lock ||  topic?.contentType === 'worksheet') else oneButtonLockedTile">
+
+                <div class="btn-container" style="display: -webkit-flex;">
+                  <ng-container *ngIf="topic?.contentType?.toLowerCase() === 'worksheet' else notAWorksheetButton">
+                    <button type="button" class="btn-holder" (click)="worksheetTileActions(topic, button?.type)" [ngClass]="{
+                          'btn-start': button?.type === 'learn',
+                          'btn-view-details':button?.type === 'report'
+                        }">
+                      <span class="status-label" *ngIf="button?.type==='learn'">{{ 'attempt worksheet' | translate }}</span>
+                      <span class="status-label" *ngIf="button?.type==='report'">{{ 'see report' | translate }}</span>
+                    </button>
+                  </ng-container>
+                  <ng-template #notAWorksheetButton>
+                    <ng-container>
+                      <button type="button" class="btn-holder" [ngClass]="{
+                                                                          'btn-start':button?.state?.toLowerCase() === 'start',
+                                                                          'btn-attempt': button?.state?.toLowerCase() === 'redo',
+                                                                          'btn-continue': button?.state?.toLowerCase() === 'continue', 
+                                                                          'btn-revise': button?.state?.toLowerCase() === 'revise', 
+                                                                          'btn-strengthen': button?.state?.toLowerCase() === 'strengthen',
+                                                                          'btn-view-details': button?.state?.toLowerCase() === 'viewdetails' || button?.state?.toLowerCase() === 'view details'}"
+                        (click)="startTopic(topic, button)">
+                        <span class="status-label" *ngIf="button?.type === 'learn' && (button?.state === 'start' || button?.state === 'continue')">{{ button?.state?.toLowerCase() | translate }}</span>
+                        <span class="status-label" *ngIf="topic?.contentStatus === 'deactive' && button?.type?.toLowerCase() === 'report'">{{ 'view details' | translate }}</span>
+                        <span class="status-label" *ngIf="button?.state === 'redo'">{{ 'start attempt' | translate:{ attemptNumber: topic?.contentAttemptNumber+1 || '0' | ordinalName
+                          } }}
+                        </span>
+                        <span *ngIf="button?.type?.toLowerCase() === 'revise'" class="status-label">{{ button?.state?.toLowerCase() | translate }} </span>
+                        <div class="progress" *ngIf="(button?.state?.toLowerCase() === 'continue')">
+                          <div class="progress-bar progress-bar-striped" role="progressbar" [style.width.%]="getTopicProgress(topic?.unitsCleared,topic?.unitsOverall)"></div>
+                        </div>
+                      </button>
+
+                    </ng-container>
+
+                  </ng-template>
+                </div>
+
+              </ng-container>
+
+              <ng-template #oneButtonLockedTile>
+                <div class="btn-container" style="display: -webkit-flex;">
+                  <button class="btn-holder btn-locked ">
+                    <span class="status-label ">{{ 'locked' | translate}}</span>
+                  </button>
+                </div>
+              </ng-template>
+
+
+
+            </div>
+
+          </ng-template>
+
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

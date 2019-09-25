@@ -1,0 +1,4 @@
+<button type="button" class="vernacular-btn" (click)="toggleVernacular()" [ngStyle]="getButtonPosition()">
+  <i class="fa" [ngClass]="{'fa-eye-slash': showTranslation, 'fa-eye': !showTranslation}"></i>
+  {{ translationToggle | translate:{ lang: translationContent?.language | translate } }}
+</button>

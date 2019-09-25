@@ -1,0 +1,8 @@
+<ms-header [template]="template" [isDetailed]="displayDetailedView" [isProfileVisible]="isProfileVisible"></ms-header>
+<div class="container-fluid middle-container" [ngClass]="templateClass">
+  <div class="container loadsToleft my-mindspark">
+    <ms-my-tabs></ms-my-tabs>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<ms-footer [template]="template"></ms-footer>

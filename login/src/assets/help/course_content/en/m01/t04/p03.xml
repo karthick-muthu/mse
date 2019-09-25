@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<contents>
+		<static>true</static>
+		<pageBG_01>../course_images/common_bg/commonbg_14.jpg</pageBG_01>
+		<paragraph_text1_1>Click LOGOUT</paragraph_text1_1>
+	</contents>
+</root>

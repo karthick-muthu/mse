@@ -1,0 +1,10 @@
+<div class="profile-section">
+  <!-- <a routerLink="/my-mindspark/my-details" class="profile-pic" [ngStyle]="{ 'background-image': 'url(' + profilePic + ')' }"> -->
+  <a routerLink="/my-mindspark/my-details" class="profile-pic">
+    <img *ngIf="profilePic" [src]="profilePic" (error)="imageError()" />
+  </a>
+  <div class="profile-details">
+    <h2 class="profile-name">{{profileInfo?.name}}</h2>
+    <h5 class="profile-grade text-capitalize">{{ 'grade' | translate }} {{profileInfo?.grade}}{{profileInfo?.section}}</h5>
+  </div>
+</div>

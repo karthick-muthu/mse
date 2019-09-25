@@ -1,0 +1,21 @@
+<div (contextmenu)="onRightClick($event)">
+  <div id="pageLoader" class="opacity-overlay" *ngIf="showLoader?.loader">
+    <i class="fa fa-spinner fa-spin spinner"></i>
+  </div>
+  <router-outlet></router-outlet>
+  <!-- <ms-idle-timeout *ngIf="tempEnvironment?.production"></ms-idle-timeout> -->
+  <ms-idle-timeout></ms-idle-timeout>
+</div>
+
+<div class="responseError" *ngIf="responseError && responseError !== 'close'">
+  <span *ngIf="responseError === 'unexpected'">
+    {{ 'unexpected error occured' | translate }}
+    <br>
+    <span *ngIf="loadURL === 'questions'">{{ 'redirect to home' | translate }}</span>
+  </span>
+  <span *ngIf="responseError === 'loaderror'">{{ 'error loading content try after some time' | translate }}</span>
+  <span class="responseErrorclose" style="display: -webkit-flex;" *ngIf="showResponseErrorClose()"
+    (click)="responseErrorclose()">
+    <i class="fa fa-times"></i>
+  </span>
+</div>

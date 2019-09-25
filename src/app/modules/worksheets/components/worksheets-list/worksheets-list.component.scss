@@ -1,0 +1,75 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.template1 {
+    padding-bottom: 80px;
+    .worksheet-title {
+        font-size: 18px;
+        color: rgba($black, 0.6);
+        padding: 0px 15px 15px 15px;
+        font-family: BalooBhaina;
+    }
+    h4 {
+        margin-bottom: 0px;
+    }
+    .middle-container {
+        padding-bottom: 100px !important;
+        background: url('../../../../../assets/common/images/train-track-upper.png'), url('../../../../../assets/common/images/train-track-lower.png');
+        background-position: 0% 0%, 100% 105%;
+        background-repeat: no-repeat;
+        background-size: 25%, 75%;
+    }
+    .list-container {
+        padding-top: 50px
+    }
+    .empty-container {
+        //padding: 100px 0px;
+        font-family: BalooBhaina;
+        transform: translate(1%, 30%);
+        img {
+            padding-bottom: 20px;
+        }
+        .text-content {
+            padding-top: 50px;
+            .heading-blue {
+                font-size: 24px;
+                font-weight: bold;
+                color: $black;
+            }
+            .heading-grey {
+                font-size: 18px;
+                font-weight: bold;
+                color: $black;
+            }
+        }
+    }
+}
+
+.worksheet-title {
+    font-size: 18px;
+    color: rgba($black, 0.6);
+    padding: 0px 15px 15px 15px
+}
+
+h4 {
+    margin-bottom: 0px;
+}
+
+.empty-container {
+    // padding: 100px 0px;
+    transform: translate(1%, 30%);
+    img {
+        padding-bottom: 20px;
+    }
+    .text-content {
+        padding-top: 50px;
+        .heading-blue {
+            font-size: 18px;
+            font-weight: bold;
+            color: $primaryColor;
+        }
+        .heading-grey {
+            font-size: 18px;
+            font-weight: bold;
+            color: $greyishBrown;
+        }
+    }
+}

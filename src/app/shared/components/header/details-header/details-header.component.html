@@ -1,0 +1,14 @@
+<div class="topic-details-header" [ngClass]="templateClass">
+    <div class="header container">
+        <div class="left-header-content pull-left">
+            <div class="topic-detail" [innerHtml]="headerTitle" *ngIf="headerTitle"></div>
+            <div class="measurement-length" [innerHtml]="trailHeaderData" *ngIf="trailHeaderData"></div>
+        </div>
+        <div class="right-header-content pull-right">
+            <div title="close" class="btn-close">
+                <button class="btn btn-primary" (click)="closeReport()">{{ 'close' | translate }}</button>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

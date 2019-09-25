@@ -1,0 +1,22 @@
+<ms-auth-header></ms-auth-header>
+<div class="container">
+  <div class="password-main-page-content">
+    <div class="password-block">
+      <div class="ask-teacher-section">
+        <div class="main-step-section">
+          <div class="ask-teacher-ct img-text-block locksection">
+            <span class="fa fa-lock"></span>
+          </div>
+          <div class="section-item">
+            <p>{{'your account has been locked' | translate}}.</p>
+            <p> {{'your can reset it' | translate: { userCategory: userCategory | translate } }}.</p>
+          </div>
+          <div class="section-item">
+            <input class="details-btn next-button" type="{{ 'submit' | translate}}" value="{{'okay' | translate}}" (click)="goToLogin()">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ms-auth-footer></ms-auth-footer>

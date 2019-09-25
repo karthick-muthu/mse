@@ -1,0 +1,71 @@
+<ms-header [template]="template"></ms-header>
+<!-- <ng-container [ngSwitch]="template">
+  <ng-container *ngSwitchCase="'1'">
+    <ms-topics-list-t1 [template]="template" [for]="for" [isProfileVisible]="isProfileVisible" [gradeData]="gradeData" [higherGradeTopics]="higherGradeTopics"></ms-topics-list-t1>
+  </ng-container>
+  <ng-container *ngSwitchCase="'2'">
+    <ms-topics-list-t2 [template]="template" [for]="for" [isProfileVisible]="isProfileVisible" [gradeData]="gradeData" [higherGradeTopics]="higherGradeTopics"></ms-topics-list-t2>
+  </ng-container>
+</ng-container> -->
+<div [ngClass]="templateClass">
+  <div class="container-fluid gutterSpacing middle-container" [ngClass]="templateClass">
+    <div class="container gutterSpacing loadsToleft" *ngIf="topicList?.length>0">
+      <div class="row filter-form">
+        <div class="col-md-8 col-sm-8 col-12 search-form" style="display: -webkit-flex;">
+          <div class="input-group" *ngIf="permittedNavs?.search && selectedTheme?.toLowerCase() === 'highergrade'">
+            <div class="input-group-addon">
+              <img src="assets/common/images/search-icon.png" />
+            </div>
+            <input type="search" placeholder="{{'search for a topic'| translate}}" [(ngModel)]="listFilter" (keyup)="0">
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-4 col-12 check-box-container" (click)="check()" *ngIf="isRetail" [ngClass]="{'float-right': selectedTheme?.toLowerCase() === 'lowergrade'}"
+          style="display: -webkit-flex;">
+          <div class="checkbox" [ngClass]="{'checked': showHigherGrades }">
+            <input type="checkbox" [(ngModel)]="showHigherGrades">
+            <i class="fa fa-check"></i>
+          </div>
+          <div class="label">{{'show topics for other grades' | translate}}</div>
+        </div>
+      </div>
+      <ng-container *ngIf="selectedTheme?.toLowerCase() === 'highergrade' else otherGrades">
+        <ms-topics-tile-t2 class="topics-container" [for]="for" [search]="listFilter" [topicList]="topicList" [showHigherGrades]="showHigherGrades"
+          [grade]='grade' [priorityContents]="priorityContents"></ms-topics-tile-t2>
+
+      </ng-container>
+
+      <ng-template #otherGrades>
+        <ng-container *ngIf="selectedTheme?.toLowerCase() === 'lowergrade' else otherGrades">
+
+          <ms-topics-tile-t1 class="topics-container" [for]="for" [topicList]="topicList" [showHigherGrades]="showHigherGrades" [grade]='grade'
+            [priorityContents]="priorityContents"></ms-topics-tile-t1>
+
+        </ng-container>
+
+        <ng-template #otherGrades>
+
+          <ms-topics-tile-t1 class="topics-container" [for]="for" [topicList]="topicList" [showHigherGrades]="showHigherGrades" [grade]='grade'
+            [priorityContents]="priorityContents"></ms-topics-tile-t1>
+
+        </ng-template>
+      </ng-template>
+
+
+    </div>
+
+    <div class="container empty-container" *ngIf="topicList?.length==0">
+      <div class="row">
+        <div class="col-md-6 text-center">
+          <img src="assets/common/images/group-14.png" />
+        </div>
+        <div class="col-md-6 text-content">
+          <div class="heading-blue">{{ 'waiting for some topics' | translate }}...</div>
+          <div class="heading-grey">{{'ask your teacher to activate some topics' | translate}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<ms-footer [template]="template"></ms-footer>

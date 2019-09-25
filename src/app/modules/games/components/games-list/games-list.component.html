@@ -1,0 +1,80 @@
+<ms-header [template]="template"></ms-header>
+
+<div [ngClass]="templateClass">
+  <ng-container *ngIf="settings?.allowActivity else gamesNotAllowed">
+    <div *ngFor="let games of gameList; let p =  index">
+      <div *ngIf="(games?.type==='unattempted' || games?.type==='attempted' || games?.type==='locked') && games?.list?.length>0">
+        <div [ngClass]="templateClass">
+          <div class="container-fluid main-container" [ngClass]="{
+            'latest-game':games?.type==='unattempted',
+            'played-game':games?.type==='attempted',
+            'locked-game':games?.type==='locked'
+          }">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-1 col-md-2 col-sm-2 game-status">
+                  <div class="game-icon"></div>
+                  <div class="tile-status">{{ gameStatus | translate }}</div>
+                  <div class="tile-text">{{ 'games' | translate }}</div>
+                </div>
+                <div class="col-lg-11 col-md-10 col-sm-10 dynamic-height" [ngClass]="{ 'full-height':games?.status }">
+
+                  <div *ngIf="games?.type==='unattempted'">
+                    <ms-game-tile [activityList]="games?.list" [activityType]="getActivityType('unattempted')"></ms-game-tile>
+                    <div class="container showBtn" *ngIf="games?.list?.length>4" (click)="toggleShowMoreGames(games?.type,p)">{{ games?.text | translate}}</div>
+                  </div>
+
+                  <div *ngIf="games?.type==='attempted'">
+                    <ms-game-tile [activityList]="games?.list" [activityType]="getActivityType('attempted')"></ms-game-tile>
+                    <div class="container showBtn" *ngIf="games?.list?.length>4" (click)="toggleShowMoreGames(games?.type,p)">{{ games?.text | translate}}</div>
+                  </div>
+
+
+                  <div *ngIf="games?.type==='locked'">
+                    <ms-game-tile [activityList]="games?.list" [activityType]="getActivityType('locked')"></ms-game-tile>
+                    <div class="container showBtn" *ngIf="games?.list?.length>4 " (click)="toggleShowMoreGames(games?.type,p)">{{ games?.text | translate}}</div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-template #gamesNotAllowed>
+    <div *ngIf="!settings?.allowActivity">
+      <ng-container *ngIf="priorityContents?.length>0 else limitExceeded">
+        <div class="container empty-container">
+          <div class="row">
+            <div class="col-md-5 text-center">
+              <img class="locked-img" src="assets/common/images/group-14.png" />
+            </div>
+            <div class="col-md-7 text-content">
+              <div class="heading-blue">{{ 'games locked' | translate }}</div>
+              <div class="heading-grey">{{ 'has been assigned a priority by your teacher' | translate:{ priorityTopic: priorityContents[0]} }}</div>
+              <div class="heading-grey">{{ 'in school you will unlock games after completing this topic' | translate }}</div>
+            </div>
+          </div>
+        </div>
+
+      </ng-container>
+
+      <ng-template #limitExceeded>
+        <div class="container blank-state text-center" *ngIf="priorityContents?.length==0">
+          <figure class="timer">
+            <img src="assets/common/images/stopper-watch.png" alt="stopper-watch" />
+            <figcaption> {{ 'game limit' | translate:{ weeklyActivityTimeLimit:settings?.weeklyActivityDuration } }}</figcaption>
+          </figure>
+          <p class="blank-state-text">{{ 'you have crossed your weekly limit'| translate :{ weeklyActivityTimeLimit: settings?.weeklyActivityDuration
+            } }}
+          </p>
+        </div>
+      </ng-template>
+    </div>
+  </ng-template>
+</div>
+
+<ms-footer [template]="template"></ms-footer>

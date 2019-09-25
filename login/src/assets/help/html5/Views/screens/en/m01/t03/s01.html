@@ -1,0 +1,251 @@
+<style>
+	
+	/*Scene 1*/
+	
+	.paragraph-text1{
+		font-size: 30px;
+		font-weight: bold;
+	}
+	
+	.character1{
+		position: absolute;
+		display: block;
+		z-index: 3;
+		top: 135px;
+		left: 3%;
+	}
+	
+	.screenshot{
+		position: absolute;
+		display: block;
+		z-index: 2;
+		right: 12px;
+		top: 40px;
+	}
+	
+	.callout_01{
+		width: 310px;
+		height: 116px;
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 58%;
+		left: 38%;
+		background: #fff;
+		border: #dc3509 solid 10px;
+		border-radius: 20px;
+		padding: 30px 0px 0px 0px;
+		text-align: center;
+		/*box-shadow: 0px 25px 18px rgba(0, 0, 0, 0.2);*/
+	}
+
+	
+	.callout_pointer_01{
+		content: "";
+		display: block;
+		position: absolute;
+		z-index: 4;
+		top: 59%;
+		left: -45px;
+		width: 0;
+		border-width: 75px 18px 0px;
+		border-style: solid;
+		border-color: #db3407 transparent;
+		transform: rotate(110deg);
+		/*box-shadow: 0px 25px 18px rgba(0, 0, 0, 0.2);*/
+	}
+
+	
+	.char_img{
+		position: absolute;
+		display: block;
+		z-index: 1;
+	}
+	
+	.grass{
+		position: absolute;
+		display: block;
+		z-index: 2;
+		top: 182px;
+		left: 55px;
+	}
+	
+	.speachBubble{
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 58%;
+		left: 38%;
+	}
+	
+	
+	/*Scene 2*/
+	
+	.callout_02{
+		width: 310px;
+		height: 116px;
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 21%;
+		left: 41%;
+		background: #fff;
+		border: #dc3509 solid 10px;
+		border-radius: 20px;
+		padding: 30px 0px 0px 0px;
+		text-align: center;
+		/*box-shadow: 0px 25px 18px rgba(0, 0, 0, 0.2);*/
+	}
+
+	
+	.callout_pointer_02{
+		content: "";
+		display: block;
+		position: absolute;
+		z-index: 4;
+		top: 80px;
+		left: 5px;
+		width: 0;
+		border-width: 110px 22px 0px;
+		border-style: solid;
+		border-color: #db3407 transparent;
+		transform: rotate(35deg);
+		/*box-shadow: 0px 25px 18px rgba(0, 0, 0, 0.2);*/
+	}
+	
+	.btn_01 {
+		    width: 319px;
+		height: 230px;
+		display: block;
+		position: absolute;
+		z-index: 3;
+		bottom: 162px;
+		left: 3.6%;
+		cursor: pointer;
+		border: #ffff00 3px solid;
+		border-radius: 20px;
+	}
+	
+	.cutOutCircle_01{
+		width: 800px;
+		width: 600px;
+		z-index: 3;
+		margin:0 auto;
+		overflow:hidden;
+	}
+	
+	.cutOutCircle_01:after{
+		content: '';
+		position: absolute;
+		left: 4%;
+		top: 35%;
+		border-radius: 10px;
+		width: 313px;
+		height: 225px;
+		box-shadow: 0px 0px 0px 800px rgba(0,0,0,0.5);
+		-webkit-box-shadow: 0px 0px 0px 800px rgba(0,0,0,0.5);
+	}
+	
+	.speachBubble2{	
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 19%;
+		left: 42%;
+	}
+	
+	.callout_03{
+		    width: 380px;
+		height: 116px;
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 145px;
+		left: 35px;
+		background: #fff;
+		border: #dc3509 solid 10px;
+		border-radius: 20px;
+		padding: 30px 0px 0px 0px;
+		text-align: center;
+	}
+	.speachBubble3{	
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 19%;
+		left: 42%;
+	}
+
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			var animationEndCheck = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';
+
+			/*$('#div_01').removeClass('displayNone')
+			$('#div_01').addClass('displayBlock')*/
+
+			$('#content01_01').addClass('visibilityVisible animated oneSecondDuration bounceInDown').one(animationEndCheck,function(){
+				$('#content01_02').addClass('visibilityVisible animated oneSecondDuration fadeIn')
+			})
+			$('#content01_02').one(animationEndCheck,function(){
+				$('#content01_03').addClass('visibilityVisible animated oneSecondDuration bounceInRight')
+			})
+			$('#content01_02').one(animationEndCheck,function(){
+				setTimeout(function(){ 
+				$('#div_01').removeClass('displayBlock')
+		   		$('#div_01').addClass('displayNone')
+
+		   		$('#div_02').removeClass('displayNone')
+				$('#div_02').addClass('displayBlock')
+
+				$('#content02_00').addClass('visibilityVisible animated characterDelay bounceInRight oneSecondDuration').one(animationEndCheck,function(){
+					$('#content02_00').removeClass('visibilityVisible animated characterDelay bounceInRight oneSecondDuration').addClass('visibilityVisible animated characterDelay5 fadeOut').one(animationEndCheck,function(){
+						$('#content02_01').addClass('visibilityVisible animated fadeIn')
+					})
+				})
+				
+				}, 3000);
+			})
+			
+			$('#content02_01').one(animationEndCheck,function(){
+				$('#content02_02').addClass('visibilityVisible animated oneSecondDuration bounceInRight')
+			})
+			$('#content02_02').one(animationEndCheck,function(){
+				$('#content02_03').addClass('visibilityVisible animated flash infiniteAnimation')
+			})
+
+		});
+	</script>
+
+
+<div id="div_01" class="Page-BG displayBlock" ng-style="{'background-image': 'url(' + CourseContent.pageBG_01 + ')'}">
+    <div class="col-sm-12 page-content">
+	    <span id="content01_03" class="speachBubble visibilityHidden">
+	    	 <div class="callout_01"><p class="paragraph-text1" bind-html-compile="CourseContent.paragraph_text1_1"></p></div>
+			<div class="callout_pointer_01"></div>
+	    </span>      
+		<div class="col-sm-12 charBoxBg">
+			<div class="character1">
+				<img id="content01_01" class="char_img visibilityHidden" src="../course_images/pages/m01/t01/p01/img_02.png">
+				<img class="grass animated fadeIn _1" src="../course_images/pages/m01/t01/p01/img_04.png">
+			</div>	
+		</div>    	
+		<div class="screenshot"><img id="content01_02" class="visibilityHidden" src="../course_images/pages/m01/t03/p01/screenshot_01.png"></div>
+    </div>
+</div>
+
+<div id="div_02" class="Page-BG displayNone" ng-style="{'background-image': 'url(' + CourseContent.pageBG_02 + ')'}">
+    <div class="col-sm-12 page-content">  
+		<span id="content02_00" class="speachBubble3">
+			<div class="callout_03"><p class="paragraph-text1" bind-html-compile="CourseContent.paragraph_text1_3"></p></div>
+		</span>    
+        <span id="content02_02" class="speachBubble2 visibilityHidden">
+		<div class="callout_02"><p class="paragraph-text1" bind-html-compile="CourseContent.paragraph_text1_2"></p></div>
+		<div class="callout_pointer_02"></div> 	
+		</span>
+		<div id="content02_01" class="cutOutCircle_01 visibilityHidden"></div>
+		<div id="content02_03" class="btn_01 visibilityHidden" ng-click="gotoNextPage()"></div>
+	
+    </div>
+</div>

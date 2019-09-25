@@ -1,0 +1,7 @@
+{
+  "contentID": "tt001",
+  "contentType": "question",
+  "imageName": "test.jpg",
+  "imagePath": "https://defaultImage.jpg",
+  "typeErrorLog": "imageNotLoading"
+}

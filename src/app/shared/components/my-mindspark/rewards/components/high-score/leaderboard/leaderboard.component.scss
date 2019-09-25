@@ -1,0 +1,229 @@
+@import '../../../../../../../../assets/common/styles/global.variables.scss';
+.list-group-item {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 0px;
+}
+
+.list-group {
+  font-size: 0.95rem;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.list-group-header {
+  list-style: none;
+  padding: 12px 0 2px 0;
+  border-bottom: 0px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  label {
+    text-transform: capitalize;
+    padding-left: 20px;
+  }
+}
+
+.round-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  padding-top: 10px;
+  display: block;
+  float: left;
+  position: relative;
+  z-index: 9;
+}
+
+.plus {
+  background: #dbeef7;
+  color: #008fd5;
+  font-size: 14px;
+  border-radius: 20px;
+  height: 24px;
+  width: 24px;
+  padding: 4px;
+}
+
+.list-name {
+  padding: 10px 0px 0px 15px;
+  display: flex;
+  margin-top: 0px !important;
+  color: rgba($black, 0.56);
+  float: left;
+}
+
+.higlighted-user {
+  background: #fff3bb !important;
+  .round-circle {
+    background: $yellow !important;
+    color: $greyishBrownShadow !important;
+  }
+  .list-name {
+    font-size: 18px;
+    margin-top: -3px !important;
+    .more {
+      margin-top: -1px;
+    }
+  }
+}
+
+.more {
+  background: rgba(148, 214, 218, 0.5);
+  color: #008fd5;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  text-align: center;
+  float: right;
+  display: block;
+  position: relative;
+  margin-left: 4px;
+  font-size: 14px;
+  margin-top: -5px;
+  cursor: pointer;
+  .more-name {
+    left: -77px !important;
+    top: 32px !important;
+    background: $white;
+    width: 180px;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px 0 rgba($black, 0.5);
+    border: solid 1px $morningGlory;
+    padding: 0px;
+    ul {
+      list-style-type: none;
+      max-height: 130px;
+      padding: 10px;
+      overflow: auto;
+      li {
+        font-size: 14px;
+        color: rgba($black, 0.6);
+      }
+    }
+    ul::-webkit-scrollbar {
+      width: 6px;
+    }
+    ul::-webkit-scrollbar-track {
+      background: $white;
+    }
+    ul::-webkit-scrollbar-thumb {
+      background: rgba($black, 0.1);
+    }
+  }
+}
+
+.more-name:after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 8px solid #94d6da;
+  top: -8px;
+  right: 45%;
+}
+
+.dot-pattern-li {
+  display: block;
+  clear: both;
+  background: $white;
+  font-size: 7px;
+  color: rgba($black, 0.24);
+  padding: 10px 0px 8px 38px;
+  margin-top: -10px;
+  position: absolute;
+  font-size: 28px;
+  /* -webkit-transform: rotate(-90deg); */
+  /* transform: rotate(-90deg); */
+  top: -20px;
+  color: rgba($black, 0.4);
+  left: 0px;
+  z-index: 0;
+  background: $white;
+  width: 100%;
+  border-bottom: 1px solid $gray;
+}
+
+span.dots {
+  // position: absolute;
+  // font-size: 28px;
+  // -webkit-transform: rotate(-90deg);
+  // -moz-transform: rotate(-90deg);
+  // -ms-transform: rotate(-90deg);
+  // transform: rotate(-90deg);
+  // top: -20px;
+  // color: rgba($black, 0.4);
+  position: absolute;
+  top: -12px;
+  color: rgba($black, 0.15);
+  left: 0px;
+  z-index: 0;
+  background: $white;
+  width: 100%;
+  border-bottom: 1px solid rgba($black, 0.15);
+  padding: 10px 4px 6px 36px;
+  font-size: 7px;
+}
+
+@media (max-width:949px) {
+  span.dots {
+    padding: 10px 4px 6px 26px;
+  }
+}
+
+.template1.sparkies-style {
+  border: 1px solid $dark-grrenBlue;
+  font-family: "BalooBhaina";
+}
+
+.template1 {
+  .list-group-header {
+    background: $dark-grrenBlue !important;
+  }
+  .round-circle {
+    background: $dark-grrenBlue;
+  } // span.dots {
+  //   left: 28px !important;
+  // }
+  .list-number {
+    color: rgba($black, 0.56);
+    font-size: 20px;
+  }
+  .list-name {
+    font-size: 20px;
+  }
+  .higlighted-user {
+    .list-number {
+      color: $yellow;
+    }
+    .list-name {
+      color: $black;
+      font-size: 24px;
+    }
+  }
+}
+
+.template1.sparkies-style {
+  margin-bottom: 20px;
+}
+
+li.list-group-item:nth-child(odd) {
+  background: #f6f6f6;
+}
+
+li.list-group-item:nth-child(even) {
+  background: $white;
+}
+
+ul {
+  margin: 0px;
+}
+
+.dots-li {
+  padding-top: 45px;
+}

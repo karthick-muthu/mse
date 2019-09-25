@@ -1,0 +1,262 @@
+<ms-details-header [trailHeaderData]="topicTrailHeaderData?.topicName" [from]="from"></ms-details-header>
+<!-- <ng-container [ngSwitch]="template">
+  <ng-container *ngSwitchCase="'1'">
+    <ms-topic-trail-t2 [template]="template" [topicTrailData]="topicTrailData"></ms-topic-trail-t2>
+  </ng-container>
+  <ng-container *ngSwitchCase="'2'">
+    <ms-topic-trail-t2 [template]="template" [topicTrailData]="topicTrailData"></ms-topic-trail-t2>
+  </ng-container>
+</ng-container> -->
+
+<ng-container *ngIf="trailList?.length>0 else blankState">
+    <div class="container-fluid topic-trails-container" [ngClass]="templateClass">
+        <div class="container question-section">
+            <div class="pull-left">
+                <div class="question-attempts" style="display: -webkit-flex;">
+                    <div *ngIf="topicDetails?.totaltAttempts">
+                        <div class="section" *ngIf="topicDetails?.totaltAttempts===1">
+                            {{ topicDetails?.totaltAttempts }} {{ 'total attempt' | translate }}</div>
+                        <div class="section" *ngIf="topicDetails?.totaltAttempts>1"> {{ topicDetails?.totaltAttempts }}
+                            {{ 'total attempts' | translate }}</div>
+                    </div>
+                    <div *ngIf="topicDetails?.totalQuestion">
+                        <div class="section" *ngIf="topicDetails?.totalQuestion===1"> {{ topicDetails?.totalQuestion }}
+                            {{'question done' | translate}} </div>
+                        <div class="section" *ngIf="topicDetails?.totalQuestion>1"> {{ topicDetails?.totalQuestion }}
+                            {{'questions done' | translate}} </div>
+                    </div>
+                    <span class="fa fa-loader"></span>
+                </div>
+            </div>
+            <div class="question-info" style="display: -webkit-flex;">
+                <div class="accuracy">{{ topicDetails?.accuracy }}% {{'accuracy' | translate}}</div>
+                <div class="question-count-details">
+                    <i class="icon fa fa-check"></i>
+                    <span class="count">{{ topicDetails?.totalCorrect }}</span>
+                </div>
+                <div class="question-count-details">
+                    <i class="icon fa fa-times" aria-hidden="true"></i>
+                    <span class="count">{{ topicDetails?.totalWrong }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid container-fluid-bg" [ngClass]="templateClass">
+        <div class="container spacingBottom">
+            <div class="questions-info-row" style="display: -webkit-flex;">
+                <div *ngIf="topicDetails?.attemptNumbers">
+                    <div class="attempt-count">
+                        {{ 'showing records total' | translate:{ showingFrom: topicDetails?.showingFrom, showingTo:topicDetails?.showingTo, totalRecords:topicDetails?.totalRecords } }}
+                    </div>
+                    <div class="attempt-count">
+
+                        <ng-container *ngIf="topicDetails?.attemptNumbers?.length === 1 else moreThan1Attempts">
+                            {{ 'for attempt no' | translate:{ attemptNumber: topicDetails?.attemptNumbers[0] } }}
+                        </ng-container>
+
+                        <ng-template #moreThan1Attempts>
+                            <div class="attempt-count" *ngIf="topicDetails?.attemptNumbers?.length > 1">
+                                {{ 'for attempts no' | translate:{ attemptNumberAtA: topicDetails?.attemptNumbers[0], attemptNumberAtB: topicDetails?.attemptNumbers[1] } }}
+                            </div>
+                        </ng-template>
+
+                    </div>
+                </div>
+
+                <div class="col topictrails-pagination" *ngIf="totalPages>1">
+
+                    <ngb-pagination [collectionSize]="collectionSize" aria-label="Default pagination"
+                        (pageChange)="loadPage($event)" [page]="currentPage" [pageSize]="totalPagesCount"
+                        [rotate]="true" [maxSize]="maxPageSize" [ellipses]="false"
+                        [ngClass]="{ 'pagination-display-none-first':(currentPage<4), 'pagination-display-none-last':(totalPages===currentPage) || (totalPages<5)  } ">
+                    </ngb-pagination>
+                </div>
+                <div class="col check-box-container" style="display: -webkit-flex;">
+
+                    <ng-container *ngIf="settings?.showWrongAnswer">
+                        <ng-container *ngIf="showWrongAnswers else noWrongAnswers">
+                            <div class="label wrong-answer-text" (click)="check()">
+                                {{'show wrongly answered questions' | translate}}</div>
+                            <div class="checkbox" [ngClass]="{'checked': showWronglyAnsweredQuestions }"
+                                (click)="check()">
+                                <input type="checkbox" [(ngModel)]="showWronglyAnsweredQuestions">
+                                <i class="fa fa-check"></i>
+                            </div>
+                        </ng-container>
+                        <ng-template #noWrongAnswers>
+                            <div class="label">
+                                {{ 'no wrong answers on this page' | translate}}
+                            </div>
+                        </ng-template>
+                    </ng-container>
+
+                </div>
+            </div>
+
+
+
+            <div *ngFor="let trail of displayContent | filterWrong:showWronglyAnsweredQuestions; let i=index">
+                <div class="question-container concept"
+                    *ngIf="!showWronglyAnsweredQuestions || (showWronglyAnsweredQuestions && trail?.contentType==='question')">
+                    <div class="row question-header">
+                        <div class="tag-status" *ngIf="trail?.contentType?.toLowerCase() !== 'question' || (trail?.contentType?.toLowerCase() === 'question' && 
+            (trail?.contentMode?.toLowerCase() === 'wildcard' || 
+            trail?.contentMode?.toLowerCase() === 'challenge'))">
+                            <p class="question-type" [ngClass]="{
+                        'timetest':trail?.contentType?.toLowerCase()==='timedtest', 
+                        'diagnostic':trail?.contentType?.toLowerCase() ==='diagnostic', 
+                        'assessment':trail?.contentType?.toLowerCase() ==='assessment', 
+                        'practice':trail?.contentType?.toLowerCase() ==='practice', 
+                        'activity':trail?.contentType?.toLowerCase() ==='activity', 
+                        'challenge':(trail?.contentMode?.toLowerCase() ==='challenge' && trail?.contentType?.toLowerCase() === 'question'), 
+                        'wildcard':(trail?.contentMode?.toLowerCase() ==='wildcard' && trail?.contentType?.toLowerCase() === 'question')
+                      }" style="display: -webkit-flex;">
+                                <span *ngIf="trail?.contentType?.toLowerCase() === 'timedtest'"
+                                    class="timedtest">{{ 'timed test' | translate }}</span>
+                                <span *ngIf="trail?.contentType?.toLowerCase() === 'diagnostic'"
+                                    class="diagnostic">{{ 'diagnostic' | translate }}</span>
+                                <span *ngIf="trail?.contentType?.toLowerCase() === 'assessment'"
+                                    class="assessment">{{ 'assessment' | translate }}</span>
+                                <span *ngIf="trail?.contentType?.toLowerCase() === 'practice'"
+                                    class="practice">{{ 'practice' | translate }}</span>
+                                <span *ngIf="trail?.contentType?.toLowerCase() === 'activity'"
+                                    class="activity">{{ 'activity' | translate }}</span>
+                                <span
+                                    *ngIf="( trail?.contentType?.toLowerCase() === 'question' && trail?.contentMode?.toLowerCase() === 'challenge')"
+                                    class="challenge">{{ 'challenge question' | translate }}</span>
+                                <span
+                                    *ngIf="( trail?.contentType?.toLowerCase() === 'question' && trail?.contentMode?.toLowerCase() === 'wildcard')"
+                                    class="wildcard">{{ 'wildcard question' | translate }}</span>
+                                <span class="arrow"></span>
+                            </p>
+                        </div>
+                        <div *ngIf="trail?.contentType?.toLowerCase() === 'question' &&  (trail?.contentMode?.toLowerCase() !== 'challenge' && trail?.contentMode?.toLowerCase() !== 'wildcard') "
+                            class="caption-title col text-left time-spend">
+                            <div>{{ 'aconcept' | translate }}:
+                                <span [msMaths]="trailList[i]?.concept"></span>
+                            </div>
+                        </div>
+                        <div *ngIf="(trail?.contentMode?.toLowerCase() !== 'wildcard')"
+                            class="time-spend col text-right">
+                            <i class="fa fa-clock-o"></i> {{ 'time taken' | translate }}:
+                            {{ trail?.userAnswer?.timeTaken | minutesSeconds }}</div>
+                    </div>
+
+
+                    <div class="question row">
+                        <p class="col-sm-20  col-md-11  text-left question-type">
+                            <span class="option  question-count col">
+                                <strong class="option-key">{{ topicDetails?.showingFrom + trail?.index }}</strong>
+                            </span>
+                            <ng-container *ngIf="trail?.contentType!=='question'">
+                                <span [msMaths]="trail?.name"></span>
+                            </ng-container>
+                            <span [msMaths]="trail?.questionField"></span>
+                        </p>
+                        <div class="col-md-1 col-sm-2 status-symbol text-right">
+                            <div class="question-state right" *ngIf="trail?.userAnswer?.result==='pass'"
+                                style="display: -webkit-flex;">
+                                <i class="fa fa-check"></i>
+                            </div>
+                            <div class="question-state wrong" *ngIf="trail?.userAnswer?.result==='fail'"
+                                style="display: -webkit-flex;">
+                                <i class="fa fa-times"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="trail?.contentType?.toLowerCase() !== 'question'"
+                        class="caption-title col text-left time-spend">
+                        <div
+                            *ngIf="(trail?.contentType?.toLowerCase() !== 'assessment' && trail?.contentType?.toLowerCase() !== 'diagnostic')">
+                            {{ 'aconcept' | translate }}:
+                            <span [msMaths]="trailList[i]?.concept"></span>
+                        </div>
+                    </div>
+                    <ng-container *ngIf="trail?.templateContent?.toLowerCase()!=='interactive'">
+                        <ng-container *ngIf="trail?.contentType==='question' else notAQuestion">
+                            <div class="options row">
+                                <div class="option col-md-6"
+                                    *ngFor="let choice of trail?.responseElements?.mcqPattern?.choices;let i=index">
+                                    <div class="option-key">{{ generateOptionString(i) }}</div>
+                                    <span [msMaths]="choice?.value" class="choice-items"></span>
+                                </div>
+                            </div>
+                            <div class="row answer result-section">
+                                <div class="col">
+                                    <div class=" answer-title">{{ 'your answer' | translate }}</div>
+                                    <div class="selected-answer" *ngIf="trail?.userAnswer">
+                                        <ng-container
+                                            *ngIf="trail?.templateContent?.toLowerCase() === 'mcq' ; else notAMCQ">
+                                            <ng-container
+                                                *ngIf="trail?.userAnswer?.result?.toLowerCase() === 'skip' else notSkipped">
+                                                {{ trail?.userAnswer?.userAnswer }}
+                                            </ng-container>
+                                            <ng-template #notSkipped>
+                                                {{ generateOptionString(trail?.userAnswer?.userAnswer) }}
+                                            </ng-template>
+                                        </ng-container>
+                                        <ng-template #notAMCQ>
+                                            <span [msMaths]="trail?.userAnswer?.userAnswer"></span>
+                                        </ng-template>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div *ngIf="trailList[i] && trailList[i].settings.showAnswer">
+                                        <div class=" answer-title ">{{ 'right answer' | translate }}</div>
+                                        <div class="selected-answer " *ngIf="trail?.correctAnswer ">
+                                            <ng-container
+                                                *ngIf="trail?.templateContent?.toLowerCase()==='mcq' ; else notAMCQ ">
+                                                {{ generateOptionString(trail?.correctAnswer) }}
+                                            </ng-container>
+                                            <ng-template #notAMCQ>
+                                                <span [msMaths]="trail?.correctAnswer "></span>
+                                            </ng-template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                        <ng-template #notAQuestion>
+                            <ng-container *ngIf="trail?.contentType==='activity' else noActivity ">
+                            </ng-container>
+                            <ng-template #noActivity>
+                                <div class="row result-section ">
+                                    <div class="accuracy ">
+                                        <div class="label ">{{ 'no of qs' | translate }}</div>
+                                        <div class="count ">{{ trail?.userAnswer?.totalQuestion }}</div>
+                                    </div>
+                                    <div class="accuracy ">
+                                        <div class="label ">{{ 'accuracy' | translate }}</div>
+                                        <div class="count ">{{ trail?.userAnswer?.accuracy }}%</div>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </ng-template>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="col " *ngIf="totalPages>1">
+                <ngb-pagination [collectionSize]="collectionSize" aria-label="Default pagination"
+                    (pageChange)="loadPage($event)" [page]="currentPage" [pageSize]="totalPagesCount" [rotate]="true"
+                    [maxSize]="maxPageSize" [ellipses]="false"
+                    [ngClass]="{ 'pagination-display-none-first':(currentPage<4), 'pagination-display-none-last':(totalPages===currentPage) || (totalPages<5)  } ">
+                </ngb-pagination>
+            </div>
+        </div>
+    </div>
+</ng-container>
+<ng-template #blankState>
+    <div class=" container trail-blank-state" *ngIf="trailList?.length===0" style="display: -webkit-flex;">
+        <div class="row">
+            <div class="col col-md-6 blank-img">
+                <img src="assets/common/images/trail-blank-state.png" />
+            </div>
+            <div class=" col col-md-6 blank-text">
+                <h5>{{ 'try some questions first' | translate }}</h5>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ms-footer [template]="template"></ms-footer>

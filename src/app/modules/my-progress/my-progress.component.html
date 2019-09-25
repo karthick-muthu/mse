@@ -1,0 +1,14 @@
+<ms-header [template]="template"></ms-header>
+<div class="container category-container" [ngClass]="templateClass">
+  <div class="row" style="display: -webkit-flex;">
+    <ms-weekly-progress class="col-lg-6 col-md-12 col-sm-12" *ngIf="myProgress?.currentWeekReport" [reportType]="'current'" [weeklyData]="myProgress?.currentWeekReport"></ms-weekly-progress>
+    <ms-weekly-progress class="col-lg-6 col-md-12 col-sm-12" *ngIf="myProgress?.previousWeekReport" [reportType]="'previous'"
+      [weeklyData]="myProgress?.previousWeekReport"></ms-weekly-progress>
+  </div>
+  <div class="row">
+    <div class="col">
+      <ms-monthly-progress [myProgress]="myProgress"></ms-monthly-progress>
+    </div>
+  </div>
+</div>
+<ms-footer [template]="template"></ms-footer>

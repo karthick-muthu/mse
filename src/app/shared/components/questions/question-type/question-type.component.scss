@@ -1,0 +1,74 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+p {
+    margin-bottom: 0px;
+}
+
+.display-none {
+    display: none;
+}
+
+.question-type {
+    padding: 4px 20px;
+    left: -23px;
+    top: 0;
+    position: relative;
+    width: 100%;
+    color: white;
+    border-top-right-radius: 13px;
+    font-size: 14px;
+    border-bottom-right-radius: 13px;
+    font-family: BalooBhaina;
+    font-weight: bold;
+    height: 26px;
+    .arrow {
+        width: 0;
+        height: 0;
+        line-height: 0;
+        border-left: 8px solid transparent;
+        top: 100%;
+        left: 0;
+        position: absolute;
+    }
+}
+
+.time-test {
+    background: $questionTypeTimeTest;
+    .arrow {
+        border-top: 10px solid $questionTypeTimeTestArrow;
+    }
+}
+
+.challenge-question {
+    background: $questionTypeChallenge;
+    .arrow {
+        border-top: 10px solid $questionTypeChallengeArrow;
+    }
+}
+
+.wild-card-question {
+    background: $questionTypeWlildCard;
+    .arrow {
+        border-top: 10px solid $questionTypeWlildCardArrow;
+    }
+}
+
+.higher-level-question {
+    background: $questionTypeHigherLevel;
+    .arrow {
+        border-top: 10px solid $questionTypeHigherLevelArrow;
+    }
+}
+
+.practice-question {
+    background: $questionTypePractice;
+    .arrow {
+        border-top: 10px solid $questionTypePracticeArrow;
+    }
+}
+
+.worksheet {
+    background: $questionTypeWorksheet;
+    .arrow {
+        border-top: 10px solid $questionTypeWorksheetArrow;
+    }
+}

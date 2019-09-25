@@ -1,0 +1,64 @@
+<div class="main-btn-container">
+    <ms-vernacular-btn *ngIf="hasTranslation"></ms-vernacular-btn>
+    <div class="btns-container-fixed" [ngClass]="templateClass">
+        <ul>
+            <li class="btns-stages">
+                <ng-container *ngIf="result?.noMoreAttempts || activateNext || (result?.result === true || result?.result === 'correct'); then nextQuestion; else actionQuestion"></ng-container>
+                <ng-template #nextQuestion>
+                    <button *ngIf="from !== 'worksheet' && from !== 'games'" class="btn-container next-btn" (click)="loadNext()" [disabled]="disableNext">
+            <div class="btn">
+              <i class="fa fa-arrow-right"></i>
+            </div>
+            <span>{{'next' | translate}}</span>
+          </button>
+                </ng-template>
+                <ng-template #actionQuestion>
+                    <ng-container *ngIf="questionTemplate?.toLowerCase() === 'game' ; else submitQuestion">
+                        <ng-container *ngIf="question?.contentType?.toLowerCase() === 'activity' && pedagogyType === 'topic'">
+                            <button class="btn-container skip-btn" (click)="skipContent()">
+                <div class="btn">
+                  <i class="fa fa-arrow-right"></i>
+                </div>SKIP
+              </button>
+                        </ng-container>
+                    </ng-container>
+                    <ng-template #submitQuestion>
+                        <button *ngIf="showSubmitButton()" class="btn-container" (click)="submitFormAnswer()" [ngClass]="{'submit-btn': from !== 'worksheet', 'next-btn': from === 'worksheet'}" [disabled]="disableSubmit">
+              <div class="btn">
+                <i class="fa fa-arrow-right"></i>
+              </div>
+              <span *ngIf="from !== 'worksheet'">{{ 'submit' | translate }}</span>
+            </button>
+                    </ng-template>
+
+                </ng-template>
+                <button *ngIf="from == 'worksheet'" class="btn-container" (click)="submitFormAnswer()" [ngClass]="{'submit-btn': from !== 'worksheet', 'next-btn': from === 'worksheet'}" [disabled]="disableSubmit">
+                    <div class="btn">
+                        <i class="fa fa-arrow-right"></i>
+                    </div>
+                    <span>{{ 'next' | translate }}</span>
+                </button>
+            </li>
+            <li class="other-btns" *ngIf="question?.permittedNavs?.showComment || question?.permittedNavs?.showFavorites">
+                <div class="btn-comment-box other-btn" *ngIf="question?.permittedNavs?.showComment">
+                    <button type="button" (click)="commentActive()" class="btn-comment">
+            <i class="fa fa-commenting"> </i>
+          </button>
+                </div>
+                <div *ngIf="question?.contentType?.toLowerCase() !== 'activity' && questionTemplate!== 'timedtest' ">
+                    <div class="btn-favourite-box other-btn" *ngIf="question?.permittedNavs?.showFavorites">
+                        <button type="button" (click)="addToFavourities()" [ngClass]="{'btn-active': isFavourite }" class="btn-favourite">
+              <i class="fa fa-star"></i>
+            </button> {{question.contentMode}}
+                    </div>
+                </div>
+            </li>
+            <li class="btns-stages" *ngIf="displayQuitWorksheetButton()">
+                <button class="btn-container submit-btn" (click)="confirmQuitWorksheet()">
+          <div class="btn">
+            <i class="fa fa-arrow-right"></i>
+          </div>{{ 'submit' | translate }}</button>
+            </li>
+        </ul>
+    </div>
+</div>

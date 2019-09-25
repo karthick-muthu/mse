@@ -1,0 +1,73 @@
+<div class="container my-achievements" *ngIf="userRewardInfo">
+  <div class="row achievements-row">
+    <div class="col-lg-2 col-md-2">
+      <div class="profile-img">
+        <img *ngIf="profilePic" [src]="profilePic" (error)="imageError()" alt="" title="" />
+      </div>
+
+    </div>
+    <div class="col-lg-7 col-md-6">
+      <h5 class="title">{{'my achievements' | translate }}</h5>
+      <div class="">
+
+        <div class="col-sm-4 achievements-col" style="display: -webkit-flex;">
+          <img src="assets/common/images/sparkiecoin.png" alt="" title="" />
+          <div class="col-text">
+            <div class="points">
+
+              <ng-container *ngIf="userRewardInfo?.sparkies !== null && userRewardInfo?.sparkies !== undefined && userRewardInfo?.sparkies > 0 else showZeroSparkies">
+                {{ userRewardInfo?.sparkies }}
+              </ng-container>
+
+              <ng-template #showZeroSparkies> 0 </ng-template>
+            </div>
+            <div class="text">{{'sparkies' | translate}}</div>
+          </div>
+        </div>
+        <div class="col-sm-4 achievements-col" style="display: -webkit-flex;">
+          <img src="assets/common/images/ms-icons/shield-new.png" alt="" title="" />
+          <div class="col-text">
+            <div class="points">
+              <ng-container *ngIf="userRewardInfo?.shields !== null && userRewardInfo?.shields !== undefined && userRewardInfo?.shields > 0 else showZeroShields">
+                {{ userRewardInfo?.shields }}
+              </ng-container>
+
+              <ng-template #showZeroShields> 0 </ng-template>
+            </div>
+            <div class="text">{{'shields' | translate}}</div>
+          </div>
+        </div>
+        <div class="col-sm-4 achievements-col" style="display: -webkit-flex;">
+          <img src="assets/common/images/ms-icons/achievement.png" alt="" title="" />
+          <div class="col-text">
+            <div class="points">
+              <ng-container *ngIf="userRewardInfo?.achivements !== null && userRewardInfo?.achivements !== undefined && userRewardInfo?.achivements > 0 else showZeroAchievements">
+                {{ userRewardInfo?.achivements }}
+              </ng-container>
+
+              <ng-template #showZeroAchievements> 0 </ng-template>
+
+            </div>
+            <div class="text">{{'achievements' | translate}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-4 sparkie-champ">
+      <ng-container *ngFor="let otherRewardsKey of otherRewardsKeys">
+        <div class="sparkie-badge" *ngIf="otherRewards[otherRewardsKey] > 0">
+          <span class="badge-count" *ngIf="otherRewards[otherRewardsKey] > 1">x{{ otherRewards[otherRewardsKey] }}</span>
+          <img [src]="achivementCompletionImage[otherRewardsKey]" />
+        </div>
+      </ng-container>
+      <!-- <div class="sparkie-badge">
+        <span class="badge-count">2</span>
+        <img src="assets/common/images/sparkie-badge.png" alt="" title="" />
+      </div>
+      <div class="sparkie-badge">
+        <span class="badge-count">3</span>
+        <img src="assets/common/images/effort-badge.png" alt="" title="" />
+      </div> -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.questions-footer {
+  background: $secondaryColor;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 11px;
+  font-weight: bold;
+  position: fixed;
+  z-index: 9;
+  display: block;
+  bottom: 0px;
+  width: 100%;
+  padding: 4px 30px;
+}
+
+@media screen and(max-width:1020px) {
+  .questions-footer {
+    position: absolute;
+  }
+}
+
+.textAlign-left {
+  text-align: left;
+}
+
+.textAlign-right {
+  text-align: right;
+}
+
+@media (max-width:1020px) {
+  .row.footer-row {
+    display: grid;
+    text-align: center;
+    .textAlign-left {
+      text-align: center;
+    }
+    .textAlign-right {
+      text-align: center;
+    }
+  }
+}

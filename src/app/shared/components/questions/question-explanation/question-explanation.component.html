@@ -1,0 +1,60 @@
+<div *ngIf="showExplanation()" class="question-explanation" [ngClass]="{
+      'wrong-state': (result?.result === false || result?.result === 'incorrect')&&!isContentPreview,
+      'right-state': (result?.result === true || result?.result === 'correct')&&!isContentPreview,
+      'fullWidth': (viewType == 'fullwidth'), 'halfWidth': (viewType == 'halfwidth'),
+      'margin-top': isContentPreview }">
+  <div class="answer-state" *ngIf="!isContentPreview" [ngClass]="{ 
+        'wrong': (result?.result === false || result?.result === 'incorrect'), 
+        'right': (result?.result === true || result?.result === 'correct')}">
+    <i class="fa" [ngClass]="{
+          'fa-times': (result?.result === false || result?.result === 'incorrect'), 
+          'fa-check': (result?.result === true || result?.result === 'correct')}">
+    </i>
+  </div>
+  <div class="answer-state-cp" *ngIf="isContentPreview" [ngClass]="{ 
+        'wrong': (result?.result === false || result?.result === 'incorrect'), 
+        'right': (result?.result === true || result?.result === 'correct')}">
+    <i class="fa" [ngClass]="{
+              'fa-times': (result?.result === false || result?.result === 'incorrect'), 
+              'fa-check': (result?.result === true || result?.result === 'correct')}">
+    </i>
+  </div>
+  <div *ngIf="answer !== null && answer !== undefined && !isContentPreview" class="correct-answer">
+    {{ explanationText?.correctAnswer }}:
+    <span class="result" [msMaths]="answer" style="visibility:hidden; position:absolute"></span>
+  </div>
+  <div *ngIf="isContentPreview" class="correct-answer">{{ explanationText?.correctAnswer }}:
+    <span *ngIf="answer !== null && answer !== undefined" class="result" [msMaths]="answer"
+      style="visibility:hidden; position:absolute"></span>
+  </div>
+  <ng-container *ngIf="result?.displayAnswer">
+    <hr *ngIf="(answer !== null && answer !== undefined) || isContentPreview">
+    <div class="question-explanation-container ">
+      <div class="question-explanation-heading">{{ explanationText?.whyGoneWrong }}:</div>
+      <div class="question-explanation-content" [msMaths]="result?.displayAnswer"
+        style="visibility:hidden; position:absolute"></div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="result?.explanation">
+    <hr *ngIf="(answer !== null && answer !== undefined) || isContentPreview">
+    <div class="question-explanation-container">
+      <div class="question-explanation-heading">
+        <div class="row col-sm-12">
+          <div class="col-sm-6" style="padding-left:0px">{{ explanationText?.explanation }}:</div>
+          <div class="col-sm-6 text-right">
+            <div class="read-out-loud" [ngClass]="{'disabled': voDisabled}"
+              *ngIf="!isDynamic && (grade=='1'|| grade=='2')">
+              <div (click)="playQuestionAudio()">
+                {{'Read out loud' | translate}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="question-explanation-content" *ngIf="display === 'original'" [msMaths]="result?.explanation"
+        style="visibility:hidden; position:absolute"></div>
+      <div class="question-explanation-content" *ngIf="display === 'translated'"
+        [msMaths]="result?.translatedexplanation" style="visibility:hidden; position:absolute"></div>
+    </div>
+  </ng-container>
+</div>

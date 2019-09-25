@@ -1,0 +1,123 @@
+<div class="right-loginSection">
+  <div class="user-login-ct" [ngClass]="{'loginstyle':isLogin, 'loginBg': isLoginBg, 'loginBoxStyle': isGrade4to6}">
+    <form [formGroup]="userLoginForm">
+      <div class="user-login-block" *ngIf="userLogin">
+        <h4 class="user-login-title">{{'user login' | translate}}</h4>
+        <div class="form-group">
+          <input type="text" [(ngModel)]="user_name" class="form-control input-bg" formControlName="username" placeholder="{{'username' | translate}}"
+            name="username" id="username" autofocus [ngClass]="{ 'invalid': 'incorrectUsername'}" autocapitalize="off" autocomplete="off"
+            autocorrect="off" spellcheck="false" (keyup)="validateUsername($event)">
+          <!-- <div class="warning-message" *ngIf="userLoginForm.controls['username'].hasError('required') && userLoginForm.controls['username'].touched && userLoginForm.controls['username'].dirty">Please enter your username!</div> -->
+
+          <div class="warning-message" *ngIf="(userLoginForm.controls['username'].dirty || userLoginForm.controls['username'].touched)">
+            <div class="warning-message" *ngIf="userLoginForm.controls['username'].invalid && !userLoginForm.controls['username'].hasError('pattern')">
+              <span class="error-icon">!</span> {{'please enter your username' | translate}}!
+            </div>
+            <div class="warning-message" *ngIf="userLoginForm.controls['username'].invalid && userLoginForm.controls['username'].hasError('pattern')">
+              <span class="error-icon">!</span> {{'invalid username' | translate:{ invalidUsernameCharacter:invalidUsernameCharacter} }}
+            </div>
+          </div>
+          <div class="warning-message" *ngIf="!(userLoginForm.controls['username'].invalid && (userLoginForm.controls['username'].dirty || userLoginForm.controls['username'].touched)) && incorrectUsername">
+            <span class="error-icon">!</span> {{'username incorrect try again' | translate}}
+          </div>
+
+        </div>
+        <div class="form-group">
+          <input class="details-btn next-button" (click)="goToPasswordSection()" type="submit" value="{{'next' | translate}}" [disabled]="!userLoginForm.controls['username'].valid"
+            autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false">
+        </div>
+      </div>
+      <div class="user-login-block password-section" *ngIf="textPasswordSection">
+        <span class="back-arow" (click)="goToUserLogin()">
+          <i class="fa fa-angle-left" aria-hidden="true"></i>
+        </span>
+        <h4 class="user-login-title">{{'enter password' | translate}}</h4>
+
+        <div class="form-group">
+          <input type="text" name="username" class="form-control input-bg" placeholder="{{'username' | translate}}" value="{{ userLoginForm.controls['username'].value }}"
+            disabled>
+        </div>
+        <div class="form-group password-input">
+          <input type="password" name="password" class="form-control input-bg password-bg" formControlName="userpassword" id="userpassword"
+            placeholder="{{'password' | translate}}" msPasswordShowHide autocapitalize="off" autocomplete="off" autocorrect="off"
+            msAuotFocus spellcheck="false">
+          <span (click)="togglePasswordShow()" class="password-toggle-text">
+            {{passwordToggleText.toLowerCase() | translate}}
+          </span>
+          <div class="warning-message" *ngIf="userLoginForm.controls['userpassword'].dirty || userLoginForm.controls['userpassword'].touched">
+            <div *ngIf="userLoginForm.controls['userpassword'].invalid && !userLoginForm.controls['userpassword'].hasError('pattern') && !userLoginForm.controls['userpassword'].hasError('minlength') && !incorrectPassword">
+              <span class="error-icon">!</span> {{'please enter your password' | translate}}!
+            </div>
+            <div *ngIf="userLoginForm.controls['userpassword'].invalid && !userLoginForm.controls['userpassword'].hasError('pattern') && userLoginForm.controls['userpassword'].hasError('minlength')">
+              <span class="error-icon">!</span> {{'minimum length is 4!' | translate}}
+            </div>
+            <div *ngIf="userLoginForm.controls['userpassword'].invalid && userLoginForm.controls['userpassword'].hasError('pattern')">
+              <span class="error-icon">!</span> {{'only alphabets a-z, A-Z and numbers 0-9 are allowed in a password. do not use special characters'
+              | translate}}
+            </div>
+            <div *ngIf="incorrectPassword">
+              <span class="error-icon">!</span> {{ 'password incorrect' | translate }}
+              <!-- {{ passwordIncorrectMessage | translate }} Tries left {{triesLeft}} -->
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="details-btn next-button btn-block " type="submit " [disabled]="disablePasswordSubmit()" (click)="submitPassword()">{{'login' | translate}}</button>
+        </div>
+        <div class="form-group ">
+          <div class="forgot-paswrd ">
+            <a (click)="forgotPassword()">{{ 'forgot password' | translate}}</a>
+          </div>
+        </div>
+      </div>
+      <div class="user-login-block password-section grade1to3_section " *ngIf="picturePasswordSection">
+        <span class="back-arow " (click)="goToUserLogin() ">
+          <i class="fa fa-angle-left " aria-hidden="true "></i>
+        </span>
+        <!--translation not given -->
+        <h4 class="user-login-title ">{{'select your picture password' | translate}}</h4>
+
+        <div class="form-group formGroupStyle ">
+          <input type="text " name="username " class="form-control input-bg username" placeholder="{{'username' | translate}} " value="{{user_name}} "
+            disabled>
+        </div>
+        <div class="chooseObject-ct animalBlock" [class.active]="passwordToSet=='a' ">
+          <h5>{{'select your animal friend' | translate}}</h5>
+          <div class="chooseObject-block ">
+            <div class="object-item" [class.active]="checkActiveImage(i, 'a')" *ngFor="let animal of animals; let i=index ">
+              <img src="assets/common/images/{{animal}}.png" (click)="selectedPassword(i, 'a')" alt="{{ animal | uppercase }} " title="{{ animal | uppercase }} ">
+            </div>
+          </div>
+        </div>
+        <div class="chooseObject-ct animalBlock" [class.active]="passwordToSet=='b' ">
+          <h5>{{'select your picnic food' | translate }}</h5>
+          <div class="chooseObject-block ">
+            <div class="object-item " [class.active]="checkActiveImage(i, 'b')" *ngFor="let food of foods; let i=index ">
+              <img src="assets/common/images/{{food}}.png " (click)="selectedPassword(i, 'b')" alt="{{ food | uppercase}} " title="{{ food | uppercase }} ">
+            </div>
+          </div>
+        </div>
+        <div class="warning-message align-spacing" *ngIf="incorrectPassword">
+          <span class="error-icon">!</span> {{ 'password incorrect' | translate }}
+        </div>
+        <div class="form-group buttonWidthStyle ">
+          <button class="details-btn next-button btn-block " *ngIf="passwordFormName === 'current'" [disabled]="disableSubmit('current')"
+            (click)="submitPassword()">{{'login' | translate}}</button>
+        </div>
+        <div class="form-group">
+          <div class="forgot-paswrd ">
+            <!--translation not given -->
+            <a (click)="forgotPassword()">{{'forgot picture password' | translate}}</a>
+          </div>
+        </div>
+      </div>
+    </form>
+
+  </div>
+  <ms-parents-login *ngIf=""></ms-parents-login>
+  <div class="form-group" *ngIf="userLogin && onboardingModulesURl">
+    <div class="help-for-kid">
+      <a [href]="onboardingModulesURl" target="_blank">{{ "help for young kids" | translate}}</a>
+    </div>
+  </div>
+</div>

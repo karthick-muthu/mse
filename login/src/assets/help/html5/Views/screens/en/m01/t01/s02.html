@@ -1,0 +1,589 @@
+<style>
+
+	/*Scene 1*/
+	
+	.paragraph-text{
+		font-size: 30px;
+		font-weight: bold;
+	}
+	
+	.paragraph-text2{
+		font-size: 28px;
+		font-weight: bold;
+	}
+	
+	.paragraph-text3{
+		font-size: 18px;
+		font-weight: bold;
+	}
+	
+	.character1{
+		position: absolute;
+		display: block;
+		z-index: 3;
+		top: 110px;
+		left: 50%;
+	}
+	
+	.character1 img{
+		position: absolute;
+		display: block;
+		z-index: 2;
+	}
+	
+	.callout_01{
+		width: 310px;
+		height: 116px;
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 28%;
+		left: 5%;
+		background: #fff;
+		border: #dc3509 solid 10px;
+		border-radius: 20px;
+		padding: 30px 0px 0px 0px;
+		text-align: center;
+		/*box-shadow: 0px 25px 18px rgba(0, 0, 0, 0.2);*/
+	}
+
+	
+	.callout_pointer_01{
+		content: "";
+		display: block;
+		position: absolute;
+		z-index: 4;
+		top: 43px;
+    	left: 320px;
+		width: 0;
+		border-width: 75px 18px 0px;
+		border-style: solid;
+		border-color: #db3407 transparent;
+		transform: rotate(-70deg);
+		/*box-shadow: 0px 25px 18px rgba(0, 0, 0, 0.2);*/
+	}
+	
+	/*.callout:after{
+		content: "";
+		display: block;
+		position: absolute;
+		top: 20px;
+		right: -47px;
+		width: 0;
+		border-width: 75px 18px 0px;
+		border-style: solid;
+		border-color: #db3407 transparent;
+		z-index: 1;
+		transform: rotate(-70deg);
+	}*/
+	
+	.img_shadow{
+		    width: 215px;
+		height: 38px;
+		position: absolute;
+		display: block;
+		z-index: 1;
+		background: rgba(0,0,0,0.2);
+		border-radius: 50%;
+		top: 357px;
+		left: 10px;
+	}
+	
+	.circle_01{
+		width: 317px;
+		height: 317px;
+		position: absolute;
+		display: block;
+		z-index: 2;
+		background: rgba(255,255,255,0.2);
+		border-radius: 50%;
+		right: 104px;
+		top: 62px;
+	}
+	
+	.circle_02{
+		width: 397px;
+		height: 397px;
+		position: absolute;
+		display: block;
+		z-index: 1;
+		background: rgba(255,255,255,0.1);
+		border-radius: 50%;
+		right: 63px;
+		top: 24px;
+	}
+	.speachBubble-01{
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 28%;
+		left: 5%;
+	}
+	
+	/*Scene 2*/
+	
+	.character2{
+		position: absolute;
+		display: block;
+		z-index: 3;
+		top: 110px;
+		left: 11%;
+	}
+	
+	.character2 img{
+		position: absolute;
+		display: block;
+		z-index: 2;
+	}
+	
+	.circle_03{
+		width: 317px;
+		height: 317px;
+		position: absolute;
+		display: block;
+		z-index: 2;
+		background: rgba(255,255,255,0.2);
+		border-radius: 50%;
+		left: 38px;
+		top: 62px;
+	}
+	
+	.circle_04{
+		width: 397px;
+		height: 397px;
+		position: absolute;
+		display: block;
+		z-index: 1;
+		background: rgba(255,255,255,0.1);
+		border-radius: 50%;
+		left: 0px;
+		top: 24px;
+	}
+	
+	.callout_02{
+		width: 310px;
+		height: 116px;
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 28%;
+		left: 50%;
+		background: #fff;
+		border: #dc3509 solid 10px;
+		border-radius: 20px;
+		padding: 30px 0px 0px 0px;
+		text-align: center;
+		/*box-shadow: 0px 25px 18px rgba(0, 0, 0, 0.2);*/
+	}
+
+	
+	.callout_pointer_02{
+		content: "";
+		display: block;
+		position: absolute;
+		z-index: 4;
+		top: 36px;
+    	left: -47px;
+		width: 0;
+		border-width: 75px 18px 0px;
+		border-style: solid;
+		border-color: #db3407 transparent;
+		transform: rotate(70deg);
+		/*box-shadow: 0px 25px 18px rgba(0, 0, 0, 0.2);*/
+	}
+	.speachBubble-02{
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 28%;
+		right: 50%;
+	}
+	/*Scene 3*/
+	
+	.character3{
+		position: absolute;
+		display: block;
+		z-index: 3;
+		bottom: 29px;
+		left: 54%;
+	}
+	
+	.character3 img{
+		position: absolute;
+		display: block;
+		z-index: 2;
+	}
+	
+	.callout_03{
+		width: 430px;
+		height: 108px;
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 19%;
+		left: 4%;
+		background: #fff;
+		border: #dc3509 solid 10px;
+		border-radius: 20px;
+		padding: 25px 0px 0px 30px;
+		/*box-shadow: 0px 25px 18px rgba(0, 0, 0, 0.2);*/
+	}
+
+	
+	.callout_pointer_03{
+		content: "";
+		display: block;
+		position: absolute;
+		z-index: 4;
+		top: 81px;
+		left: 198px;
+		width: 0;
+		border-width: 75px 18px 0px;
+		border-style: solid;
+		border-color: #db3407 transparent;
+		transform: rotate(-50deg);
+		/*box-shadow: 0px 25px 18px rgba(0, 0, 0, 0.2);*/
+	}
+	
+	.callout_04{
+		    width: 430px;
+		height: 130px;
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 19%;
+		left: 4%;
+		background: #fff;
+		border: #dc3509 solid 10px;
+		border-radius: 20px;
+		padding: 15px 0px 0px 20px;
+		/*box-shadow: 0px 25px 18px rgba(0, 0, 0, 0.2);*/
+	}
+	
+	.div_input{
+		position: relative;
+	    top: 44%;
+	    left: 37%;
+	}
+	.div_input input{
+		height: 31px;
+	    width: 197px;
+	    border: none;
+	}
+	
+	.next_btn{
+		width: 240px;
+		height: 36px;
+		display: block;
+		position: absolute;
+		z-index: 7;
+		background-image: url(../course_images/pages/m01/t01/p02/next_btn.jpg);
+		top: 72px;
+		left: -1.3%;
+		cursor: pointer;
+	}
+	
+	.speachBubble-03{
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 20%;
+		left: 4%;
+	}
+	
+	.speachBubble-04{
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 20%;
+		left: 3%;
+	}
+	
+	.arrow_pointer{
+		position: absolute;
+		display: block;
+		z-index: 11;
+		top: 265px;
+		left: 250px;
+		font-size: 26px;
+		color: #ffffff;
+	}
+	
+	.blue_patch{
+		position: absolute;
+		width: 260px;
+		height: 30px;
+		display: block;
+		z-index: 12;
+		top: 298px;
+		left: 265px;
+		background: #018fd7;
+	}
+	
+	.callout_06{
+		width: 345px;
+		height: 55px;
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 65%;
+		left: 28.5%;
+		background: #fff;
+		border: #dc3509 solid 7px;
+		border-radius: 20px;
+		padding: 10px 10px 0px 0px;
+		text-align: center;
+	}
+	
+	.callout_07{
+		width: 345px;
+		height: 55px;
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 75.5%;
+		left: 28.5%;
+		background: #fff;
+		border: #dc3509 solid 7px;
+		border-radius: 20px;
+		padding: 10px 10px 0px 0px;
+		text-align: center;
+	}
+	
+	.callout_08{
+		width: 345px;
+		height: 55px;
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 86%;
+		left: 28.5%;
+		background: #fff;
+		border: #dc3509 solid 7px;
+		border-radius: 20px;
+		padding: 10px 10px 0px 0px;
+		text-align: center;
+	}
+	
+	.next_btn_flash{
+		width: 258px;
+		height: 50px;
+		display: block;
+		position: absolute;
+		z-index: 3;
+		top: 65px;
+		left: -2.3%;
+		cursor: pointer;
+		border: #ffff00 3px solid;
+		border-radius: 10px;
+	}
+	
+	</style>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var animationEndCheck = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';
+
+			/*$('#div_01').removeClass('displayNone')
+			$('#div_01').addClass('displayBlock')*/
+
+		   	$('#content01_01').addClass('visibilityVisible animated pageDelay halfSecondDuration  zoomIn').one(animationEndCheck,function(){
+				$('#content01_02').addClass('visibilityVisible animated halfSecondDuration zoomIn')
+			})
+
+		   	$('#content01_02').one(animationEndCheck,function(){
+		   		$('#content01_01,#content01_02').removeClass('animated zoomIn')
+		   		$('#content01_01,#content01_02').addClass('animated pulse infiniteAnimation')
+
+		   		$('#content01_03').addClass('visibilityVisible animated oneSecondDuration bounceInDown')
+				$('#content01_04').addClass('visibilityVisible animated oneSecondDuration bounceIn')
+		   	})
+
+		   	$('#content01_04').one(animationEndCheck,function(){
+		   		$('#content01_05').addClass('visibilityVisible animated bounceInLeft')
+		   	})
+
+		   	$('#content01_05').one(animationEndCheck,function(){
+			
+				setTimeout(function(){ 
+				$('#div_01').removeClass('displayBlock')
+		   		$('#div_01').addClass('displayNone')
+
+		   		$('#div_02').removeClass('displayNone')
+				$('#div_02').addClass('displayBlock')
+
+				$('#content02_01').addClass('visibilityVisible animated bounceInRight')
+				$('#content02_01_01,#content02_01_02').addClass('animated halfSecondDuration pulse infiniteAnimation')
+				}, 5000);
+			});
+
+		   	$('#content02_01').one(animationEndCheck,function(){
+		   		$('#content02_02').addClass('visibilityVisible animated bounceInLeft')
+		   	})
+
+		   	$('#content02_02').one(animationEndCheck,function(){
+			
+				setTimeout(function(){ 
+				$('#div_02').removeClass('displayBlock')
+		   		$('#div_02').addClass('displayNone')
+
+		   		$('#div_03').removeClass('displayNone')
+				$('#div_03').addClass('displayBlock')
+
+				$('#content03_01').addClass('visibilityVisible animated fadeInDown')
+				}, 5000);
+			});
+
+
+		   	$('#content03_01').one(animationEndCheck,function(){		   		
+		   		$('#content03_01').removeClass('fadeInDown')	
+		   		$('#content03_01').addClass('pulse infiniteAnimation')
+				
+				$('#content03_03').addClass('visibilityVisible')
+				var typed2 = new Typed('#typed2', {
+				    strings: ['sparkie.mindspark'],
+				    typeSpeed: 200,
+				    backSpeed: 500,
+				    fadeOut: true,
+				    attr: 'placeholder',
+				    smartBackspace: true,
+				    bindInputFocusEvents: true,
+				    loop: false
+				});
+
+		   		$('#content03_02_01').addClass('visibilityVisible animated bounceInRight').one(animationEndCheck,function(){
+					$('#content03_02_01').removeClass('visibilityVisible animated bounceInRight').addClass('visibilityVisible animated fadeOut characterDelay5').one(animationEndCheck,function(){
+						$('#content03_02_01').removeClass('visibilityVisible')
+						$('#content03_02_01').addClass('visibilityHidden')
+						$('#content03_02').addClass('visibilityVisible animated bounceInRight')
+						$('#content03_02_02').addClass('visibilityVisible animated pulse infiniteAnimation')
+					})
+				})  		
+		   	})
+
+		   	
+		   	/*function forceLower(strInput){
+				strInput.value=strInput.value.toLowerCase();
+			}*/
+		   	
+		   	$("input#typed2").on({
+			  keydown: function(e) {
+			  /* Space */
+			    if (e.which === 32){
+					$('#err_01').addClass('visibilityVisible animated fadeIn')
+					return false;
+				}
+			  },
+			  change: function() {
+			    this.value = this.value.replace(/\s/g, "");
+			  },
+			  keypress: function(e){
+			  	var s = String.fromCharCode( e.which );
+			    if ( s.toUpperCase() === s && s.toLowerCase() !== s && !e.shiftKey ) {
+			        /*alert('caps is on');*/
+			    }
+			  },
+			  blur: function(){
+			  	var str = this.value
+
+			  	if(str == ''){
+
+			  	}else if(str.toLowerCase() != str){
+					$('#err_02').addClass('visibilityVisible animated fadeIn')
+					
+			  		/*alert('Only lower case alphabets are allowed!!')*/
+			  	}else if(str != 'sparkie.mindspark'){
+					$('#err_03').addClass('visibilityVisible animated fadeIn')
+			  		/*alert('Please check the spelling')*/
+			  	}
+			  	
+			  } 
+ 
+
+			  /*,keyup: function() {
+			  	return forceLower(this);
+			  }*/
+			});
+
+		   	
+		   	
+		   	
+
+		});
+		   </script>
+
+<div id="div_01" class="Page-BG" ng-style="{'background-image': 'url(' + CourseContent.pageBG_01 + ')'}">
+    <div class="col-sm-12 page-content">   
+	    <span id="content01_05" class="speachBubble-01 visibilityHidden">
+	    	<div class="callout_01"><p class="paragraph-text" bind-html-compile="CourseContent.paragraph_text1_1"></p></div>
+			<div class="callout_pointer_01"></div>
+	    </span>   
+		<div class="col-sm-12 charBoxBg">
+			<div class="character1">
+				<img id="content01_03" class="visibilityHidden" src="../course_images/pages/m01/t01/p01/img_01.png">
+				<div id="content01_04" class="img_shadow visibilityHidden"></div>
+			</div>	
+			<div id="content01_02" class="circle_01 visibilityHidden"></div>
+			<div id="content01_01" class="circle_02 visibilityHidden"></div>
+		</div>    	
+    </div>
+</div>
+
+<div id="div_02" class="Page-BG displayNone" ng-style="{'background-image': 'url(' + CourseContent.pageBG_01 + ')'}">
+    <div class="col-sm-12 page-content">
+    	<span id="content02_02" class="speachBubble-02 visibilityHidden">
+    		<div class="callout_02"><p class="paragraph-text" bind-html-compile="CourseContent.paragraph_text1_2"></p></div>
+			<div class="callout_pointer_02"></div>
+    	</span>
+		<div id="content02_01" class="col-sm-12 charBoxBg">
+			<div class="character2">
+				<img src="../course_images/pages/m01/t01/p01/img_01.png" />
+				<div class="img_shadow"></div>
+			</div>	
+			<div id="content02_01_02" class="circle_03"></div>
+			<div id="content02_01_01" class="circle_04"></div>
+		</div>    	
+    </div>
+</div>
+
+<div id="div_03" class="Page-BG displayNone" ng-style="{'background-image': 'url(' + CourseContent.pageBG_02 + ')'}">
+    <div class="col-sm-12 page-content">
+    	<span id="content03_02" class="speachBubble-03 visibilityHidden">
+    		<div class="callout_03"><p class="paragraph-text" bind-html-compile="CourseContent.paragraph_text1_3"></p></div>
+			<div class="callout_pointer_03"></div>
+    	</span>
+		<i id="content03_02_02" class="visibilityHidden arrow_pointer fa fa-arrow-right"></i>
+		<div class="blue_patch" ng-if="mindSpark.length > 0"></div>
+		<span id="content03_02_01" class="speachBubble-04 visibilityHidden">
+    		<div class="callout_04"><p class="paragraph-text2" bind-html-compile="CourseContent.paragraph_text1_4"></p><p class="paragraph-text2" bind-html-compile="CourseContent.paragraph_text1_5"></p></div>
+    	</span>	
+    	<div id="content03_03" class="div_input visibilityHidden" ng-init="mindSpark = ''">
+    		<input type="text" id="typed2" name="typedTest" ng-model="mindSpark"/>
+			<span ng-show="mindSpark == 'sparkie.mindspark'">
+				<div class="next_btn" ng-click="gotoNextPage()"></div>
+				<div class="next_btn_flash animated flash infiniteAnimation"></div>
+			</span>
+    	</div>
+		<!-- customNextButton(mindSpark) -- location -- page_controller -->
+		
+		<!-- <div ng-if="mindSpark.length > 0" class="next_btn" ng-click="customNextButton(mindSpark)"></div> -->
+		<span ng-show="mindSpark != 'sparkie.mindspark'">
+		
+		<!-- Space -->
+		<div id="err_01" class="callout_06 visibilityHidden"><p class="paragraph-text3" bind-html-compile="CourseContent.paragraph_text1_6"></p></div>
+		
+		<!-- Captal Letter -->
+		<div id="err_02" class="callout_07 visibilityHidden"><p class="paragraph-text3" bind-html-compile="CourseContent.paragraph_text1_7"></p></div>
+		
+		<!-- Spelling Mistake -->
+		<div id="err_03" class="callout_08 visibilityHidden"><p class="paragraph-text3" bind-html-compile="CourseContent.paragraph_text1_8"></p></div>
+		
+		</span>
+		
+		<div class="col-sm-12 charBoxBg">
+			<div class="character3">
+				<img id="content03_01" class="visibilityHidden" src="../course_images/pages/m01/t01/p02/img_01.png" />
+			</div>	
+		</div>   
+    </div>
+</div>

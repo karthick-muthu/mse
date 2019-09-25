@@ -1,0 +1,108 @@
+<style>
+
+	/*Scene 1*/
+	
+	.paragraph-text1{
+		font-size: 30px;
+		font-weight: bold;
+	}
+	
+	.callout_01{
+		width: 296px;
+		height: 126px;
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 13%;
+		right: 32%;
+		background: #fff;
+		border: #dc3509 solid 10px;
+		border-radius: 20px;
+		padding: 15px 0px 0px 30px;
+		/*box-shadow: 0px 25px 18px rgba(0, 0, 0, 0.2);*/
+	}
+
+	
+	.callout_pointer_01{
+		content: "";
+		display: block;
+		position: absolute;
+		z-index: 4;
+		top: 22px;
+		right: -40px;
+		width: 0;
+		border-width: 80px 18px 0px;
+		border-style: solid;
+		border-color: #db3407 transparent;
+		transform: rotate(270deg);
+		/*box-shadow: 0px 25px 18px rgba(0, 0, 0, 0.2);*/
+	}
+	
+	.btn_02{
+		width: 130px;
+		height: 50px;
+		display: block;
+		position: absolute;
+		z-index: 3;
+		top: 140px;
+		right: 8.8%;
+		cursor: pointer;
+		border: #e2bd0e 3px solid;
+		border-radius: 10px;
+	}
+	
+	.cutOutCircle{
+		width: 800px;
+		width: 600px;
+		z-index: 3;
+		margin:0 auto;
+		overflow:hidden;
+	}
+	
+	.cutOutCircle:after{
+		content: '';
+		position: absolute;
+		left: 75%;
+		top: 23.5%;
+		border-radius: 15px;
+		width: 130px;
+		height: 50px;
+		box-shadow: 0px 0px 0px 900px rgba(0,0,0,0.5);
+		-webkit-box-shadow: 0px 0px 0px 900px rgba(0,0,0,0.5);
+	}
+	
+	.speachBubble{	
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 17%;
+		left: 68%;
+	}
+
+
+	</style>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			var animationEndCheck = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';
+
+			/*$('#div_01').removeClass('displayNone')
+			$('#div_01').addClass('displayBlock')*/
+
+			$('#content01_01').addClass('visibilityVisible animated pageDelay oneSecondDuration bounceInLeft').one(animationEndCheck,function(){
+				$('#content01_02').addClass('visibilityVisible');
+				$('#content01_03').addClass('visibilityVisible')
+			})
+		})
+	</script>
+<div id="div_01" class="Page-BG" ng-style="{'background-image': 'url(' + CourseContent.pageBG_01 + ')'}">
+    <div class="col-sm-12 page-content">     
+	    <span id="content01_01" class="speachBubble visibilityHidden">
+	        <div class="callout_01"><p class="paragraph-text1" bind-html-compile="CourseContent.paragraph_text1_1"></p></div>
+			<div class="callout_pointer_01"></div>
+		</span> 
+		<div id="content01_03" class="visibilityHidden cutOutCircle animated fadeIn _2"></div>
+		<div id="content01_02" class="visibilityHidden btn_02 animated flash infiniteAnimation _2" ng-click="gotoNextPage()"></div>
+    </div>
+</div>

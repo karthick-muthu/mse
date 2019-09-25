@@ -1,0 +1,28 @@
+{
+  "resultCode": "C001",
+  "resultMessage": "success",
+  "langCode": "en",
+  "messageTrail": [
+    {
+      "id": "m011",
+      "status": "unread",
+      "image": "https://dummyimage.com/100x100/000/0f",
+      "header": "",
+      "body": ""
+    },
+    {
+      "id": "m012",
+      "status": "unread",
+      "image": "https://dummyimage.com/100x100/000/0g",
+      "header": "",
+      "body": ""
+    },
+    {
+      "id": "m013",
+      "status": "unread",
+      "image": "https://dummyimage.com/100x100/000/0h",
+      "header": "",
+      "body": ""
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+<div class="alert-section">
+  <ms-question-alerts [question]="question" [result]="evaluationResult"></ms-question-alerts>
+  <ms-question-timer *ngIf="showTimer()" [timed]="timed"></ms-question-timer>
+</div>
+<div class="questions-header-section">
+  <div class="header-left">
+    <ms-question-type [type]="question?.mode"></ms-question-type>
+    <div *ngIf="question?.sequence && question?.contentType !=='activity' " class="question-number">
+      {{ question?.sequence }}
+    </div>
+  </div>
+  <div class="header-center" *ngIf="questionTemplate?.toLowerCase() === 'timedtest'"
+    [ngStyle]="{'flex-grow': questionVoiceOver? 1 : 2 }">
+    <ms-time-test [timedTestData]="question?.timedTestData"></ms-time-test>
+  </div>
+  <div class="header-right" *ngIf="questionVoiceOver">
+    <label class="read-out-loud" (click)="playAudio(questionVoiceOver)" [ngClass]="{'disabled': voDisabled}"
+      [title]="getVoiceOverTitle()">
+      <!-- <button class=" btn-read" (click)="playAudio(questionVoiceOver)"> -->
+      <!-- <i class="fa fa-volume-up"></i> -->
+      <!-- </button> -->
+      {{'read out loud' | translate}}</label>
+  </div>
+</div>
+<div class="question-body">
+  <p class="question-content" [ngClass]="templateClass" [msMaths]="questionField" *ngIf="showQuestion"
+    style="visibility:hidden; position:absolute"></p>
+  <ms-question-hint [viewType]="'fullWidth'" [showHint]="question?.showHint" [hints]="hints" [result]="evaluationResult"
+    [display]="'original'" [lang]="questionContent?.context"></ms-question-hint>
+  <span class="IDontKnow" [hidden]="hideIDontKnow()" (click)="iDontKnow()">{{'i dont know' | translate }}</span>
+</div>
+<div class="option-body" id="optionBody">
+  <ul class="options" [ngClass]="getOptionsSectionClass()"
+    *ngIf="mcqChoices?.length > 0 && displayType === 'fullwidth'">
+    <li *ngFor="let choice of mcqChoices; let i = index">
+      <label for="value" (click)="evaluateOption(choice?.id)">
+        <div class="questions" style="display: -webkit-flex;">
+          <div *ngIf="from != 'worksheet'" class="option" style="display: -webkit-flex;"
+            [ngClass]="setOptionsClass(evaluationOutput[choice?.id], choice?.id)">
+            <input type="radio" name="value" *ngIf="timerAvailable">{{ generateOptionString(i) }}
+          </div>
+          <div *ngIf="from == 'worksheet'" class="option" style="display: -webkit-flex;"
+            [ngClass]="{'option-selected':selectedOption==choice?.id,'option-default':selectedOption!=choice?.id}">
+            <input type="radio" name="value" *ngIf="timerAvailable">{{ generateOptionString(i) }}
+          </div>
+          <span [msMaths]="choice?.value" style="visibility:hidden; position:absolute"></span>
+          <!-- <span class="correct" *ngIf="evaluationOutput[choice.id] === '1'"><i class="fa fa-check"></i></span>  <span class="incorrect" *ngIf="evaluationOutput[choice.id] === '0'"><i class="fa fa-times"></i></span> -->
+        </div>
+      </label>
+    </li>
+  </ul>
+  <ul class="options" *ngIf="displayType === 'halfwidth' && mcqChoices?.length > 0" [ngClass]="templateClass">
+    <li *ngFor="let choice of mcqChoices; let i = index">
+      <label for="value" (click)="evaluateOption(choice?.id)">
+        <div class="questions" style="display: -webkit-flex;">
+          <div *ngIf="from != 'worksheet'" class="option" style="display: -webkit-flex;"
+            [ngClass]="setOptionsClass(evaluationOutput[choice?.id], choice?.id)">
+            <input type="radio" name="value" *ngIf="timerAvailable">{{ generateOptionString(i) }}</div>
+          <div *ngIf="from == 'worksheet'" class="option" style="display: -webkit-flex;"
+            [ngClass]="{'option-selected':selectedOption==choice?.id,'option-default':selectedOption!=choice?.id}">
+            <input type="radio" name="value" *ngIf="timerAvailable">{{ generateOptionString(i) }}
+          </div>
+          <span [msMaths]="choice?.value" style="visibility:hidden; position:absolute"></span>
+          <!-- <span class="correct" *ngIf="evaluationOutput[choice.id] === '1'"><i class="fa fa-check"></i></span>  <span class="incorrect" *ngIf="evaluationOutput[choice.id] === '0'"><i class="fa fa-times"></i></span> -->
+        </div>
+      </label>
+    </li>
+  </ul>
+  <ms-question-explanation [ngStyle]="showExplanation" [questionTemplate]="questionTemplate" [viewType]="displayType"
+    [result]="evaluationResult" [ngClass]="{'full-width-section': (displayType === 'fullwidth')}" [display]="'original'"
+    [lang]="questionContent?.context" id="explaination" [isContentPreview]="isContentPreview"></ms-question-explanation>
+</div>
+<div class="mathquill-editor-wrapper" *ngIf="keyboardElements?.isKeyboard">
+  <span class="close-editor" (click)="hideKeyboard()">&times;</span>
+  <div class="math-button-box" style="display: -webkit-flex;">
+    <ng-container *ngFor="let buttonLatexContent of keyboardOptions?.buttonLatexContents; let rowIndex = index">
+      <div [ngClass]="'math-button-row row-'+rowIndex">
+        <ms-math-button mytext="{{ mathButton }}" *ngFor="let mathButton of buttonLatexContent; let i = index"
+          [class]="'row-'+rowIndex+' button-'+getCurrentKeyboard() + ' button-' + i" (click)="clicked(mathButton)">
+        </ms-math-button>
+      </div>
+      <br>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.modal-header-container {
+    border: 0px;
+}
+
+.modal-dialog {
+    max-width: 400px !important;
+    margin: 30px auto;
+}
+
+.modal-btn-container {
+    text-align: center;
+    // padding: 37px;
+    .sentence {
+        padding: 0.5em 0.5em 1em 0.5em;
+        font-size: 17px;
+        width: 80%;
+        margin: 0 auto;
+        color: $greyishBrownShadow;
+    }
+    .heading {
+        padding: 0.5em 0.5em 1em 0.5em;
+        font-size: 20px;
+        width: 90%;
+        margin: 0 auto;
+        color: $greyishBrownShadow;
+    }
+    .modalbtns {
+        padding: 8px 22px 8px 22px;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 0.875rem;
+        border: 0px;
+        border-radius: 6px;
+        width: 45%;
+        height: 40px;
+        // margin: 6.5px 60px 20px 61px;
+        margin: 23.5px 60px 15px 61px;
+    }
+}
+
+.btn-yes {
+    background: $secondaryColor;
+    box-shadow: 0px 5px 0px $secondaryShadowColor;
+    color: rgba($black, 0.6);
+}
+
+.topicsList {
+    margin-left: 10px;
+}

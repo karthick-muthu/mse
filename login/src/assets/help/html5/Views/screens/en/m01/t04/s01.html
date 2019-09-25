@@ -1,0 +1,259 @@
+<style>
+
+	/*Scene 1*/
+	
+	.paragraph-text1{
+		font-size: 30px;
+		font-weight: bold;
+	}
+	
+	.character1{
+		position: absolute;
+		display: block;
+		z-index: 3;
+		top: 110px;
+		left: 50%;
+	}
+	
+	.character1 img{
+		position: absolute;
+		display: block;
+		z-index: 2;
+	}
+	
+	.callout_01{
+		width: 326px;
+		height: 116px;
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 28%;
+		left: 3%;
+		background: #fff;
+		border: #dc3509 solid 10px;
+		border-radius: 20px;
+		padding: 10px 20px 0px 30px;
+		/*box-shadow: 0px 25px 18px rgba(0, 0, 0, 0.2);*/
+	}
+
+	
+	.callout_pointer_01{
+		content: "";
+		display: block;
+		position: absolute;
+		z-index: 4;
+		top: 46px;
+    	left: 333px;
+		width: 0;
+		border-width: 75px 18px 0px;
+		border-style: solid;
+		border-color: #db3407 transparent;
+		transform: rotate(-70deg);
+		/*box-shadow: 0px 25px 18px rgba(0, 0, 0, 0.2);*/
+	}
+	
+	/*.callout:after{
+		content: "";
+		display: block;
+		position: absolute;
+		top: 20px;
+		right: -47px;
+		width: 0;
+		border-width: 75px 18px 0px;
+		border-style: solid;
+		border-color: #db3407 transparent;
+		z-index: 1;
+		transform: rotate(-70deg);
+	}*/
+	
+	.img_shadow{
+		    width: 215px;
+		height: 38px;
+		position: absolute;
+		display: block;
+		z-index: 1;
+		background: rgba(0,0,0,0.2);
+		border-radius: 50%;
+		top: 357px;
+		left: 10px;
+	}
+	
+	.circle_01{
+		width: 317px;
+		height: 317px;
+		position: absolute;
+		display: block;
+		z-index: 2;
+		background: rgba(255,255,255,0.2);
+		border-radius: 50%;
+		right: 104px;
+		top: 62px;
+	}
+	
+	.circle_02{
+		width: 397px;
+		height: 397px;
+		position: absolute;
+		display: block;
+		z-index: 1;
+		background: rgba(255,255,255,0.1);
+		border-radius: 50%;
+		right: 63px;
+		top: 24px;
+	}
+	.speachBubble{
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 28%;
+		left: 5%;
+	}
+	
+	/*Scene 2*/
+	
+	.paragraph-text1{
+		font-size: 32px;
+		font-weight: bold;
+	}
+	
+	.callout_02{
+		width: 256px;
+		height: 96px;
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 9%;
+		right: 31%;
+		background: #fff;
+		border: #dc3509 solid 10px;
+		border-radius: 20px;
+		padding: 20px 0px 0px 0px;
+		text-align: center;
+		/*box-shadow: 0px 25px 18px rgba(0, 0, 0, 0.2);*/
+	}
+
+	
+	.callout_pointer_02{
+		content: "";
+		display: block;
+		position: absolute;
+		z-index: 4;
+		bottom: -72px;
+		right: -55px;
+		width: 0;
+		border-width: 100px 22px 0px;
+		border-style: solid;
+		border-color: #db3407 transparent;
+		transform: rotate(252deg);
+		/*box-shadow: 0px 25px 18px rgba(0, 0, 0, 0.2);*/
+	}
+	
+	.btn_02{
+		width: 101px;
+		height: 46px;
+		display: block;
+		position: absolute;
+		z-index: 3;
+		top: 24px;
+		right: 5%;
+		cursor: pointer;
+		border: #e2bd0e 3px solid;
+		border-radius: 10px;
+	}
+	
+	.cutOutCircle_02{
+		width: 800px;
+		width: 600px;
+		z-index: 3;
+		margin:0 auto;
+		overflow:hidden;
+	}
+	
+	.cutOutCircle_02:after{
+		content: '';
+		position: absolute;
+		left: 82.5%;
+		top: 4%;
+		border-radius: 15px;
+		width: 100px;
+		height: 47px;
+		box-shadow: 0px 0px 0px 900px rgba(0,0,0,0.5);
+		-webkit-box-shadow: 0px 0px 0px 900px rgba(0,0,0,0.5);
+	}
+	
+	.speachBubble_02{
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 9%;
+		left: 71%;
+	}
+
+	</style>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			var animationEndCheck = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';
+
+			/*$('#div_01').removeClass('displayNone')
+			$('#div_01').addClass('displayBlock')*/
+
+			$('#content01_01').addClass('visibilityVisible animated pageDelay halfSecondDuration  zoomIn').one(animationEndCheck,function(){
+				$('#content01_02').addClass('visibilityVisible animated halfSecondDuration zoomIn')
+			})
+		   	$('#content01_02').one(animationEndCheck,function(){
+		   		$('#content01_01,#content01_02').removeClass('animated zoomIn')
+		   		$('#content01_01,#content01_02').addClass('animated pulse infiniteAnimation')
+
+		   		$('#content01_03').addClass('visibilityVisible animated oneSecondDuration bounceInDown')
+				$('#content01_04').addClass('visibilityVisible animated oneSecondDuration bounceIn')
+		   	})
+		   	$('#content01_04').one(animationEndCheck,function(){
+		   		$('#content01_05').addClass('visibilityVisible animated bounceInLeft')
+		   	})
+			
+			$('#content01_04').one(animationEndCheck,function(){
+				
+				setTimeout(function(){ 
+				$('#div_01').removeClass('displayBlock')
+				$('#div_01').addClass('displayNone')
+				
+				$('#div_02').removeClass('displayNone')
+				$('#div_02').addClass('displayBlock')
+				
+				$('#content02_01').addClass('visibilityVisible animated pageDelay oneSecondDuration bounceInLeft')
+				
+				}, 5000);
+				
+			})
+			
+		});
+	</script>
+<div id="div_01" class="Page-BG" ng-style="{'background-image': 'url(' + CourseContent.pageBG_01 + ')'}">
+    <div class="col-sm-12 page-content"> 
+	    <span id="content01_05" class="speachBubble visibilityHidden">     
+	        <div class="callout_01"><p class="paragraph-text1" bind-html-compile="CourseContent.paragraph_text1_1"></p></div>
+			<div class="callout_pointer_01"></div>
+		</span>
+		<div class="col-sm-12 charBoxBg">
+			<div class="character1 animated fadeIn _1">
+				<img id="content01_03" class="visibilityHidden" src="../course_images/pages/m01/t01/p01/img_01.png">
+				<div id="content01_04" class="img_shadow visibilityHidden"></div>
+			</div>	
+			<div id="content01_02" class="circle_01 visibilityHidden"></div>
+			<div id="content01_01" class="circle_02 visibilityHidden"></div>
+		</div>    	
+    </div>
+</div>
+
+<div id="div_02" class="Page-BG displayNone" ng-style="{'background-image': 'url(' + CourseContent.pageBG_02 + ')'}">
+    <div class="col-sm-12 page-content">   
+	    <span id="content02_01" class="speachBubble_02 visibilityHidden">   
+	        <div class="callout_02"><p class="paragraph-text1" bind-html-compile="CourseContent.paragraph_text1_2"></p></div>
+			<div class="callout_pointer_02"></div>
+		</span>
+		<div class="cutOutCircle_02"></div>
+		<div id="content02_02" class="btn_02 animated flash infiniteAnimation" ng-click="gotoNextPage()"></div>
+    </div>
+</div>

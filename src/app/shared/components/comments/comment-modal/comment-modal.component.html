@@ -1,0 +1,57 @@
+<!--<div>
+  <div class="modal-header">
+    <h4 class="modal-title">Modal title</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+  </div>
+  <div class="modal-body">
+    <input type="file" placeholder="Upload file" accept=".jpg,.png" class="choose">
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-light" (click)="activeModal.close('Close click')">Close</button>
+  </div>
+</div>-->
+<div class="modal-header comment-header" [ngClass]="templateClass">
+  {{'i have a comment' | translate}}
+  <button type="button" class="closed" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <i class="fa fa-times" aria-hidden="true"></i>
+  </button>
+</div>
+<form [ngClass]="templateClass" [formGroup]="commentForm" (submit)="writeComment()">
+  <div class="modal-body">
+    <p class="comment-heading">{{'ask anything and we will get back' | translate}}</p>
+    <div class="comment-content">
+      <textarea class="form-control" rows="5" placeholder="{{ 'add comment' | translate}}" resize="noresize" formControlName="messageBody"></textarea>
+      <div class="attachment-block" *ngIf="files?.length > 0">
+        <div class="files" *ngFor="let file of files">
+          {{file?.fileName | comment}}
+        </div>
+        <span class="remove-upload" (click)="removeFile()">
+          <i class="fa fa-times" aria-hidden="true"></i>
+        </span>
+      </div>
+      <div class="text-danger">{{ uploadFileError }}</div>
+    </div>
+  </div>
+  <div class="modal-footer comment-footer" [ngClass]="templateClass">
+    <div *ngIf="commentStatus === ''">
+      <div class="upload-input-container">
+        <input type="file" #uploadFile id="upload-file" accept=".jpg,.png" (change)="onChange()" capture="filesystem" multiple>
+        <div id="upload-button" (click)="upload()">
+          <i class="fa fa-paperclip" aria-hidden="true"></i> {{'attach your file' | translate}}
+        </div>
+      </div>
+      <button type="button" class="cancel" (click)="activeModal.close('Close click')">{{'cancel' | translate}}</button>
+      <button class="submit" [disabled]="disableSend()">{{ 'send' | translate}}</button>
+    </div>
+    <div class="progress" *ngIf="commentStatus === 'sending'">
+      <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 100%" aria-valuenow="25" aria-valuemin="0"
+        aria-valuemax="100">{{ 'sending' | translate }}...</div>
+    </div>
+    <div class="comment-text" *ngIf="commentStatus === 'success'">
+      <p class="text-center">{{ 'comment has been sent' | translate }}</p>
+    </div>
+  </div>
+</form>

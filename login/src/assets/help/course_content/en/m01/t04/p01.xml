@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<contents>
+		<static>true</static>
+		<pageBG_01>../course_images/common_bg/commonbg_01.jpg</pageBG_01>
+		<pageBG_02>../course_images/common_bg/commonbg_12.jpg</pageBG_02>
+		<paragraph_text1_1>Please help me log out.</paragraph_text1_1>
+		<paragraph_text1_2>Click DONE.</paragraph_text1_2>
+	</contents>
+</root>

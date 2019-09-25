@@ -1,0 +1,33 @@
+@import '../../../../../../../assets/common/styles/global.variables.scss';
+.won-label {
+  color: $white;
+  font-size: 1.125rem;
+  vertical-align: middle;
+}
+
+.won-label.template1 {
+  font-size: 26px;
+  font-family: 'BalooBhaina';
+}
+
+// .sparkieCoin {
+//   margin: 4px 10px;
+// }
+// .coin-sparkie {
+//   background: url(../../../../../../../assets/common/images/coin-saprkie.png);
+//   width: 40px;
+//   height: 40px;
+//   margin-top: -58px;
+//   background-size: cover;
+//   animation: sprite1 .8s steps(8) infinite;
+//   -webkit-animation: sprite1 .8s steps(8) infinite;
+//   -moz-animation: sprite1 .8s steps(8) infinite;
+//   -ms-animation: sprite1 .8s steps(8) infinite;
+//   -o-animation: sprite1 .8s steps(8) infinite;
+//   animation: sprite1 .8s steps(8) infinite;
+// }
+// @-webkit-keyframes sprite1 {
+//   100% {
+//     background-position: -688px;
+//   }
+// }

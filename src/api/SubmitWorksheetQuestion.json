@@ -1,0 +1,43 @@
+{
+  "contentID": "Q1",
+  "contentSeqNum": 1,
+  "remainingTime": 100,
+  "result": "pass",
+  "userResponse": {
+    "type": "mcq",
+    "userAnswer": "C"
+  },
+  "timeTaken": 45,
+  "userAttemptData": {
+    "hintTaken": true,
+    "trialCount": 2,
+    "trials": [
+      {
+        "userResponse": {
+          "type": "mcq",
+          "userAnswer": "A"
+        },
+        "timeTaken": 20,
+        "result": "false"
+      },
+      {
+        "userResponse": {
+          "type": "mcq",
+          "userAnswer": "B"
+        },
+        "timeTaken": 50,
+        "result": "false"
+      }
+    ]
+  },
+  "contentInfo": {
+    "contentID": "Q1234",
+    "contentVersionID": "Q1234_en-IN_1",
+    "contentType": "question",
+    "questionType": "MCQ",
+    "revisionNum": "1",
+    "version": "1",
+    "langCode": "en-IN"
+  },
+  "nextContentSeqNum": 2
+}

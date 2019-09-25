@@ -1,0 +1,48 @@
+<div class="container-fluid login-page-ct">
+  <ms-auth-header></ms-auth-header>
+  <div class="container">
+    <!-- subscription error -->
+    <div class="errorContent-ct" *ngIf="error === 'subscriptionexpired'">
+
+      <div class="errorContent-main-cont">
+        <img class="error-images" src="assets/common/images/subscription.png" title="Subscribe">
+        <div class="form-group">
+          <button (click)="renewalRedirect()" class="details-btn next-button subscription-button">{{ 'renew your subscription' | translate }}</button>
+        </div>
+      </div>
+      <div class="message">
+        <p class="message-content">{{'oh no your subscription period has ended team mindspark really wanted you back' | translate}}</p>
+      </div>
+    </div>
+
+    <!-- Error session timeout -->
+    <div class="errorContent-ct" *ngIf="error === 'unauthorized'">
+      <div class="errorContent-main-cont">
+        <img class="error-images" src="assets/common/images/logged_out.png" title="Logged out of Mindspark">
+      </div>
+      <div class="message">
+        <p class="message-content">You have been logged out of Mindspark because your session time is over.</p>
+      </div>
+      <div class="form-group">
+        <button (click)='continuePage()' class="details-btn next-button login-button">Login again</button>
+
+      </div>
+    </div>
+
+
+
+    <!-- Upgrade browser type error -->
+    <div class="errorContent-ct" *ngIf="error === 'reload'">
+      <div class="errorContent-main-cont">
+        <img class="error-images " src="assets/common/images/logged_out.png" title="Logged out of Mindspark ">
+      </div>
+      <div class="message ">
+        <!-- <p class="message-content ">{{ 'you have been logged out of mindspark because your session time is over' | translate }}.</p> -->
+        <p class="message-content ">You have been logged out of Mindpark because you clicked on back/refresh button in your browser.</p>
+      </div>
+      <div class="form-group ">
+        <button (click)='logoutPage()' class="details-btn next-button login-button ">{{ 'login again' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>

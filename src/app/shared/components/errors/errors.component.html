@@ -1,0 +1,180 @@
+<div class="container-fluid login-page-ct">
+  <ms-auth-header></ms-auth-header>
+  <div class="container">
+    <!-- subscription error -->
+    <!-- <div class="errorContent-ct">
+      <div class="errorContent-main-cont">
+        <img class="error-images" src="assets/common/images/subscription.png" title="Subscribe">
+        <div class="form-group">
+          <button class="details-btn next-button subscription-button">renew your subscription</button>
+        </div>
+      </div>
+      <div class="message">
+        <p class="message-content">Oh no, your subscription period has ended! Team mindspark really wanted you back</p>
+      </div>
+    </div> -->
+
+    <!-- Upgrade browser type error -->
+    <div class="upgrade" *ngIf="error === 'incompatiblebrowser'">
+      <div class="upgrade-errorContent-ct">
+        <div class="errorContent-main-cont">
+          <img class="browser-image" src="assets/common/images/upgrade.png" title="Upgrade your browser">
+          <div class="form-group">
+            <button class="details-btn next-button subscription-button" hidden>UPGRADE YOUR BROWSER</button>
+          </div>
+        </div>
+        <div class="message">
+          <p class="message-content" *ngIf=!browserData.compatible>Your {{osDetails}} doesn’t support some of the Mindspark content.Your {{browser}} needs to update</p>
+          <p class="message-content" *ngIf=!browserData.cookies>Cookies are disabled.Please enable it.</p>
+          <p class="message-content" *ngIf=!browserData.dragDrop>Drag and drop is disabled.Please enable it.</p>
+          <p class="message-content" *ngIf=!browserData.firewall>Invalid link</p>
+          <p class="message-content" *ngIf=!browserData.localStorage>Your localstorage is diabled.Please enable it.</p>
+          <p class="message-content" *ngIf=!browserData.sessionStorage>Your sessionstorage is diabled.Please enable it.</p>
+        </div>
+        <div class="errorContent-upgrade-browser-ct">
+          <div class="upgrade-browser">
+            <hr class="horizontal-line">
+            <div class="message">
+              <p class="message-content">You can continue using Mindspark in this unsupported configuration</p>
+            </div>
+            <div class="upgrade-section-buttons" style="display: -webkit-flex;">
+              <div class="form-group">
+                <button class="details-btn next-button logout-button" (click)="logoutPage()">Logout</button>
+              </div>
+              <div class="form-group">
+                <button class="details-btn next-button continue-button" (click)="continuePage()">Continue</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upgrade browser type error-->
+    <!-- <div class="upgrade" *ngIf="error === 'firewall'">
+      <div class="upgrade-errorContent-ct">
+        <div class="errorContent-main-cont">
+          <img class="browser-image" src="assets/common/images/upgrade.png" title="Upgrade your browser">
+          <div class="form-group">
+            <button class="details-btn next-button subscription-button" hidden>FIREWALL BLOCK</button>
+          </div>
+        </div>
+        <div class="message">
+          <p class="message-content">Your {{osDetails}} doesn’t support some of the Mindspark content.Your {{browser}} needs to update</p>
+          <p class="message-content" *ngIf=!browserData.cookies>Cookies are disabled.Please enable it.</p>
+          <p class="message-content" *ngIf=!browserData.dragDrop>Drag and drop is disabled.Please enable it.</p>
+          <p class="message-content" *ngIf=!browserData.firewall>Invalid link</p>
+          <p class="message-content" *ngIf=!browserData.localStorage>Your localstorage is diabled.Please enable it.</p>
+          <p class="message-content" *ngIf=!browserData.sessionStorage>Your sessionstorage is diabled.Please enable it.</p>
+        </div>
+        <div class="errorContent-upgrade-browser-ct">
+          <div class="upgrade-browser">
+            <hr class="horizontal-line">
+            <div class="message">
+              <p class="message-content">You can continue using Mindspark in this unsupported configuration</p>
+            </div>
+            <div class="upgrade-section-buttons">
+              <div class="form-group">
+                <button class="details-btn next-button logout-button">Logout</button>
+              </div>
+              <div class="form-group">
+                <button class="details-btn next-button continue-button">Continue</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+
+
+    <!-- Unauthorized -->
+    <div class="errorContent-ct " *ngIf="error==='unauthorized'">
+      <div class="errorContent-main-cont">
+        <img class="error-images " src="assets/common/images/logged_out.png " title="Logged out of Mindspark ">
+      </div>
+      <div class="message ">
+        <!-- <p class="message-content ">{{ 'you have been logged out of mindspark because your session time is over' | translate }}.</p> -->
+        <p class="message-content ">You have been logged out as you tried to access an unauthorized page.</p>
+      </div>
+      <div class="form-group ">
+        <button (click)='logoutPage()' class="details-btn next-button login-button ">{{ 'login again' | translate }}</button>
+      </div>
+    </div>
+
+    <!-- error back/refresh -->
+    <div class="errorContent-ct " *ngIf="error==='pagerefresh' || error==='pageback'">
+      <div class="errorContent-main-cont ">
+        <img class="error-images " src="assets/common/images/logged_out.png " title="Logged out of Mindspark ">
+      </div>
+      <div class="message ">
+        <p class="message-content " *ngIf="error==='pageback'">You have been logged out of Mindpark because you clicked on back button in your browser.</p>
+        <p class="message-content " *ngIf="error==='pagerefresh'">You have been logged out of Mindpark because you clicked on refresh button in your browser.</p>
+      </div>
+      <div class="form-group ">
+        <button (click)='logoutPage()' class="details-btn next-button login-button ">{{ 'login again' | translate }}</button>
+      </div>
+    </div>
+
+    <!-- error multiple tabs -->
+    <!-- <div class="errorContent-ct ">
+      <div class="errorContent-main-cont ">
+        <img class="error-images " src="assets/common/images/logged_out.png " title="Logged out of Mindspark ">
+      </div>
+      <div class="message ">
+        <p class="message-content ">You have been logged out of Mindspark because you have opened Mindspark in multiple tabs.</p>
+      </div>
+      <div class="form-group ">
+        <a routerLink="/" class="details-btn next-button login-button ">Login again</a>
+      </div>
+    </div> -->
+
+    <!-- Logout timeup error -->
+    <div class="errorContent-ct " *ngIf="error==='inactivity'">
+      <div class="errorContent-main-cont">
+        <img class="error-images timer-images " src="assets/common/images/sand-timer.png " title="Time up ">
+      </div>
+      <div class="message ">
+        <p class="message-content ">Your account gets logged out automatically if you don’t use for 10 minutes</p>
+      </div>
+      <div class="form-group ">
+        <button (click)='logoutPage()' class="details-btn next-button login-button ">{{ 'login again' | translate }}</button>
+      </div>
+    </div>
+
+    <!-- 404 Not Found Page -->
+    <div class="errorContent-ct " *ngIf="error==='404'">
+      <div class="errorContent-main-cont">
+        <img class="error-images timer-images " src="assets/common/images/sand-timer.png " title="Time up ">
+      </div>
+      <div class="message ">
+        <p class="message-content ">Oops page not found.</p>
+      </div>
+      <div class="form-group">
+        <button (click)='logoutPage()' class="details-btn next-button login-button ">{{ 'login again' | translate }}</button>
+      </div>
+    </div>
+
+    <!-- multiple-tabs-error -->
+    <!-- <div class="errorContent-ct ">
+      <div class="errorContent-main-cont ">
+        <img class="error-images " src="assets/common/images/multiple-tabs-error.png " title="Logged out of Mindspark ">
+      </div>
+      <div class="message multiple-tabs-error ">
+        <p class="message-content ">Opening Mindspark in multiple tabs is NOT allowed.</p>
+        <p class="message-content ">Would you like to logout of all other Mindspark Sessions.</p>
+      </div>
+      <div class="multiple-tabs-buttons ">
+        <div class="form-group ">
+          <button class="next-button yes-button ">Yes</button>
+        </div>
+        <div class="form-group ">
+          <button class=" next-button no-button ">No</button>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>
+<div class="login-footer ">
+  <ms-auth-footer></ms-auth-footer>
+</div>

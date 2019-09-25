@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<contents>
+		<static>true</static>
+		<pageBG_01>../course_images/common_bg/commonbg_05.jpg</pageBG_01>
+		<paragraph_text1_1>To LOGOUT, I must click</paragraph_text1_1>
+		<itext>I will practise these steps. Please click the replay button for me.</itext>
+	</contents>
+</root>

@@ -1,0 +1,71 @@
+<div *ngIf="forNotification">
+  <div class="notification-modal">
+    <div class="modal-body notificationModal">
+      <button aria-label="Close" class="closed" type="button" (click)="closeModal()">
+        <i aria-hidden="true" class="fa fa-times"></i>
+      </button>
+
+      <div class="notification-modal-content">
+        <ng-container *ngIf="notifications?.length>0 else emptyNotifications">
+          <div *ngFor="let notification of notifications; let i = index">
+            <div class="row-block" *ngIf="i<3" [ngClass]="{ 'pointer':notification?.type === 'redirect' }">
+              <div class="left-content">
+                <img [src]="imagePicker(notification?.category)" />
+              </div>
+              <div class="right-content" (click)="readNotification(notification);">
+                <h4 class="top-title" [ngClass]="{'read-message':!notification?.isRead }"> {{ notification?.templateHeader | translate:{ endDate:notification?.data?.endDate, topicName:notification?.data?.topicName
+                  } }}</h4>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #emptyNotifications>
+          <h4 class="top-title">
+            {{ 'you dont have any notifications' | translate }}
+          </h4>
+        </ng-template>
+      </div>
+
+      <div class="left-image-ct">
+        <img src="assets/common/images/side-sparkie.png" alt="sparkie-champ" title="sparkie-champ" />
+      </div>
+
+      <div class="left-arrow"></div>
+      <div class="modal-footer" *ngIf="notifications?.length>0">
+        <button class="details-btn close-button" (click)="viewAll()"> {{ 'view all' | translate}}</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div *ngIf="forPromotional">
+  <div class="modal-body fly-notification-ct" *ngIf="promotional?.length>0 && hasUnread">
+    <button aria-label="Close" class="closed" type="button" (click)="closeModal()">
+      <i aria-hidden="true" class="fa fa-times"></i>
+    </button>
+    <div class="notificationContent-ct">
+      <ngb-carousel class="notification-carrousel" (slide)="slideChange($event)" [interval]='5000'>
+        <div *ngFor="let notification of promotional; let i = index">
+          <ng-template ngbSlide *ngIf="notification?.isRead === false" [id]="i">
+
+            <div class="carrousel-header">
+              <p>{{ notification?.templateHeader | translate }}</p>
+            </div>
+            <div class="carrousel-body">
+              <div class="sparkie-image">
+                <img [src]="notification?.asset" alt="notification animation">
+              </div>
+              <div class="message" *ngIf="">
+                <p>{{ notification?.templateBody | translate:{startDate: notification?.data?.startDate, endDate: notification?.data?.endDate}
+                  }}
+                </p>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </ngb-carousel>
+    </div>
+  </div>
+</div>

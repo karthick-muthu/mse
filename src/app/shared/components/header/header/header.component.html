@@ -1,0 +1,51 @@
+<ng-container [ngSwitch]="template">
+  <ng-container *ngSwitchCase="'1'">
+    <div class="container-fluid style-space fontStyle">
+      <header class="header-container grade-type-1" [class.headerShrink]="!isDetailedView">
+        <div class="container">
+          <ms-header-t1></ms-header-t1>
+
+          <div class="header-bottom-section row" style="display: -webkit-flex;">
+            <div class="col-lg-4 col-md-4 d-md paddLeftNone alignToBottom">
+              <ms-profile [template]="template" [profileInfo]="dashboardData?.userInformation" [questionDetail]="dashboardData?.weeklySummary"
+                [rewardsList]="dashboardData?.rewardSummary">
+              </ms-profile>
+            </div>
+            <div class="col-lg-8 col-md-8 paddRightNone">
+              <ms-menu></ms-menu>
+            </div>
+          </div>
+        </div>
+        <div class="header-container-after d-md"></div>
+        <div class="header-container-before d-md"></div>
+      </header>
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="'2'">
+    <div class="container-fluid header-bg mobile">
+      <div class="container header-content-area clearfix">
+        <ms-menu></ms-menu>
+        <ms-header-t2></ms-header-t2>
+      </div>
+    </div>
+
+    <!-- desktop header -->
+    <div class="container-fluid header-bg desktop">
+      <div class="header-bg-layer"></div>
+      <div class="container header-content-area clearfix">
+        <ms-header-t2 [formValue]="formValue"></ms-header-t2>
+        <ms-profile [template]="template" *ngIf="isDetailedView" class="profile" [profileInfo]="dashboardData?.userInformation" [questionDetail]="dashboardData?.weeklySummary"
+          [rewardsList]="dashboardData?.rewardSummary"></ms-profile>
+      </div>
+    </div>
+
+    <!-- desktop header -->
+    <div class="container-fluid middle-menu-container desktop" [ngClass]="{'header-bg-clouds-layer-position':isProfileVisible }">
+      <div class="header-bg-clouds-layer"></div>
+      <div class="container menu-container desktop">
+        <ms-menu></ms-menu>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>

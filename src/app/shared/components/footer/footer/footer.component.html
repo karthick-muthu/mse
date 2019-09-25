@@ -1,0 +1,8 @@
+<ng-container [ngSwitch]="template">
+  <ng-container *ngSwitchCase="'1'">
+    <ms-footer-t1 [sessionInformation]="sessionInformation"></ms-footer-t1>
+  </ng-container>
+  <ng-container *ngSwitchCase="'2'">
+    <ms-footer-t2 [sessionInformation]="sessionInformation"></ms-footer-t2>
+  </ng-container>
+</ng-container>

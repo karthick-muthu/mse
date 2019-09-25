@@ -1,0 +1,42 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.question-timer-container {
+  padding-bottom: 45px;
+  .question-timer {
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    height: 35px;
+    top: 10px;
+    text-align: center;
+    overflow: hidden;
+    right: 0px;
+    .timer-progress {
+      height: 100%;
+    }
+    .timer-status {
+      position: absolute;
+      top: 4px;
+      left: 5%;
+      right: 5%;
+      font-size: 18px;
+      color: rgba($black, 1);
+      z-index: 9;
+    }
+  }
+}
+
+.timer-start {
+  background: $gray;
+  .timer-progress {
+    background-image: linear-gradient(135deg, $secondaryColor 25%, $secondaryGradientColor 25%, $secondaryGradientColor 50%, $secondaryColor 50%, $secondaryColor 75%, $secondaryGradientColor 75%, $secondaryGradientColor) !important;
+    background-size: 1rem 1rem !important;
+  }
+}
+
+.timer-end {
+  background: $alertIncorrectBg;
+  .timer-progress {
+    background-image: linear-gradient(135deg, $blushRedShadow 25%, $blushRed 25%, $blushRed 50%, $blushRedShadow 50%, $blushRedShadow 75%, $blushRed 75%, $blushRed) !important;
+    background-size: 1rem 1rem !important;
+  }
+}

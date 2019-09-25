@@ -1,0 +1,207 @@
+<ms-questions-header [from]="'progress-modal'"></ms-questions-header>
+
+<div class="container main-section-progress-modal">
+  <!-- first slide animation -->
+  <div class="type1-animation" *ngIf="showAnimationType('type1')">
+    <div class="circular-progress">
+      <div class="status">
+        <span>{{ 'you are on' | translate }}</span>
+      </div>
+      <div class="progress-wrapper">
+        <div class="current-unit">
+          <span>{{ progress?.currentUnitNum || '0' | ordinalName }}</span>
+          <hr>
+          <span *ngIf="progress?.totalUnits === 1">{{ progress?.totalUnits }} {{ 'concept' | translate }}</span>
+          <span *ngIf="progress?.totalUnits > 1">{{ progress?.totalUnits }} {{ 'concepts' | translate }}</span>
+        </div>
+        <round-progress class="progress-circle" [current]="progressValue" [max]="progress?.totalUnits" [color]="'#b0d361'" [background]="'#DFEEC3'"
+          [stroke]="28" [rounded]="true" [duration]="1" [animation]="'easeInOutQuart'"></round-progress>
+      </div>
+      <div class="action" style="display:-webkit-flex;">
+        <div id="get" class="action-item">{{ 'get' | translate }}.</div>
+        <div id='set' class="action-item set-text">{{ 'set' | translate }}.</div>
+        <div id="go" class="action-item go-text">{{ 'go' | translate }} !</div>
+      </div>
+    </div>
+    <div class="avtar-animation">
+      <div class="flags-container" style="display:-webkit-flex;">
+        <div class="start-flag">
+          <img src="assets/common/images/start-flag.png" class="flag" alt="flag">
+        </div>
+        <div class="next-flag">
+          <img *ngIf="userProgress > 0" src="assets/common/images/grey-flag.png" class="flag" alt="flag">
+          <img *ngIf="userProgress === 0" src="assets/common/images/checkered-flag.png" class="flag" alt="flag">
+        </div>
+      </div>
+      <div class="animation-image">
+        <img src="assets/common/images/gifmaker.gif" class="avatar">
+      </div>
+      <div class="road-with-grond">
+        <img src="assets/common/images/road-with-ground-trees.png" alt="road with trees" class="higher-resolution">
+        <img src="assets/common/images/ground-road-mobile.png" alt="road without trees" class="lower-resolution">
+      </div>
+    </div>
+  </div>
+
+  <!-- for second slide -->
+  <div class="type2-animation" *ngIf="showAnimationType('type2')">
+    <div class="circular-progress">
+      <div [ngClass]="getContentClassName('type2')" style="display: -webkit-flex;">
+        <div class="progress-wrapper">
+          <div class="completed-units">
+            <span>{{ 'unit completed' | translate: { unit: (progress?.currentUnitNum - 1) || '0' | ordinalName } }}</span>
+          </div>
+          <div class="status">
+            <span>{{ 'you are on' | translate }}</span>
+          </div>
+          <div class="current-unit">
+            <span>{{ progress?.currentUnitNum || '0' | ordinalName }}</span>
+            <hr>
+            <span *ngIf="progress?.totalUnits === 1">{{ progress?.totalUnits }} {{ 'concept' | translate }}</span>
+            <span *ngIf="progress?.totalUnits > 1">{{ progress?.totalUnits }} {{ 'concepts' | translate }}</span>
+          </div>
+          <round-progress class="progress-circle" [current]="progressValue" [max]="progress?.totalUnits" [color]="'#b0d361'" [background]="'#DFEEC3'"
+            [stroke]="28" [rounded]="true" [duration]="1" [animation]="'easeInOutQuart'"></round-progress>
+        </div>
+        <div class="unit-status" id="units-alert">
+          <div class="alert-section">
+            <div class="header-layer">
+              <span>{{ 'you are' | translate }}</span>
+              <span *ngIf="userProgress === 0">{{ 'unit away' | translate: { unit: (userProgress + 1) } }}</span>
+              <span *ngIf="userProgress > 0">{{ 'units away' | translate: { unit: (userProgress + 1) } }}</span>
+            </div>
+            <div class="body-content" style="display: -webkit-flex;">
+              <!-- <div *ngIf="template === '2'" class="image-section">
+                <div class="image">
+                  <img src="assets/common/images/challenge.png" class="">
+                </div>
+                <span class="image-title">{{ 'unlock a challenge' | translate }}</span>
+              </div> -->
+              <div *ngIf="template === '2'" class="image-section">
+                <div class="image">
+                  <img src="assets/common/images/gray-shield.png" class="">
+                </div>
+                <span class="image-title">{{ 'earn a shield' | translate }}</span>
+              </div>
+              <div class="image-section">
+                <div class="image">
+                  <img src="assets/common/images/gray-sparkie.png" class="">
+                  <div class="shield-count">
+                    <span>&#43; 50</span>
+                  </div>
+                </div>
+                <span class="image-title">{{ 'get more sparkies' | translate }}</span>
+              </div>
+            </div>
+            <div class="arrow"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="avtar-animation">
+      <div class="slider" style="display: -webkit-flex;">
+        <div class="flags-section" [ngClass]="{'final-section': userProgress === 0}">
+          <img *ngIf="(progress?.currentUnitNum - 1) !== 1" src="assets/common/images/greenflag.png" class="flag" alt="flag">
+          <img *ngIf="(progress?.currentUnitNum - 1) === 1" src="assets/common/images/start-flag.png" class="flag" alt="flag">
+        </div>
+        <div class="flags-section" [ngClass]="{'final-section': userProgress === 0}">
+          <img [src]="flag2src" class="flag" alt="flag">
+        </div>
+        <div class="flags-section">
+          <img *ngIf="userProgress > 0" src="assets/common/images/grey-flag.png" class="flag" alt="flag">
+          <img *ngIf="userProgress === 0" src="assets/common/images/checkered-flag.png" class="flag" alt="flag">
+        </div>
+      </div>
+      <div class="animation-image">
+        <img src="assets/common/images/gifmaker.gif" class="avatar-slide" alt="avatar-image">
+      </div>
+      <div class="road-with-grond">
+        <img src="assets/common/images/road-with-ground-trees.png" alt="road with trees" class="higher-resolution">
+        <img src="assets/common/images/ground-road-mobile.png" alt="road without trees" class="lower-resolution">
+      </div>
+    </div>
+  </div>
+  <!--  second slide closed here -->
+
+  <!-- type 3 avatar animation -->
+  <div class="type3-animation" *ngIf="showAnimationType('type3')">
+    <div class="circular-progress">
+      <div [ngClass]="getContentClassName('type3')" style="display: -webkit-flex;">
+        <div class="progress-wrapper">
+          <div class="completed-units">
+            <span>{{ 'unit completed' | translate: { unit: (progress?.currentUnitNum - 1) || '0' | ordinalName } }}</span>
+          </div>
+          <div class="status">
+            <span>{{ 'you are on' | translate }}</span>
+          </div>
+          <div class="current-unit">
+            <span>{{ progress?.currentUnitNum || '0' | ordinalName }}</span>
+            <hr>
+            <span *ngIf="progress?.totalUnits === 1">{{ progress?.totalUnits }} {{ 'concept' | translate }}</span>
+            <span *ngIf="progress?.totalUnits > 1">{{ progress?.totalUnits }} {{ 'concepts' | translate }}</span>
+          </div>
+          <round-progress class="progress-circle" [current]="progressValue" [max]="progress?.totalUnits" [color]="'#b0d361'" [background]="'#DFEEC3'"
+            [stroke]="28" [rounded]="true" [duration]="1" [animation]="'easeInOutQuart'"></round-progress>
+        </div>
+        <div class="unit-status" id="units-alert">
+          <div class="alert-section">
+            <div class="header-layer">
+              <span>{{ 'you are' | translate }}</span>
+              <span *ngIf="userProgress === 0">{{ 'unit away' | translate: { unit: (userProgress + 1) } }}</span>
+              <span *ngIf="userProgress > 0">{{ 'units away' | translate: { unit: (userProgress + 1) } }}</span>
+            </div>
+            <div class="body-content" style="display: -webkit-flex;">
+              <!-- <div *ngIf="template === '2'" class="image-section">
+                <div class="image">
+                  <img src="assets/common/images/challenge.png" class="">
+                </div>
+                <span class="image-title">{{ 'unlock a challenge' | translate }}</span>
+              </div> -->
+              <div *ngIf="template === '2'" class="image-section">
+                <div class="image">
+                  <img src="assets/common/images/gray-shield.png" class="">
+                </div>
+                <span class="image-title">{{ 'earn a shield' | translate }}</span>
+              </div>
+              <div class="image-section">
+                <div class="image">
+                  <img src="assets/common/images/gray-sparkie.png" class="">
+                  <div class="shield-count">
+                    <span>&#43; 50</span>
+                  </div>
+                </div>
+                <span class="image-title">{{ 'get more sparkies' | translate }}</span>
+              </div>
+            </div>
+            <div class="arrow"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper avtar-animation">
+      <div class="flags-container" style="display: -webkit-flex;">
+        <div class="avatar">
+          <img src="assets/common/images/gifmaker.gif" class="avatar-slide" alt="avatar-image">
+        </div>
+        <div class="flags-section">
+          <img *ngIf="(progress?.currentUnitNum - 1) !== 1" src="assets/common/images/greenflag.png" class="flag" alt="flag">
+          <img *ngIf="(progress?.currentUnitNum - 1) === 1" src="assets/common/images/start-flag.png" class="flag" alt="flag">
+        </div>
+        <div class="flags-section">
+          <img [src]="flag2src" class="flag" alt="flag">
+        </div>
+        <div class="flags-section">
+          <img src="assets/common/images/grey-flag.png" class="flag" alt="flag">
+        </div>
+        <div class="flags-section">
+          <img src="assets/common/images/checkered-flag.png" class="flag" alt="flag">
+        </div>
+      </div>
+      <div class="road-with-grond">
+        <img src="assets/common/images/road-with-ground-trees.png" alt="road with trees" class="higher-resolution">
+        <img src="assets/common/images/ground-road-mobile.png" alt="road without trees" class="lower-resolution">
+      </div>
+    </div>
+  </div>
+</div>
+<ms-questions-footer></ms-questions-footer>

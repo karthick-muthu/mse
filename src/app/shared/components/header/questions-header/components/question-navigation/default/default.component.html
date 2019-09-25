@@ -1,0 +1,68 @@
+<div class="left-nav" [ngClass]="templateClass">
+    <div #pedagogyConceptDropDown="ngbDropdown" ngbDropdown class="d-inline-block">
+        <ng-container *ngIf="pedagogyContent?.higherLevelStatus === 'in-progress'; then higherLevelSection; else circularProgressSection"></ng-container>
+        <ng-template #circularProgressSection>
+            <!-- circular progress -->
+            <div class="header-circular-progress" id="pedagogyConceptDropDown" ngbDropdownToggle class="concept-dropdown">
+                <div class="progress-wraper">
+                    <div class="current">
+                        <span>{{ pedagogyContent?.progress?.currentUnitNum }}</span>
+                        <hr>
+                        <span>{{ pedagogyContent?.progress?.totalUnits }}</span>
+                    </div>
+                    <circle-progress class="progress-circle" [backgroundColor]="circleProgressBgColor" [backgroundPadding]="0" [renderOnClick]="false" [showSubtitle]="false" [percent]="pedagogyContent?.progressPercent" [showTitle]="false" [showUnits]="false" [radius]="20"
+                        [outerStrokeWidth]="3" [innerStrokeWidth]="0" [outerStrokeColor]="'#78C000'" [animation]="true" [animationDuration]="200"></circle-progress>
+                </div>
+            </div>
+        </ng-template>
+
+        <ng-template #higherLevelSection>
+            <!-- higher level arrow -->
+            <div id="pedagogyConceptDropDown" ngbDropdownToggle class="concept-dropdown">
+                <div class="higher-level-arrow">
+                    <img src="assets/common/images/higher-level-arrow.png" alt="higher level arrow">
+                </div>
+            </div>
+        </ng-template>
+
+        <div ngbDropdownMenu aria-labelledby="pedagogyConceptDropDown">
+            <div class="dropdown-concept-title">
+                <div class="unit">{{ 'concept' | translate }}</div>
+                <div class="title" [innerHtml]="unitName"></div>
+            </div>
+        </div>
+    </div>
+    <div class="units-text" style="display: -webkit-flex;">
+        <ng-container *ngIf="pedagogyContent?.higherLevelStatus === 'in-progress'; then higherLevelText; else circularProgressText"></ng-container>
+        <ng-template #circularProgressText>
+            <span *ngIf="pedagogyContent?.progress?.currentUnitNum == 1">{{ 'concept' | translate }}</span>
+            <span *ngIf="pedagogyContent?.progress?.currentUnitNum > 1">{{ 'concepts' | translate }}</span>
+        </ng-template>
+        <ng-template #higherLevelText>
+            <span>{{ 'higher level' | translate }}</span>
+        </ng-template>
+    </div>
+    <ng-container *ngIf="showConceptProgress(); then conceptProgress; else conceptTitle"></ng-container>
+    <ng-template #conceptProgress>
+        <div class="navigation-section questionNav">
+            <div class="questionNav-fade-left"></div>
+            <div class="questionNav-fade-right"></div>
+            <ul id="pedegogyProgress" class="list-inline" [ngClass]="{'force-position': (pedagogyChild?.progress?.length > maxProgressList)}" [ngStyle]="leftPosition">
+                <li class="list-inline-item" *ngFor="let progress of pedagogyChild?.progress; let i = index">
+                    <div [ngStyle]="animationStyle[i]" class="circle-nav" [ngClass]="{ 'completed-qs': progress?.state == 'passed', 'failed-qs': progress?.state == 'failed', 'current-qs': progress?.state == 'in-progress' }"></div>
+                </li>
+            </ul>
+        </div>
+    </ng-template>
+    <ng-template #conceptTitle>
+        <label #conceptTitle class="concept-title">
+      <span class="concept-icon">
+        <span *ngIf="pedagogyContent?.type == 'group'" class="icon-timed-test custom-icon"></span>
+        <span *ngIf="pedagogyContent?.type == 'activity'" class="icon-game custom-icon"></span>
+        <span *ngIf="pedagogyContent?.type == 'concept'" class="icon-concept custom-icon"></span>
+        <span *ngIf="pedagogyContent?.type == 'practice'" class="icon-prepost-test custom-icon"></span>
+      </span>
+      <span class="title" [innerHtml]="contentName"></span>
+    </label>
+    </ng-template>
+</div>

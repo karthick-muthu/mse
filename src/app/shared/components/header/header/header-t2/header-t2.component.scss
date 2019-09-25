@@ -1,0 +1,152 @@
+@import '../../../../../../assets/common/styles/global.variables.scss';
+header {
+  padding-top: 2em;
+  .aqad-logo {
+    display: inline-block;
+    padding-left: 35px;
+    padding-top: 5px;
+    img {
+      width: 60px;
+    }
+  }
+}
+
+.excecute-bold {
+  color: #707070 !important;
+}
+
+.mindspark-header {
+  padding: 14px 0 30px 0;
+  z-index: 9;
+  position: relative;
+  .view-all-notification {
+    width: 100%;
+    border: 0px;
+    height: 40px;
+    font-weight: bold;
+    background: $primaryColor;
+    color: $white;
+    font-size: 14px; // position: absolute;
+    bottom: 0px;
+    cursor: pointer;
+  }
+  .notification-badge {
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    border: solid 3px #0078b8;
+    position: absolute;
+    .fa-circle {
+      font-size: 5px;
+      position: absolute;
+      top: 4px;
+      left: 3px;
+    }
+  }
+  .notification-items {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .notification {
+    font-weight: bold;
+    .games-notification {
+      cursor: pointer;
+    }
+    .notification-title {
+      color: $primaryColor;
+    }
+    .notification-message {
+      color: $darkGrey;
+    }
+    .notification-image {
+      padding: 0 5px;
+      display: inline-flex;
+      justify-content: center;
+      flex-direction: column;
+      img {
+        width: 30px;
+        padding: 4px 0px 0px 0px;
+      }
+    }
+    .notification-content {
+      padding: 0;
+      border-bottom: 1px solid #ccc;
+    }
+  }
+  .notication-list:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.left-header-content {
+  .branding {
+    float: left;
+  }
+}
+
+.dot {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 9px;
+  background-color: $white;
+  border: solid 5px #fe5c5c;
+  top: -5px;
+  right: 0px;
+  right: 10px;
+}
+
+.notication-list {
+  background: $lightgray;
+  font-size: 14px;
+  padding: 5px;
+  border: none;
+  display: block;
+  a {
+    margin: 0;
+  }
+  .notification-title {
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    max-height: 50px;
+    min-height: 40px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+  }
+}
+
+.btn.notication-list p {
+  padding: 0px 10px 0 10px;
+}
+
+/********media queries*******/
+
+@media(max-width: 992px) {
+  .right-header-content .nav-link {
+    margin: 0 0.6rem;
+  }
+}
+
+@media(max-width: 768px) {
+  .right-header-content .nav-link {
+    margin: 0 0.28rem;
+  }
+}
+
+@media(max-width: 1400px) {
+  .mindspark-header {
+    padding: 14px 0 25px 0 !important;
+  }
+}

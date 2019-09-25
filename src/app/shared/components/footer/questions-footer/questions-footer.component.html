@@ -1,0 +1,9 @@
+<div id="questionFooter" class="container-fluid questions-footer" [ngClass]="templateClass">
+  <div class="container">
+    <div class="row footer-row">
+      <div class="col textAlign-left">SESSION ID: {{sessionInformation?.sessionID}} | {{sessionInformation?.sessionStartAt | amDateFormat:'DD MMM YYYY' }}
+        | {{sessionInformation?.sessionStartAt | amDateFormat:'hh:mm A' }}</div>
+      <div class="col textAlign-right">{{ appSettings?.COPYRIGHT }}</div>
+    </div>
+  </div>
+</div>

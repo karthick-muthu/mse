@@ -1,0 +1,134 @@
+@import "../../../../../assets/common/styles/global.variables.scss";
+// .question-alerts {
+//   border-radius: 6px;
+//   padding: 20px 10px;
+//   margin-bottom: 20px;
+//   margin-top: 20px;
+//   box-shadow: 2px 2px 4px 0px $gray;
+//   font-size: 18px;
+//   font-weight: bold;
+//   position: relative;
+//   left: 0px;
+//   right: 0px;
+//   .alert-text {
+//     display: inline-block;
+//     margin-bottom: 0px;
+//     align-self: center !important;
+//   }
+//   .left-icon {
+//     font-size: 26px;
+//     text-align: right;
+//     position: relative;
+//     top: 2px;
+//     align-self: center;
+//   }
+//   .close-alert {
+//     cursor: pointer;
+//     text-transform: uppercase;
+//     text-align: right;
+//     padding-right: 35px;
+//     align-self: center;
+//   }
+// }
+.main-container {
+  position: absolute;
+  top: 10px;
+  z-index: 10;
+  padding-top: 10px;
+  top: 0;
+  left: 0;
+  right: 0;
+  .question-alerts {
+    border-radius: 6px;
+    padding: 10px 15px;
+    box-shadow: 0 7px 10px 0 rgba($black, 0.2);
+    font-size: 18px;
+    font-weight: bold;
+    position: fixed;
+    font-size: 14px;
+    left: 0px;
+    right: 0px;
+    width: 640px;
+    .alert-text {
+      display: inline-block;
+      margin-bottom: 0px;
+      align-self: center !important;
+      line-height: 1.29;
+    }
+    .left-icon {
+      font-size: 26px;
+      text-align: right;
+      position: relative;
+      top: 2px;
+      align-self: center;
+    }
+    .close-alert {
+      cursor: pointer;
+      text-transform: uppercase;
+      text-align: right;
+      align-self: center;
+    }
+  }
+}
+
+.alert-incorrect {
+  border: 1px solid $blushRedShadow;
+  color: $blushRedShadow;
+  background: $alertIncorrectBg; // .close-alert {
+  //   color: $primaryColor;
+  // }
+}
+
+.alert-info {
+  border: 1px solid $morningGloryShadow;
+  color: $morningGloryShadow;
+  background: $morningGlory; // .close-alert {
+  //   color: $primaryColor;
+  // }
+}
+
+.alert-warning {
+  border: 1px solid $goldenYellowShadow;
+  color: $goldenYellowShadow;
+  background: $alertWarningBg; // .close-alert {
+  //   color: $primaryColor;
+  // }
+}
+
+.alert-mistake {
+  border: 1px solid $secondaryShadowColor;
+  color: $secondaryShadowColor;
+  background: $alertMistakeBg; // .close-alert {
+  //   color: $secondaryShadowColor;
+  // }
+}
+
+@keyframes shake {
+  from,
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+  20%,
+  60%,
+  90% {
+    transform: translate3d(-10px, 0, 0);
+  }
+  40%,
+  80% {
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+.shake {
+  animation-name: shake;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+}
+
+@media (max-width: 576px) {
+  .main-container {
+    .question-alerts {
+      width: calc(100% - 30px);
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+    "name": "Mindspark",
+    "short_name": "Mindspark",
+    "theme_color": "#FFFFFF",
+    "background_color": "#3F51B5",
+    "start_url": "/mind-spark/",
+    "display": "standalone",
+    "orientation": "landscape",
+    "icons": [
+        {
+            "src": "\/mind-spark\/favicon.png",
+            "sizes": "36x36",
+            "type": "image\/png",
+            "density": "0.75"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<contents>
+		<static>true</static>
+		<pageBG_01>../course_images/common_bg/commonbg_01.jpg</pageBG_01>
+		<pageBG_02>../course_images/common_bg/commonbg_03.jpg</pageBG_02>
+		<paragraph_text1_1>I need to log in.</paragraph_text1_1>
+		<paragraph_text1_2>Please help me!</paragraph_text1_2>
+		<paragraph_text1_3>Type sparkie.mindspark</paragraph_text1_3>
+		<paragraph_text1_4>My first name is sparkie</paragraph_text1_4>
+		<paragraph_text1_5>My last name is mindspark</paragraph_text1_5>
+		<paragraph_text1_6>Don't add spaces!</paragraph_text1_6>
+		<paragraph_text1_7>Don't use capital letters!</paragraph_text1_7>
+		<paragraph_text1_8>Are you sure the spelling is correct?</paragraph_text1_8>
+	</contents>
+</root>

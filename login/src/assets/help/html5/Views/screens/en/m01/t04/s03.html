@@ -1,0 +1,113 @@
+<style>
+
+	/*Scene 1*/
+	
+	.paragraph-text1{
+		font-size: 30px;
+		font-weight: bold;
+	}
+	
+	.callout_01{
+		width: 276px;
+		height: 96px;
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 23%;
+		right: 14%;
+		background: #fff;
+		border: #dc3509 solid 10px;
+		border-radius: 20px;
+		padding: 20px 0px 0px 0px;
+		text-align: center;
+		/*box-shadow: 0px 25px 18px rgba(0, 0, 0, 0.2);*/
+	}
+
+	
+	.callout_pointer_01{
+		content: "";
+		display: block;
+		position: absolute;
+		z-index: 4;
+		top: -60px;
+		right: 22px;
+		width: 0;
+		border-width: 85px 20px 0px;
+		border-style: solid;
+		border-color: #db3407 transparent;
+		transform: rotate(215deg);
+		/*box-shadow: 0px 25px 18px rgba(0, 0, 0, 0.2);*/
+	}
+	
+	.btn_02{
+		width: 125px;
+		height: 50px;
+		display: block;
+		position: absolute;
+		z-index: 3;
+		top: 32px;
+		right: 2.7%;
+		cursor: pointer;
+		border: #e2bd0e 3px solid;
+		border-radius: 10px;
+	}
+	
+	.cutOutCircle{
+		width: 800px;
+		width: 600px;
+		z-index: 3;
+		margin:0 auto;
+		overflow:hidden;
+	}
+	
+	.cutOutCircle:after{
+		content: '';
+		position: absolute;
+		left: 81.6%;
+		top: 5.4%;
+		border-radius: 15px;
+		width: 122px;
+		height: 50px;
+		box-shadow: 0px 0px 0px 900px rgba(0,0,0,0.5);
+		-webkit-box-shadow: 0px 0px 0px 900px rgba(0,0,0,0.5);
+	}
+	
+	.speachBubble{	
+		position: absolute;
+		display: block;
+		z-index: 10;
+		top: 22%;
+		left: 84%;
+	}
+
+
+	</style>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			var animationEndCheck = 'webkitAnimationEnd mozAnimationEnd oAnimationEnd animationend';
+
+			/*$('#div_01').removeClass('displayNone')
+			$('#div_01').addClass('displayBlock')*/
+
+			$('#content01_01').addClass('visibilityVisible animated pageDelay oneSecondDuration bounceInLeft').one(animationEndCheck,function(){
+				$('#content01_02').addClass('visibilityVisible');
+				$('#content01_03').addClass('visibilityVisible')
+			})
+		})
+	</script>
+
+<div id="div_01" class="Page-BG" ng-style="{'background-image': 'url(' + CourseContent.pageBG_01 + ')'}">
+    <div class="col-sm-12 page-content">
+	    <span id="content01_01" class="speachBubble visibilityHidden">      
+	        <div class="callout_01"><p class="paragraph-text1" bind-html-compile="CourseContent.paragraph_text1_1"></p></div>
+			<div class="callout_pointer_01"></div>
+		</span>
+		<div id="content01_03" class="visibilityHidden cutOutCircle animated fadeIn _2"></div>
+		<span>
+			<div ng-if="pageStatusList[3][3] != '1'" id="content01_02" class="visibilityHidden btn_02 animated flash infiniteAnimation _2" ng-click="gotoNextPage()"></div>
+			<div ng-if="pageStatusList[3][3] == '1'" id="content01_02" class="visibilityHidden btn_02 animated flash infiniteAnimation _1" ng-click="loadScreen(0,3,4)"></div>
+		</span>
+    </div>
+</div>

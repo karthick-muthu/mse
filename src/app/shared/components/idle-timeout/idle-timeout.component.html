@@ -1,0 +1,38 @@
+<ng-template #idleModal let-c="close" let-d="dismiss" id="idleModal">
+  <div class="modal-header">
+    <h5 class="modal-title">Taking a break?</h5>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span class="fa fa-times" aria-hidden="true"></span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>
+      <strong>{{idleState}}</strong>
+    </p>
+    <div>
+      <progress-bar class="progress-bar" [value]=takeValue [max]="timeLeft"></progress-bar>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <!-- <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button> -->
+  </div>
+</ng-template>
+
+
+<!-- <ng-template #timedOutModal let-c="close" let-d="dismiss" id="idleModal">
+  <div class="modal-header">
+    <h4 class="modal-title">You have timed Out</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>
+      <strong>{{idleState}}</strong>
+    </p>
+    <p>You will need to login again.</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template> -->

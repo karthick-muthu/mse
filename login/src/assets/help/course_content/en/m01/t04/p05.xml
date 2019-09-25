@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<contents>
+		<static>true</static>
+		<pageBG_01>../course_images/common_bg/commonbg_05.jpg</pageBG_01>
+		<paragraph_text1_1>Bring your notebooks to Mindspark class!</paragraph_text1_1>
+		<paragraph_text1_2>Have fun!</paragraph_text1_2>
+	</contents>
+</root>

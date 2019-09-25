@@ -1,0 +1,56 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.parents-login-ct {
+  /*max-width: 400px;
+    min-height: 380px;
+    margin: 1px auto 0px auto;*/
+  //background: url("../../../../assets/common/images/clouds-pattern.png") no-repeat bottom;
+  background-size: cover;
+  .parents-login-block {
+    width: 270px;
+    margin: 0 auto;
+    padding-top: 30px;
+    .form-group {
+      margin-bottom: 0rem;
+    }
+  }
+  .details-btn {
+    height: 36px;
+    padding-top: 0px;
+    line-height: 36px;
+  }
+  .parents-login-title {
+    text-align: center;
+    color: $white;
+    font-size: 1.25rem;
+    font-weight: bold;
+    padding-bottom: 20px;
+  }
+  .facebook-button {
+    color: $white;
+    background: $btnFacebookBg;
+    box-shadow: 0 5px $primaryShadowColor;
+    margin-bottom: 22px;
+  }
+  .googlePlus-button {
+    color: $white;
+    background: $blushRedShadow;
+    box-shadow: 0 5px $btnGooglePlusBgShadow;
+  }
+  .newUser {
+    text-align: center;
+    margin: 25px 0 0 0;
+  }
+  .newUser a {
+    font-size: 0.875rem;
+    color: $secondaryColor;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  /*.form-group{
+        margin-bottom: 25px;
+    }*/
+  button {
+    width: 100%;
+    font-size: 12px;
+  }
+}

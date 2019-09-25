@@ -1,0 +1,81 @@
+{
+  "resultCode": "C001",
+  "resultMessage": "success",
+  "userInformation":
+  {
+    "language": "en-IN",
+    "selectedTheme": "lowergrade",
+    "name": "Ramanujan",
+    "grade": 5,
+    "section": "C",
+    "avatar": "url",
+    "isRetail": false,
+    "gender": "female",
+    "groupID": "536518"
+  },
+  "sessionInformation":
+  {
+    "sessionID": "345",
+    "sessionStartAt": "2017-06-21 05:04:35",
+    "sessionType": "Home"
+  },
+  "permittedNavs":
+  {
+    "aqad": true,
+    "games": true,
+    "help": false,
+    "home": true,
+    "mailbox": true,
+    "message": true,
+    "myDetails": true,
+    "myFavourities": false,
+    "myMindspark": true,
+    "myTopics": true,
+    "notification": false,
+    "reward": false,
+    "sparkies": true,
+    "worksheets": true,
+    "searchBar": false
+  },
+  "worksheetList": [
+  {
+    "contentID": "W002",
+    "contentName": "Measurement of Length",
+    "buttonState": "start",
+    "questionAttempted": 0,
+    "questionCompleted": 3,
+    "contentImage": "https://dummyimage.com/100x100/000/0f",
+    "contentStatus": "active",
+    "expiryDate": "2018-01-17"
+  },
+  {
+    "contentID": "W0021",
+    "contentName": "Fractions - Basic",
+    "buttonState": "start",
+    "questionAttempted": 1,
+    "questionCompleted": 3,
+    "contentImage": "https://dummyimage.com/100x100/000/0f",
+    "contentStatus": "deactive",
+    "expiryDate": "2018-08-15"
+  },
+  {
+    "contentID": "W003",
+    "contentName": "Logarithm",
+    "buttonState": "start",
+    "questionAttempted": 1,
+    "questionCompleted": 3,
+    "contentImage": "https://dummyimage.com/100x100/000/0f",
+    "contentStatus": "deactive",
+    "expiryDate": "2018-08-15"
+  },
+  {
+    "contentID": "W003",
+    "contentName": "Logarithm - Basic",
+    "buttonState": "start",
+    "questionAttempted": 1,
+    "questionCompleted": 3,
+    "contentImage": "https://dummyimage.com/100x100/000/0f",
+    "contentStatus": "deactive",
+    "expiryDate": "2018-08-15"
+  }]
+}

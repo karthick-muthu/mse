@@ -1,0 +1,517 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+@import '../../../../../assets/common/styles/global.variables.scss';
+.overlay-section {
+    height: 50px;
+    background: $primaryColor;
+}
+
+.main-content {
+    padding-top: 20px;
+    .topic-detail-content {
+        padding: 20px;
+        .overlay {
+            margin-top: -80px;
+            .report-section {
+                border-radius: 5px;
+                background-color: $lightgray;
+                border: solid 2px rgba(0, 0, 0, 0.1);
+                padding: 1.25rem; //   display: flow-root;
+                .report-details {
+                    display: table;
+                    .accuracy,
+                    .count {
+                        font-size: 20px;
+                        font-weight: bold;
+                        text-align: left;
+                        color: $dark-gray;
+                        line-height: 1.1px;
+                        width: 55px;
+                        display: table-cell
+                    }
+                    .count {
+                        margin-right: 5px;
+                    }
+                    .label {
+                        padding-left: 0px;
+                        font-size: 14px;
+                    }
+                }
+                .left-section,
+                .right-section {
+                    padding: 15px 30px;
+                    .accuracy-text,
+                    .attempt-text {
+                        color: rgba($black, 0.6);
+                        padding-top: 5px;
+                    }
+                }
+                .action-btns.form-group {
+                    margin-bottom: 5px;
+                    width: 100%;
+                    display: table-cell;
+                    .howIDid-btn {
+                        background: $morningGlory;
+                        color: $black;
+                        box-shadow: 0px 5px 0px $morningGloryShadow;
+                        -webkit-appearance: button-bevel;
+                    }
+                    .details-btn {
+                        padding: 10px 12px;
+                        float: left
+                    }
+                    .next-button {
+                        margin-left: 10px;
+                    }
+                }
+            }
+            .line-seperator {
+                height: 3px;
+                border-top: solid 3px $whiterGray;
+                margin: 30px 0 15px 0;
+            }
+            .summary-section {
+                height: 350px;
+                overflow-y: auto;
+                h3 {
+                    font-size: 18px;
+                    font-weight: bold;
+                    text-align: left;
+                    color: #707070;
+                    margin-bottom: 15px;
+                }
+                .summary-details {
+                    border-radius: 5px;
+                    padding: 20px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    text-align: left;
+                    color: $dark-gray;
+                    margin-bottom: 10px;
+                }
+                .won-summary {
+                    background-color: #fcf5d6;
+                    .label {
+                        border-left: 3px solid $goldenYellow;
+                        margin-left: -20px;
+                        padding-left: 15px;
+                    }
+                }
+                .lost-summary {
+                    background-color: #f5f5f5;
+                    .label {
+                        border-left: 3px solid #aeaeae;
+                        margin-left: -20px;
+                        padding-left: 15px;
+                    }
+                }
+            }
+        }
+        .right-content {
+            border-radius: 6px; // background-color: $white;
+            padding-left: 20px; // height: 100%;
+            .panel {
+                border-radius: 5px;
+                background-color: #f5f5f5;
+                border: solid 2px rgba(0, 0, 0, 0.1);
+                padding: 15px;
+                margin-bottom: 20px;
+                .panel-title {
+                    font-size: 18px;
+                    font-weight: bold;
+                    text-align: left;
+                    color: #707070;
+                }
+                .panel-body {
+                    .repeat-li {
+                        padding: 0;
+                        margin: 0;
+                        .timeline {
+                            padding: 0;
+                            margin: 0;
+                            list-style: none;
+                            li {
+                                margin-bottom: 0px;
+                                position: relative;
+                                z-index: 0;
+                                clear: both;
+                            }
+                            li:after {
+                                content: " ";
+                                display: table;
+                            }
+                            .timeline-inverted {
+                                background: $white;
+                                .timeline-badge {
+                                    text-align: center;
+                                    position: absolute;
+                                    top: 20px;
+                                    left: 15px;
+                                    margin-left: 0px;
+                                    z-index: 10;
+                                    border-radius: 50%;
+                                    width: 40px;
+                                    height: 40px;
+                                    line-height: 40px;
+                                    border: 1px solid $gray;
+                                    color: $gray;
+                                    padding-top: 2px;
+                                    background: $white;
+                                    img {
+                                        margin-right: 0px;
+                                        width: 20px;
+                                        margin-top: -4px;
+                                    }
+                                }
+                                .timeline-panel {
+                                    margin: 10px 0 0 60px;
+                                    padding: 10px 15px 15px 15px;
+                                    height: auto;
+                                    min-height: 78px;
+                                    display: flex;
+                                    .timeline-heading {
+                                        font-size: 16px;
+                                        color: $dark-gray;
+                                        font-weight: bold;
+                                        line-height: 1.38;
+                                        width: 75%;
+                                        .timeline-title {
+                                            -webkit-line-clamp: 2;
+                                            -webkit-box-orient: vertical;
+                                            overflow: hidden;
+                                            text-overflow: ellipsis;
+                                            display: -webkit-box;
+                                        }
+                                        .Accuracy {
+                                            margin-top: 8px;
+                                            span {
+                                                border-radius: 10px;
+                                                background-color: #f5f5f5;
+                                                font-size: 14px;
+                                                font-weight: bold;
+                                                line-height: 1.29;
+                                                text-align: left;
+                                                color: #707070;
+                                                padding: 5px 10px;
+                                            }
+                                        }
+                                    }
+                                    .actions {
+                                        width: 25%;
+                                        text-align: right;
+                                        -webkit-box-orient: vertical;
+                                        -webkit-box-direction: normal;
+                                        -ms-flex-direction: column;
+                                        flex-direction: column;
+                                        display: -webkit-inline-box;
+                                        display: -ms-inline-flexbox;
+                                        display: inline-flex;
+                                        -webkit-box-pack: center;
+                                        -ms-flex-pack: center;
+                                        justify-content: center;
+                                        -ms-flex-line-pack: center;
+                                        align-content: center;
+                                        .timeline-panel-type {
+                                            width: 100%;
+                                            .link {
+                                                a {
+                                                    font-size: 14px;
+                                                    color: $primaryColor !important;
+                                                    text-transform: uppercase;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .higher-grade {
+                                        height: 36px;
+                                        border-radius: 24px;
+                                        background-color: $white;
+                                        padding-left: 10px;
+                                        span {
+                                            font-size: 14px;
+                                            font-weight: bold;
+                                            line-height: 36px;
+                                            color: $a3a3a3;
+                                            text-transform: uppercase;
+                                        }
+                                    }
+                                }
+                                .timeline-panel-type {
+                                    width: 100%;
+                                    .link {
+                                        a {
+                                            font-size: 14px;
+                                            color: $primaryColor !important;
+                                            text-transform: uppercase;
+                                        }
+                                    }
+                                }
+                                &.one-unit:before {
+                                    border-left: none !important;
+                                }
+                                &:first-child:before {
+                                    top: 20px;
+                                    bottom: 0;
+                                    position: absolute;
+                                    content: " ";
+                                    width: 1px;
+                                    border-left: 1px solid $secondaryShadowColor;
+                                    left: 35px;
+                                    height: auto;
+                                    margin-left: 0;
+                                }
+                                &:last-child:before {
+                                    top: -28px;
+                                    bottom: 0;
+                                    position: absolute;
+                                    content: " ";
+                                    width: 1px;
+                                    border-left: 1px solid $secondaryShadowColor;
+                                    left: 35px;
+                                    height: 50px;
+                                    margin-left: 0;
+                                }
+                                &:before {
+                                    top: -28px;
+                                    bottom: 0;
+                                    position: absolute;
+                                    content: " ";
+                                    width: 2px;
+                                    border-left: 1px solid $secondaryShadowColor;
+                                    left: 35px;
+                                    height: 65px;
+                                    height: auto;
+                                    margin-left: 0;
+                                }
+                            }
+                            .game-panel {
+                                .timeline-badge {
+                                    text-align: center;
+                                    position: absolute;
+                                    top: 13px;
+                                    left: 15px;
+                                    margin-left: 0px;
+                                    z-index: 10;
+                                    border-radius: 50%;
+                                    width: 40px;
+                                    height: 40px;
+                                    line-height: 40px;
+                                    img {
+                                        margin-right: 0px;
+                                        width: 20px;
+                                        margin-top: -4px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .link {
+                a {
+                    font-size: 14px;
+                    font-weight: bold;
+                    line-height: 1.14;
+                    text-align: right;
+                    color: $primaryColor;
+                    text-transform: uppercase !important
+                }
+            }
+        }
+        .full-strength {
+            .challange-card {
+                background: #FCEB9E;
+                padding: 18px 30px;
+                border-radius: 6px;
+                border: 1px solid #FBDF64;
+                margin: 0 0 5px 0;
+                .timeline-inverted {
+                    width: 100%;
+                    display: flex;
+                    .timeline-badge {
+                        width: 50px;
+                    }
+                    .timeline-panel {
+                        font-size: 16px;
+                        font-weight: bold;
+                        line-height: 1.38;
+                        text-align: left;
+                        color: $dark-gray;
+                        width: 100%;
+                        display: -webkit-box;
+                        display: -ms-flexbox;
+                        display: flex;
+                        padding-left: 15px;
+                        .timeline-heading {
+                            display: flex;
+                            -webkit-box-pack: center;
+                            -ms-flex-pack: center;
+                            justify-content: center;
+                            -ms-flex-line-pack: center;
+                            align-content: center;
+                            width: 50%;
+                            -ms-flex-direction: column;
+                            flex-direction: column;
+                        }
+                        .link {
+                            -ms-flex-pack: center;
+                            -ms-flex-line-pack: center;
+                            width: 50%;
+                            text-align: right;
+                            flex-direction: column;
+                            display: -webkit-inline-box;
+                            display: -ms-inline-flexbox;
+                            display: inline-flex;
+                            -webkit-box-pack: center;
+                            -ms-flex-pack: center;
+                            justify-content: center;
+                            -ms-flex-line-pack: center;
+                            align-content: center;
+                        }
+                    }
+                }
+            }
+            .repeat-card {
+                border-radius: 6px;
+                padding: 5px 30px;
+                min-height: 60px;
+                background-color: #e3f1ff;
+                border: solid 2px #a2e1ff;
+                margin: 0 0 15px 0;
+                .timeline-inverted {
+                    padding: 0;
+                    .timeline-panel {
+                        font-size: 16px;
+                        font-weight: bold;
+                        line-height: 1.38;
+                        text-align: left;
+                        color: $dark-gray;
+                    }
+                    .repeat-image {
+                        position: relative;
+                        label {
+                            position: absolute;
+                            top: 16px;
+                            right: 25px;
+                            font-size: 14px;
+                            font-weight: bold;
+                            color: $primaryColor;
+                        }
+                    }
+                }
+            }
+        }
+        .expand-section {
+            .panel {
+                border-radius: 5px;
+                background-color: #e3f1ff;
+                border: solid 2px #b8e8ff;
+                .expand {
+                    display: flex;
+                    margin: 15px 15px 30px 15px;
+                    .timeline-badge {
+                        width: 50px;
+                    }
+                    .timeline-panel {
+                        width: 100%;
+                        display: flex;
+                        padding-left: 15px;
+                        .timeline-heading {
+                            width: 50%;
+                            font-size: 16px;
+                            font-weight: bold;
+                            line-height: 1.38;
+                            text-align: left;
+                            color: $dark-gray;
+                            flex-direction: column;
+                            display: flex;
+                            justify-content: center;
+                            align-content: center;
+                        }
+                        .link {
+                            width: 50%;
+                            text-align: right;
+                            flex-direction: column;
+                            display: inline-flex;
+                            justify-content: center;
+                            align-content: center;
+                        }
+                    }
+                }
+            }
+        }
+        li,
+        li.active,
+        li.focus {
+            outline: 0px;
+        }
+    }
+    .revise-card {
+        border-color: $goldenYellow;
+        position: relative;
+        margin-top: 15px;
+    }
+    .golden-shield-card-bg {
+        background-color: $goldenYellow !important;
+        border: solid 2px $morningGloryShadow !important;
+        .text {
+            p {
+                color: $black !important;
+            }
+            p:first-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+input {
+    font-size: 14px;
+}
+
+.transparent {
+    background: transparent !important;
+}
+
+.howIDid-btn {
+    background: $morningGlory;
+    color: $primaryShadowColor;
+    box-shadow: 0px 5px 0px $primaryShadowColor;
+    -webkit-appearance: button-bevel;
+}
+
+.overlay-section.template1 {
+    background-color: $questionConceptT2 !important;
+}
+
+.custom-icon {
+    font-size: 20px;
+}
+
+.in-progress {
+    background-color: $goldenYellow !important;
+    border-color: $goldenYellowShadow;
+    .custom-icon {
+        color: $goldenYellowShadow;
+    }
+}
+
+.completed {
+    background-color: $secondaryColor !important;
+    border-color: $secondaryShadowColor;
+    .custom-icon {
+        color: $secondaryShadowColor;
+    }
+}
+
+.failed {
+    background-color: $blushRed !important;
+    border-color: $blushRedShadow;
+    .custom-icon {
+        color: $blushRedShadow;
+    }
+}
+
+.in-progress-heading {
+    display: flex;
+    align-items: center;
+}

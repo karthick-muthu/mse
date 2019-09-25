@@ -1,0 +1,213 @@
+<div class="read-mail-section" [ngClass]="templateClass">
+    <div class="back-btn">
+        <img src="assets/common/images/back-arrow.png" routerLink='/my-mindspark/mailbox' class="back-btn">
+        <a class="back-text" routerLink='/my-mindspark/mailbox'>{{ 'back to all mails' | translate }}</a>
+    </div>
+
+    <div class="question-head">
+        <div class="row">
+
+            <div class="col-md-6 col-sm-6 col-xs-12 comments-count">
+                <div class="question" *ngIf="readmail?.messageDetails?.type?.toLowerCase() ==='comment'">
+                    {{ readmail?.messageDetails?.messagePreview | shorten: textlimit: '...' }}</div>
+                <div class="question" *ngIf="readmail?.messageDetails?.type?.toLowerCase() ==='notification'">
+                    {{ readmail?.messageDetails?.templateHeader | shorten: textlimit: '...' | translate:{ worksheetID: messageDetails?.data?.worksheetID , worksheetName: messageDetails?.data?.worksheetName, endDate:messageDetails?.data?.endDate, topicId:messageDetails?.data?.topicId
+                    , topicName:messageDetails?.data?.topicName } }}
+                </div>
+            </div>
+            <div *ngIf="readmail?.messageDetails?.rate?.rateFlag"
+                class="col-md-6 col-sm-6 col-xs-12 text-right helpful">how useful was this conversation?
+                <ngb-rating (rateChange)="saveCommentRating($event)" [rate]="readmail?.messageDetails?.rate?.rating">
+                    <ng-template let-fill="fill">
+                        <span class="star" [class.filled]="fill"></span>
+                    </ng-template>
+                </ngb-rating>
+            </div>
+        </div>
+        <!-- <div class="shows-more">
+              <div class="text-uppercase text-right"><span class="show-more">Show More</span></div>
+            </div> -->
+    </div>
+    <!--Threads-->
+
+
+    <div class="question-body">
+        <div class="threads">
+            <div class="thread" *ngFor="let reply of readmail?.messageTrail;let i=index">
+                <div class="row">
+                    <div *ngIf="readmail?.messageDetails?.category?.toLowerCase()  === 'commentresponse' || readmail?.messageDetails?.category?.toLowerCase() === 'information'"
+                        class="col-md-1 col-sm-1 col-xs-1 profile-read-img"
+                        [ngStyle]="{ 'background-image': 'url(' + imagePicker(readmail?.messageDetails?.category) + ')' }">
+                    </div>
+
+                    <div class="col-md-9 col-sm-9 col-xs-9 text-left name-label"
+                        *ngIf="readmail?.messageDetails?.type?. toLowerCase() === 'comment'">
+                        <label class="text-uppercase">{{ reply?.fromUserDetails?.name }}</label>
+                    </div>
+                    <div *ngIf="reply?.submitDate" class="col-md-2 col-sm-2 col-xs-2 text-right read-date"
+                        style="display: -webkit-flex;">
+                        <label>
+                            <i class="fa fa-clock-o" *ngIf="template == 2"></i>
+                            {{ reply?.submitDate | amParse:'YYYY-MM-DD hh:mm:ss A' | amDateFormat:'DD/MM/YYYY HH:mm:ss' }}</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col question-details">
+                        <label *ngIf="reply?.replyContent" [innerHtml]="reply?.replyContent | sanitizeCode"></label>
+                        <ng-container *ngFor="let content of displayContent">
+                            <div *ngIf="i === 0 && explain === 'hide question'">
+                                <div class="question" [msMaths]="content?.questionField"
+                                    style="visibility:hidden; position:absolute"></div>
+                                <ng-container *ngIf="content?.contentType==='question'">
+                                    <div class="options row">
+                                        <div class="option col-md-6"
+                                            *ngFor="let choice of content?.responseElements?.mcqPattern?.choices;let j=index">
+                                            <div class="option-key">{{ generateOptionString(j) }}</div>
+                                            <span style="visibility:hidden; position:absolute" class="choice-items"
+                                                [msMaths]="choice?.value"></span>
+                                        </div>
+                                    </div>
+                                    <div class="row answer">
+                                        <div class="col"
+                                            *ngIf="content?.userAnswer?.userAnswer !== null && content?.userAnswer?.userAnswer !== undefined && content?.userAnswer?.result !=undefined">
+                                            <div class="answer-title">{{ 'your answer' | translate }}</div>
+                                            <div class="selected-answer" *ngIf="content?.userAnswer">
+                                                <ng-container
+                                                    *ngIf="content?.templateContent?.toLowerCase() === 'mcq' ; else notAMCQ">
+                                                    {{ generateOptionString(content?.userAnswer?.userAnswer) }}
+                                                </ng-container>
+                                                <ng-template #notAMCQ>
+                                                    <span [msMaths]="content?.userAnswer?.userAnswer"
+                                                        style="visibility:hidden; position:absolute"></span>
+                                                </ng-template>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="answer-title">{{ 'right answer' | translate }}</div>
+                                            <!-- <div *ngIf="content?.correctAnswer && content?.correctAnswer!==null && content?.correctAnswer!==undefined && content?.correctAnswer!=='' && content?.userAnswer?.userAnswer !== null && content?.userAnswer?.userAnswer !== undefined && content?.userAnswer?.userAnswer !== '';else otherContent"> -->
+                                            <div class="selected-answer" *ngIf="content?.correctAnswer">
+                                                <div *ngIf="showAnswer;else other_content">
+
+                                                    <ng-container
+                                                        *ngIf="content?.templateContent?.toLowerCase() === 'mcq' ; else notAMCQ">
+                                                        {{ generateOptionString(content?.correctAnswer) }}
+                                                    </ng-container>
+                                                    <ng-template #notAMCQ>
+                                                        <span [msMaths]="content?.correctAnswer"
+                                                            style="visibility:hidden; position:absolute"></span>
+                                                    </ng-template>
+
+                                                </div>
+
+                                                <ng-template #other_content>
+                                                    {{'Please attempt the question to view the correct answer' | translate }}
+                                                </ng-template>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Explanation -->
+                                    <div class="question-explanation" *ngIf="content?.explanation">
+                                        <div class="question-explanation-container">
+                                            <div class="question-explanation-heading"> {{ 'explanation' | translate }}
+                                            </div>
+                                            <div class="question-explanation-content" [msMaths]="content?.explanation"
+                                                style="visibility:hidden; position:absolute">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Explanation Ends-->
+                                </ng-container>
+                            </div>
+                        </ng-container>
+                        <span *ngIf="readmail?.messageDetails?.contentData">
+                            <span
+                                *ngIf="i == '0' && readmail?.messageDetails?.contentID && messageDetails?.contentData?.contentType?.toLowerCase() ==='question'"
+                                class="pull-right show-more"
+                                (click)="showQuestion()">{{ explain | translate | uppercase }}</span>
+                        </span>
+                        <div class="clearfix"></div>
+
+                        <div *ngIf="messageDetails?.type?.toLowerCase() === 'notification'">
+                            <span *ngIf="messageDetails?.category?.toLowerCase() === 'information'">
+                                {{ reply?.templateBody | translate }}
+                            </span>
+                            <span *ngIf="messageDetails?.category?.toLowerCase() === 'promotional'">
+                                {{ reply?.templateBody | translate:{ worksheetID: messageDetails?.data?.worksheetID , worksheetName: messageDetails?.data?.worksheetName,endDate:messageDetails?.data?.endDate,
+                topicId:messageDetails?.data?.topicId, topicName:messageDetails?.data?.topicName } }}
+                            </span>
+                            <span *ngIf="messageDetails?.category?.toLowerCase() === 'alerts'">
+                                {{ reply?.templateBody | translate:{ worksheetID: messageDetails?.data?.worksheetID , worksheetName: messageDetails?.data?.worksheetName,endDate:messageDetails?.data?.endDate,
+                topicId:messageDetails?.data?.topicId, topicName:messageDetails?.data?.topicName } }}
+                                <div class="row worksheet-button">
+                                    <span *ngIf="readmail?.messageTrail[0]?.action">
+                                        <button class="btn-container btn-start" (click)="actionsForAlerts()">
+                                            {{ buttonTextForAlert | translate }}
+                                        </button>
+                                    </span>
+                                </div>
+
+                            </span>
+                        </div>
+                        <div class="attachemented-files" *ngIf="reply?.attachments?.length > 0">
+                            <div class="attachmentFiles">
+                                <div class="attachment-file">
+                                    <button (click)="open(imageBoxModal, uploadFile)" type="button"
+                                        class="btn attachment-btn" *ngFor="let uploadFile of reply?.attachments"
+                                        [title]="uploadFile | getFileName">
+                                        {{ uploadFile | getFileName }}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="comment-section" *ngIf="readmail?.messageDetails?.type?. toLowerCase() === 'comment'">
+            <div class="comment-input">
+                <form [formGroup]="replyMessage" (submit)="replyToMessage()" style="display: -webkit-flex;">
+                    <div class="text-group">
+                        <textarea class="form-control" placeholder="{{'add comment' | translate}}"
+                            formControlName="replyBody"></textarea>
+                        <label for="uploadFile" [ngClass]="{ 'attachments': (template == 1) }">
+                            <input type="file" accept=".jpg,.png" #uploadFile id="uploadFile"
+                                (change)="updateSelectedFiles()" capture="filesystem" multiple hidden />
+                            <div [ngClass]="{ 'attachments': (template == 2) }">
+                                <img src="assets/common/images/attachment.png">
+                            </div>
+                        </label>
+                    </div>
+                    <div class="send-btn">
+                        <button class="details-btn btn-md" [disabled]="disableSend()">{{'send' | translate }}</button>
+                    </div>
+                </form>
+            </div>
+            <div class="clearfix"></div>
+            <div class="attachmentFiles">
+                <div class="attachment-file" *ngIf="files?.length > 0">
+                    <button type="button" *ngFor="let imagefile of files"
+                        class="btn attachment-btn">{{ imagefile?.filename }}</button>
+                    <span class="attachment-close" (click)="removeFile()">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="text-danger">{{ uploadFileError }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--attachment showing image Modal  -->
+<ng-template #imageBoxModal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">{{ images | getFileName }}</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="imageShowing-ct">
+            <img [src]="images" alt="image" title="image" />
+        </div>
+    </div>
+</ng-template>

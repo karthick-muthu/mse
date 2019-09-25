@@ -1,0 +1,41 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.adSpace-ct {
+  .adSpace-block {
+    border: 1px dashed $greyishBrown;
+    width: 425px;
+    height: 425px;
+    border-radius: 15px;
+    margin-top: 15%;
+    margin-left: 12%;
+  }
+  .adspace-title {
+    text-align: center;
+    line-height: 425px;
+    color: $greyishBrownShadow;
+    font-size: 1.125rem;
+    font-weight: bold;
+  }
+}
+
+.adspace-block-second-layout {
+  .adSpace-block {
+    border: 1px dashed $greyishBrown;
+    border-radius: 15px;
+    max-width: 350px;
+    height: 320px; // margin-top: 0px;
+    // margin-left: 12%;
+  }
+  .adspace-title {
+    text-align: center;
+    line-height: 320px;
+    color: $greyishBrownShadow;
+    font-size: 1.125rem;
+    font-weight: bold;
+  }
+}
+
+@media(max-width: 991px) {
+  .adSpace-block {
+    margin: 0 auto !important;
+  }
+}

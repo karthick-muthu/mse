@@ -1,0 +1,17 @@
+<div class="second-row high-score-section" *ngIf="currentMonth">
+  <h4 class="reward-title title">{{ 'high score for the month of' | translate:{ month : currentMonth | amParse:'YYYY-MM' | amDateFormat:'MMM' | translate
+    , year: currentMonth | amParse:'YYYY-MM' | amDateFormat:'YYYY' } }}</h4>
+  <div class="row">
+    <div class="col-md-4 col-sm-6 col-xs-12" *ngIf="groupSparkieData?.length>0">
+      <ms-leaderboard [boardtype]="'sparkies-style'" [title]="'maximum sparkies'" [size]="displaySize" [data]="groupSparkieData"></ms-leaderboard>
+    </div>
+
+    <div class="col-md-4 col-sm-6 col-xs-12" *ngIf="groupShieldData?.length>0">
+      <ms-leaderboard [boardtype]="'shield-style'" [title]="'maximum shields'" [size]="displaySize" [data]="groupShieldData"></ms-leaderboard>
+    </div>
+    <div class="col-md-4 col-sm-6 col-xs-12" *ngIf="groupAchivementData?.length>0">
+      <ms-leaderboard [boardtype]="'achievement-style'" [title]="'maximum achievements'" [size]="displaySize" [data]="groupAchivementData"></ms-leaderboard>
+    </div>
+
+  </div>
+</div>

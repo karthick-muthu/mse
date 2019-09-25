@@ -1,0 +1,100 @@
+.hi-lang {
+  &.template2 {
+    .myDetails-section .Profile-Ct .add-image-ct {
+      line-height: 22px;
+    }
+    .topics-container {
+      .tag-status {
+        .question-type {
+          line-height: 26px;
+        }
+      }
+    }
+    .report-section {
+      .action-btns {
+        .details-btn {
+          line-height: 22px;
+        }
+      }
+    }
+    .topic-details-header {
+      .btn-close {
+        .btn-primary {
+          height: 32px;
+          line-height: 18px;
+        }
+      }
+    }
+    .read-mail-section {
+      .question-body {
+        .send-btn button {
+          line-height: 28px;
+        }
+      }
+    }
+  }
+  &.template1 {
+    .header1to3-section {
+      .right-header-content {
+        .btn-sm-style {
+          span {
+            margin-top: 0 !important;
+          }
+        }
+      }
+    }
+    .topics-container {
+      .tag-status {
+        .question-type {
+          line-height: 26px;
+        }
+      }
+    }
+    .submit {
+      height: 32px;
+      line-height: 28px
+    }
+    .custom-row {
+      .navigation-right-ct {
+        .btn-done {
+          height: 32px;
+          line-height: 28px;
+        }
+      }
+    }
+    .modal-custom-width {
+      .session-report-modal-body {
+        .session-report {
+          .btn-details,
+          .btn-higher-level {
+            line-height: 28px !important;
+          }
+        }
+      }
+    }
+    .middle-container {
+      .card {
+        .btn-inner-container {
+          .status-label {
+            top: -1px;
+          }
+        }
+        .btn-holder {
+          .status-label {
+            top: -1px;
+          }
+        }
+      }
+    }
+    .topic-trails-container .question-section .question-info .accuracy {
+      height: 30px;
+      line-height: 25px;
+    }
+    .read-mail-section .question-body .send-btn .details-btn {
+      line-height: 28px;
+    }
+    .grade-type-1 .save-button {
+      line-height: 50px !important;
+    }
+  }
+}

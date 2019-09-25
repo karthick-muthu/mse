@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-md navbar-light">
+  <button class="navbar-toggler navbar-toggler-right desktop" id="navbar-toggler" type="button" aria-controls="exCollapsingNavbar2"
+    (click)="toggleMenu()" aria-expanded="false" aria-label="Toggle navigation">
+    <!--<span class="navbar-toggler-icon"></span>-->
+    <div id="nav-icon1" [class.open]="!collapseMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+  <button class="navbar-toggler navbar-toggler-right mobile" id="navbar-toggler-mobile" type="button" aria-controls="exCollapsingNavbar2"
+    (click)="toggleMenu()" aria-expanded="false" aria-label="Toggle navigation">
+    <!--<span class="navbar-toggler-icon"></span>-->
+    <div id="nav-icon1" [class.open]="!collapseMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </button>
+
+  <div class="navbar-collapse" style="display: -webkit-flex;" [class.collapse]="collapseMenu">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link home-menu-style" (click)="toggleMenu()" routerLink="/home" routerLinkActive="active" *ngIf="menus?.home">{{ 'home' | translate }}</a>
+      <a class="nav-item nav-link myTopics-menu-style" (click)="toggleMenu()" routerLink="/topics" routerLinkActive="active" *ngIf="menus?.myTopics">{{ 'my topics' | translate }}</a>
+      <a class="nav-item nav-link worksheets-menu-style" (click)="toggleMenu()" routerLink="/worksheets" routerLinkActive="active"
+        *ngIf="menus?.worksheets">{{ 'worksheets' | translate }}</a>
+      <a class="nav-item nav-link games-menu-style" (click)="toggleMenu()" routerLink="/games" routerLinkActive="active" *ngIf="menus?.games">{{ 'games' | translate }}</a>
+      <a class="nav-item nav-link myProgress-menu-style" (click)="toggleMenu()" routerLink="/my-progress" routerLinkActive="active"
+        *ngIf="menus?.myProgress">{{ 'my progress' | translate }}</a>
+      <a class="nav-item nav-link myMindspark-menu-style" (click)="toggleMenu()" routerLink="/my-mindspark" routerLinkActive="active"
+        *ngIf="menus?.myMindspark">{{ 'my mindspark' | translate }}</a>
+      <!--<div  *ngFor="let menuItem of menuList" [hidden]="!menuItem.isVisible" [routerLink]="'/'+menuItem.name" [ngClass]="setMenuClass(menuItem)" class="nav-item nav-link">{{menuItem.name}}</div>-->
+    </div>
+  </div>
+</nav>

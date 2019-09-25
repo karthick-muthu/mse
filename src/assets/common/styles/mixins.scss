@@ -1,0 +1,20 @@
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin box-shadow-all-side ($color) {
+    -webkit-box-shadow: 0 0 5px 2px $color;
+    -moz-box-shadow: 0 0 5px 2px $color;
+    box-shadow: 0 0 5px 5px $color;
+}
+
+@mixin linear-gradient($first, $second) {
+  background: $first;
+  background: -webkit-linear-gradient(left, $first, $second);
+  background: -o-linear-gradient(right, $first, $second);
+  background: -moz-linear-gradient(right, $first, $second);
+  background: linear-gradient(to right, $first, $second);
+}

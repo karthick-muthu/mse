@@ -1,0 +1,27 @@
+@import '../../../assets/common/styles/global.variables.scss';
+.middle-container {
+  min-height: calc(100% - 286px);
+}
+
+.middle-container.template1 {
+  padding-top: 4%;
+  background: url('../../../assets/common/images/train-track-upper.png'), url('../../../assets/common/images/train-track-lower.png');
+  background-position: 0% 0%, 100% 130%;
+  background-repeat: no-repeat;
+  background-size: 25%, 75%;
+  min-height: calc(100vh - 185px);
+  padding-bottom: 100px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.my-mindspark {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width:1000px) {
+  .middle-container.template1 {
+    padding-top: 5%;
+  }
+}

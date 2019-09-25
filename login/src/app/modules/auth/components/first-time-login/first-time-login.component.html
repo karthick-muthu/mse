@@ -1,0 +1,66 @@
+<ms-auth-header></ms-auth-header>
+<div class="container">
+  <div class="clearfix"></div>
+  <div class="password-main-page-content">
+    <div class="password-block">
+      <div class="top-title" *ngIf="!finishedProcess">
+
+        <h5>{{ 'hello' | translate: { firstName: (firstTimeUserDetails?.redirectionData?.firstName)?firstTimeUserDetails?.redirectionData?.firstName:'',
+          lastName: (firstTimeUserDetails?.redirectionData?.lastName)?firstTimeUserDetails?.redirectionData?.lastName:''}
+          }},
+        </h5>
+
+        <h4>{{ 'welcome to mindspark' | translate }}!</h4>
+
+        <div class="form-back-btn" (click)="goBack()" *ngIf="isActiveTwo || isSuccessTwo && !finishedProcess">
+          <i class="fa fa-angle-left"></i>
+        </div>
+
+      </div>
+      <div class="clearfix"></div>
+      <div *ngIf="showSecretQ">
+        <div class="form-progressBar" *ngIf="!finishedProcess">
+          <div class="circle" class="circle" [ngClass]="{'active': isActiveOne, 'circleSuccess': isSuccessOne}">
+            <i *ngIf="isSuccessOne" class="fa fa-check success-correctIcon"></i>
+          </div>
+          <div class="circle" [ngClass]="{'active': isActiveTwo, 'circleSuccess': isSuccessTwo}">
+            <i *ngIf="isSuccessTwo" class="fa fa-check success-correctIcon"></i>
+          </div>
+          <div class="horizantal-bar"></div>
+        </div>
+      </div>
+      <div class="form-section" *ngIf="!finishedProcess">
+        <div *ngIf="isPicturePassword">
+          <div *ngIf="!passwordResetSuccess">
+            <ms-picture-password (picturePasswordEmitter)="picturePasswordEmitter($event)"></ms-picture-password>
+          </div>
+          <div *ngIf="passwordResetSuccess">
+            <ms-picture-password-success [newPasswordA]="newPasswordA" [newPasswordB]="newPasswordB"></ms-picture-password-success>
+            <div class="form-group buttonParentStyle">
+              <button class="details-btn next-button" type="button" (click)="goToSecrectQuestion()">{{'next' | translate}}</button>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="isTextPassword">
+          <ms-text-password (passwordEmitter)="passwordEmitter($event)" [from]="from"></ms-text-password>
+        </div>
+        <div *ngIf="secretQuestionSection">
+          <h5 class="sub-title">{{ 'these help you if you forget your password' | translate}}</h5>
+          <ms-secret-question-dob (secretQuestionDOBEmitter)="secretQuestionDOBEmitter($event)" [firstTimeUserDetails]="firstTimeUserDetails"
+            [from]="from"></ms-secret-question-dob>
+        </div>
+      </div>
+      <div class="form-section success-block" *ngIf="finishedProcess">
+        <h4 class="text">{{'great' | translate}}</h4>
+        <br>
+        <h4 class="text">{{'successfully created your password' | translate}}</h4>
+        <div class="third-section form-style">
+          <div class="form-group padding-space">
+            <button class="details-btn next-button" type="submit" (click)="goToLogin()">{{'login' | translate}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ms-auth-footer></ms-auth-footer>

@@ -1,0 +1,58 @@
+<div class="wall-of-sparkies-ct " *ngIf="!noShow">  
+  <div class="wall-of-sparkies-block">
+
+    <div class="clearfix"></div>
+    <div class="sparkies-content-row align-center" max-height="200px" >
+      <!--wall-->
+      <!-- <div class="marquee-content"> -->
+      <div class="right-section-content">
+        <div class="sparkie-icon-block">
+          <img src="assets/common/images/sparkie-champ.png" alt="sparkie-logo" title="sparkie-logo" />
+        </div>
+        <h4>{{'wall of sparkie champs' | translate}}</h4>
+        <div> based on the sparkies earned between<br><span style="padding-left: 4em;">{{fromDate}} to {{toDate}}</span></div>
+      </div> 
+      <br />
+      <div class="student-board" id="studentBoard" ng-mouseover="stopDiv()"  (mouseenter) ="hoverIn()"  (mouseleave) ="hoverOut()" >
+        <br />
+        <br />
+      <div class="row align-center sparkiesRow" *ngFor="let student of dataArrFormatted;let pointer=index">
+
+        <div class="col" *ngIf="pointer % 2 == 0">
+          <div class="sparkies-champ-block">
+            <div class="reward-icon">
+              <img src="assets/common/images/coin-all.png" alt="reward-logo" title="reward-logo" />
+              <div class="sparkieCount"><span class="sparkieClass"> {{dataArrFormatted[pointer]["sparkieCount"]}}</span></div>
+            </div>
+            <div class="sparkies-champ-content">
+              <!-- <div class="user-image">
+                <img src='{{dataArrFormatted[pointer]["imageURL"]}}' alt="profile" title="profile" />
+              </div> -->
+              <span class="student-Name">{{dataArrFormatted[pointer]["studentName"]}}</span>
+              <h5>{{ 'grade' | translate}} {{dataArrFormatted[pointer]["grade"] }}</h5>
+              <span class="school-Name">{{dataArrFormatted[pointer]["orgName"]}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="col" *ngIf="(pointer+1) % 2 == 1 && pointer+1 < numberOfStudents">
+          <div class="sparkies-champ-block">
+            <div class="reward-icon">
+              <img src="assets/common/images/coin-all.png" alt="reward-logo" title="reward-logo" />
+              <div class="sparkieCount"><span class="sparkieClass">{{dataArrFormatted[pointer+1]["sparkieCount"]}}</span></div>
+            </div> 
+            <div class="sparkies-champ-content">
+              <!-- <div class="user-image">
+                <img src='{{dataArrFormatted[pointer+1]["imageURL"]}}' alt="profile" title="profile" />
+              </div> -->
+              <span class="student-Name">{{dataArrFormatted[pointer+1]["studentName"]}}</span>
+              <h5>{{ 'grade' | translate}} {{dataArrFormatted[pointer+1]["grade"] }}</h5>
+              <span class="school-Name">{{dataArrFormatted[pointer+1]["orgName"]}}</span>
+            </div>
+          </div>
+        </div>
+      </div> 
+      
+      </div>
+    </div>
+  </div>
+</div>

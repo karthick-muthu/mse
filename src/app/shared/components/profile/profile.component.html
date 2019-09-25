@@ -1,0 +1,8 @@
+<ng-container [ngSwitch]="template">
+  <ng-container *ngSwitchCase="'1'">
+    <ms-profile-t1 [profileInfo]="profileInfo"></ms-profile-t1>
+  </ng-container>
+  <ng-container *ngSwitchCase="'2'">
+    <ms-profile-t2 [profileInfo]="profileInfo" [questionDetail]="questionDetail" [rewardsList]="rewardsList"></ms-profile-t2>
+  </ng-container>
+</ng-container>

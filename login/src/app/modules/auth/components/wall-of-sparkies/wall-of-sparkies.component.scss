@@ -1,0 +1,128 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.wall-of-sparkies-ct {
+  margin: 20px 0 20px 0px;
+  .sparkie-icon-block {
+    float: left;
+    margin-right: 15px;
+    img {
+      width: 35px;
+    }
+  }
+  .right-section-content {
+    // float: left;
+    margin-left: -30px;
+    max-width: 300px;
+    h4 {
+      font-size: 1.125rem;
+      color: $greyishBrownShadow;
+      font-weight: bold;
+    }
+    p {
+      font-size: 0.75rem;
+      color: $greyishBrownShadow;
+      font-weight: bold;
+    }
+  }
+  .sparkies-content-row {
+    max-width: 350px !important;
+    height: 275px !important; 
+    padding-top: 30px !important;
+    margin: 0 auto !important;
+
+    .student-board{
+      overflow-y: hidden !important;
+      overflow-x: hidden !important;
+      max-height: 350px !important;
+    }
+
+    .sparkies-champ-block {
+      border: 2px solid $yellow;
+      height: 120px;
+      max-width: 120px;
+      box-shadow: 0px 5px $yellow;
+      border-radius: 10px;
+      position: relative; // margin-bottom: 25px;
+    }
+    
+    .reward-icon {
+      position: absolute;
+      right: -15px;
+      top: -25px;
+      text-align: center;
+      .sparkieCount {
+        border: 2px solid #fbd212;
+        background-color: #fbd212;
+        width: 56px;
+        height: 20px;
+        text-align: center;  
+        top: 33px;
+        right: -2px;
+        font-size: .8rem;
+        border-radius: 25px;
+        border-color: white;
+        color: $greyishBrownShadow;
+        font-weight: bold;
+        position: absolute;
+      }
+      .sparkieClass{
+        margin-left: 1px;
+        position: relative;
+        top: -2px;
+      }
+      img {
+          width: 50px;
+          height:50px;
+        }
+    }
+
+    .sparkies-champ-content {
+      text-align: center;
+      margin-top:28px;
+      .user-image {
+        margin: 8px auto 15px auto;
+        max-width: 50px;
+        max-height: 50px;
+        img {
+          width: 48px;
+        } 
+      }
+      .student-Name{
+          overflow: hidden;
+          display: block;
+          font-size: 0.875rem;
+          color: $greyishBrownShadow;
+          margin-bottom: 4px;
+       }
+       .school-Name{
+          overflow: hidden;
+          display: block;
+          font-size: 0.75rem;
+          color: rgba($black, 0.5);
+          padding: 0 4px 0 4px;
+          line-height: normal;
+       }
+      h4 {
+        font-size: 0.875rem;
+        color: $greyishBrownShadow;
+        margin-bottom: 4px;
+      }
+      h5,
+      p {
+        font-size: 0.75rem;
+        color: rgba($black, 0.5);
+        padding: 0 4px 0 4px;
+        line-height: normal;
+      }
+    }
+  }
+}
+
+.sparkiesRow {
+  padding-bottom: 20px;
+}
+
+@media(max-width: 991px) {
+  .right-section-content {
+    margin: 0 auto !important;
+  }
+}

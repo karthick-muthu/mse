@@ -1,0 +1,53 @@
+<div class="content-preview" [style.height.px]="screenHeight">
+  <div class="view-area">
+    <div class="view-box">
+      <iframe id="preview" frameborder="0" width="360px" height="640px"></iframe>
+    </div>
+  </div>
+  <div class="control-area">
+    <h3>Choose Device</h3>
+    <div class="row-div">
+      <div class="row-title">
+        <!-- <input type="number" value="{{contentPreviewWidth}}" [(ngModel)]="contentPreviewWidth"
+                    (change)="changePreviewWidth()" />
+                <input type="number" value="{{contentPreviewHeight}}" [(ngModel)]="contentPreviewHeight" /> -->
+        <select (change)="updateDeviceView()" [(ngModel)]="selectedDevice">
+          <option *ngFor="let device of deviceList" [value]="device.width+' '+device.height">{{device.name}}
+          </option>
+        </select>
+      </div>
+    </div>
+    <h3>Choose Device</h3>
+    <div class="row-div">
+      <div class="row-title">
+        <!-- <input type="number" value="{{contentPreviewWidth}}" [(ngModel)]="contentPreviewWidth"
+                        (change)="changePreviewWidth()" />
+                    <input type="number" value="{{contentPreviewHeight}}" [(ngModel)]="contentPreviewHeight" /> -->
+        <select (change)="updateTheme()" [(ngModel)]="selectedTheme">
+          <option value="lower">Lower</option>
+          <option value="higher">Higher</option>
+        </select>
+      </div>
+    </div>
+    <h3>Custom Size</h3>
+    <div class="row-div">
+      <div class="row-title">
+        <p>Width</p>
+        <p>Height</p>
+      </div>
+      <div class="row-title">
+        <input type="number" value="{{contentPreviewWidth}}" [(ngModel)]="contentPreviewWidth"
+          (change)="changePreviewWidth()" />
+        <input type="number" value="{{contentPreviewHeight}}" [(ngModel)]="contentPreviewHeight"
+          (change)="changePreviewHeight()" />
+      </div>
+    </div>
+    <h3>Change Mode</h3>
+    <div class="row-div">
+      <div class="row-title">
+        <button class="btn" (click)="switchPortraitMode()">Portrait</button>
+        <button class="btn" (click)="switchLandscapeMode()">Landscape</button>
+      </div>
+    </div>
+  </div>
+</div>

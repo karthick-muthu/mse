@@ -1,0 +1,142 @@
+<div class="session-report-modal" [ngClass]="templateClass">
+    <div class="modal-header">
+        <div class="col-md-6">
+            <div class="session-progress-container">
+                <div class="progress-bar-container">
+                    <p class="fraction-title" [innerHTML]="sessionReport?.topicName"></p>
+                    <p>
+                        <ng-container *ngIf='sessionReport?.higherLevelStatus===true; else notAtHigherLevel'>
+                            <span class="progress-title">
+                {{ 'you are at higher level' | translate }}
+                <img src="assets/common/images/higher-level-small.png" alt="higher level arrow">
+              </span>
+                        </ng-container>
+                        <ng-template #notAtHigherLevel>
+                            <ng-container *ngIf="sessionReport?.currentMode === 'revise' else showProgress">
+                                {{ 'you have completed revision' | translate }}
+                            </ng-container>
+                            <ng-template #showProgress>
+                                <span *ngIf="sessionReport?.conceptsOverall==1">
+                  {{ 'out of concept completed' | translate:{ completed:sessionReport?.conceptsClearedOverall, total:sessionReport?.conceptsOverall
+                  } }}
+                </span>
+
+                                <span *ngIf="sessionReport?.conceptsOverall>1">
+                  {{ 'out of concepts completed' | translate:{ completed:sessionReport?.conceptsClearedOverall, total:sessionReport?.conceptsOverall
+                  } }}
+                </span>
+                                <span>({{ 'nth attempt' | translate:{no_of_attempt:sessionReport?.topicAttemptNum || '0' | ordinalName } }})</span>
+                            </ng-template>
+                        </ng-template>
+                    </p>
+                    <div class="progress-bar session-report-progress-bar" style="display: -webkit-flex;" *ngIf="sessionReport?.currentMode !== 'revise'">
+                        <div *ngFor='let concept of concepts'>
+                            <div *ngIf='concept===true' class="progress-active" [ngStyle]="getProgressActiveStyle()"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 textAlign-right">
+            <div class="modal-title session-report-modal-title">
+                <div class="bg">
+                    <img src="assets/common/images/SingleCloudheader.png"> </div>
+                <span class="logo">
+          <img src="assets/common/images/clock_highergrade.png">
+          <!-- lower grade -->
+          <!-- <img src="assets/common/images/clock.png"> -->
+          <span>{{sessionReport?.timeSpent | minutesSeconds}}</span>
+                </span>
+                <span class="logo">
+          <img src="assets/common/images/coins_all.gif">
+          <span class="count">{{ sessionReward?.sparkie }}</span>
+                </span>
+            </div>
+            <button class="session-report-home-btn btn-home" type="button" (click)='goToHome()'>{{ 'go to home' | translate }}</button>
+            <button hidden type="button" class="close" aria-label="Close" (click)="ngbActiveModal.dismiss('Cross click')">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </button>
+        </div>
+        <div class="banner-img"></div>
+    </div>
+
+    <div class="modal-body session-report-modal-body">
+        <div [ngClass]="sliderClass" style="display: -webkit-flex;">
+            <div class="first-slide" *ngIf="showFirstSlide">
+                <img [src]="gifToShow" alt="celebration">
+            </div>
+            <div class="second-slide">
+                <div class="row info" style="display: -webkit-flex;">
+                    <div class="col spacing-none session-report" *ngFor="let message of messages">
+                        <div class="session-image-col" style="display: -webkit-flex;" [ngClass]="
+                    {'higher-level-explorer':(message?.key == 'higherLevelCleared' ),
+                    'learned-concepts':(message?.key == 'challengeMsg' ),
+                    'overcame-difficulty':(message?.key == 'remedialSuccess' ),
+                    'love-challenges':(message?.key == 'accurateClusterSuccess' )}"></div>
+                        <div class="success-msg vertical-align" style="display: -webkit-flex;" [ngClass]="{'warning-msg':(message?.key == 'remedialSuccess' )}">{{ message?.value | translate }}</div>
+                    </div>
+                </div>
+                <div class="row session-report-footer" style="display: -webkit-flex;">
+                    <div class="col spacing-none vertical-align innerSpacingNone celebration-col session-report" style="display: -webkit-flex;" *ngIf="sessionReport?.celebration?.status && sessionReport?.currentMode !== 'revise'">
+                        <div class="celebration-backshield"></div>
+                        <div class="celebration celebration-sprite">
+                            <div class="celebration-text" [ngStyle]="{'background-image': topicCompletionImage }"></div>
+                        </div>
+                    </div>
+                    <div class="col spacing-none vertical-align innerSpacingNone celebration-col session-report" style="display: -webkit-flex;" *ngIf="sessionReport?.currentMode === 'revise'">
+                        <div class="celebration celebration-revision">
+                            <img src="assets/common/images/yellow-shield.png">
+                        </div>
+                    </div>
+
+                    <div class="col spacing-none  session-report">
+                        <div class="bg-container">
+                            <div class="ribon-container">
+                                <div class="ribbon">
+                                    <label class="ribon-label">
+                    <span *ngIf="sessionReport?.questionsAttempted===1">{{'you did question' | translate: {questionsAttempted:sessionReport?.questionsAttempted } }} </span>
+                    <span *ngIf="sessionReport?.questionsAttempted>1">{{'you did questions' | translate: {questionsAttempted:sessionReport?.questionsAttempted } }} </span>
+                  </label>
+                                    <div class="result-container row">
+                                        <div class="result-block col">
+                                            <label class="correct-result">{{ padZero(sessionReport?.questionsCorrect) }}</label>
+                                            <span class="result-text">{{'correct' | translate}}</span>
+                                        </div>
+                                        <div class="result-block col">
+                                            <label class="wrong-result">{{ padZero(sessionReport?.questionsWrong) }}</label>
+                                            <span class="result-text">{{'wrong' | translate}}</span>
+                                        </div>
+                                    </div>
+                                    <i class="left-side-smallTriangle"></i>
+                                    <i class="right-side-smallTriangle"></i>
+                                    <i class="left-side-arrow"></i>
+                                    <i class="right-side-arrow"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <span *ngFor='let action of sessionReport?.actions'>
+              <button class="btn-higher-level" *ngIf="action?.status && action?.name?.toLowerCase() ==='higherlevel'" (click)='goToHigherLevels() '>{{'start higher level' | translate}}</button>
+              <button class="btn-details" *ngIf="action?.status && action?.name?.toLowerCase() === 'viewdetails'" (click)='getDetails() '>{{'view details' | translate}}</button>
+              <button class="btn-details" *ngIf="action?.status && action?.name?.toLowerCase() === 'howidid'" (click)='howidid() '>{{'how i did' | translate}}</button>
+            </span>
+                        <!-- Lower grade buttons -->
+                        <!-- <span *ngFor='let action of sessionReport?.actions'>
+                      <button class="btn-details-higher-level" *ngIf="action?.status && action?.name ==='higherLevel'" (click)='goToHigherLevels() '>GO TO HIGHER LEVEL</button>
+                      <button class="btn-details" *ngIf="action?.status && action?.name ==='viewDetails'" (click)='getDetails() '>{{'How i did' | translate}}</button>
+                    </span> -->
+                    </div>
+                </div>
+                <!-- <h6 class="session-timeout" [ngClass]="templateClass" *ngIf="sessionReport?.timeUpMsg">{{'your session time for today is over'| translate}}!</h6> -->
+            </div>
+        </div>
+        <!-- <div *ngIf="displayCelebration(sessionReport?.rewardCelebration)" class="row btn-section">
+      <ng-container *ngFor='let action of sessionReport?.actions'>
+        <button class="btn-higher-level" *ngIf="action?.status && action?.name?.toLowerCase() ==='higherlevel'" (click)='goToHigherLevels() '>{{'start higher level' | translate}}</button>
+        <button class="btn-details" *ngIf="action?.status && action?.name?.toLowerCase() === 'viewdetails'" (click)='getDetails() '>{{'view details' | translate}}</button>
+        <button class="btn-details" *ngIf="action?.status && action?.name?.toLowerCase() === 'howidid'" (click)='howidid() '>{{'how i did' | translate}}</button>
+      </ng-container>
+    </div> -->
+        <h6 class="session-timeout" [ngClass]="templateClass" *ngIf="sessionReport?.timeUpMsg">{{'your session time for today is over'| translate}}!</h6>
+        <div class="footer-bg"></div>
+    </div>
+</div>

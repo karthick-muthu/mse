@@ -1,0 +1,46 @@
+@import '../../../../../assets/common/styles/global.variables.scss';
+.ask-teacher-section {
+  .main-step-section {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+    .img-text-block {
+      width: 130px;
+      border: 5px solid $yellow;
+      border-radius: 6px;
+      padding-top: 4px;
+      margin: 0 auto;
+      span {
+        color: $greyishBrownShadow;
+        font-size: 0.85rem;
+        display: block;
+        background: $yellow;
+        padding: 6px 0 6px 0;
+      }
+    }
+    .section-item {
+      margin: 25px 0 0 0;
+      width: 100%;
+      input {
+        width: 50%;
+      }
+      h4,
+      p {
+        font-size: 1.25rem;
+        color: #4d4d4d;
+        font-weight: bold;
+        margin-bottom: 0px;
+      }
+    }
+    .locksection {
+      height: 130px;
+      span {
+        font-size: 60px;
+        line-height: 100px;
+        background: $white;
+        color: #db5c5b;
+      }
+    }
+  }
+}

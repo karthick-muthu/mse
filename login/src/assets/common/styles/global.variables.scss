@@ -1,0 +1,83 @@
+@import './mixins.scss';
+@import '../../themes/default/green.scss';
+@import '../../themes/default/blue.scss';
+
+/*other brand colors*/
+
+$ice-blue:#effaff;
+$lightish-green: #7cda71;
+$faded-blue: #5aacb9;
+$dark-grrenBlue: #215f69;
+$mid-green: #4fa046;
+$dark-pastel-green:#59ad50;
+$dirty-orange: #cf8606;
+$lightBlueGrey:#a4dce1;
+$reddish:#c94a49;
+$dark-sky-blue: #38a8df;
+$darkGrey:#565656;
+$blueshade: #1D79B3;
+$alertIncorrectBg:#fbdada;
+$alertWarningBg:#ffee9f;
+$alertMistakeBg :#d8f3a1;
+$secondaryGradientColor: #BBDA80;
+$reddishDark:#5f2b25;
+$armyGreen:#3d5319;
+$light-blue: #5EB1D8;
+$lightBlueOpacity: #2c7ea7;
+$whiterGray:#F7F7F7;
+$neonGreen:#36DB93;
+$questionHeaderT2:#2A6168;
+$questionConceptT2:#3BB29E;
+$questionNavigationT2:#2F7E7A;
+
+/*other colors*/
+
+$white: #fff;
+$black: #000;
+$gray: #ccc;
+$a3a3a3:#a3a3a3;
+$orange: #e75903;
+$yellow: #fbd212;
+$lightgray: #efefef;
+$dark-gray: #333;
+$red: #d9534f !default;
+$green: #5cb85c !default;
+$blue: #0275d8 !default;
+$teal: #5bc0de !default;
+$pink: #ff5b77 !default;
+$purple: #613d7c !default;
+$skyNeon:#7cfcde;
+
+/*other colors*/
+
+
+/*social login colors*/
+
+$btnFacebookBg:#3b5998;
+$btnFacebookBgShadow:#224285;
+$btnGooglePlusBg:#dd4b39;
+$btnGooglePlusBgShadow:#ae3020;
+
+/*Question type colors*/
+
+$questionTypeTimeTest:#37B5D3;
+$questionTypeTimeTestArrow:#258399;
+$questionTypeChallenge:#DD005B;
+$questionTypeChallengeArrow:#9C0031;
+$questionTypeWlildCard:#8E0DB2;
+$questionTypeWlildCardArrow:#2C0084;
+$questionTypeHigherLevel:#5D2CBA;
+$questionTypeHigherLevelArrow:#2C0084;
+$questionTypePractice:#37B5D3;
+$questionTypePracticeArrow:#258399;
+$questionTypeWorksheet:#EFA23B;
+$questionTypeWorksheetArrow:#565656;
+
+/****mindspark tab colors********/
+
+$myMindsparkBgColor: #f5ffdf;
+
+/*****error pages colors****/
+
+$error-circle-bg:#f0f0f0;
+$error-circle-border:#F9F9F9;

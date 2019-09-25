@@ -1,0 +1,55 @@
+<ul [ngClass]="['list-group', boardtype ,templateClass]">
+  <li class=" list-group-header justify-content-between ">
+    <label>{{title | translate}}</label>
+  </li>
+  <li class="list-group-item justify-content-between" style="display: -webkit-flex;" *ngFor="let leader of leaderboard | slice:0:displaySize; let i=index"
+    [ngClass]="{ 'higlighted-user':leader[0].thisUser , 'dots-li' :leader?.hasDots } ">
+    <span *ngIf="leader?.hasDots" class="dots">
+      <div class="dot ">
+        <i class="fa fa-circle "></i>
+      </div>
+      <div class="dot ">
+        <i class="fa fa-circle "></i>
+      </div>
+      <div class="dot ">
+        <i class="fa fa-circle "></i>
+      </div>
+    </span>
+    <div>
+      <span class="round-circle">{{ leader?.rank | ordinalName }}</span>
+      <span class="list-name" style="display: -webkit-flex;">
+        <span [innerHtml]="leader[0]?.name"></span>
+        <span ngbDropdown class="more" *ngIf="leader?.length>1" (click)="toggleMorePopover(i, leader)">
+          <span ngbDropdownToggle>
+            +{{leader?.length-1}}
+          </span>
+          <div ngbDropdownMenu class="more-name">
+            <ul>
+              <li *ngFor="let leaders of leaderData" [innerHtml]="leaders"></li>
+            </ul>
+          </div>
+        </span>
+      </span>
+    </div>
+    <!-- <div class="more-name" *ngIf="moreExplanation[i]">
+      <ul>
+        <li *ngFor="let leader of leaderData">{{leader}}</li>
+        </ul>
+    </div> -->
+    <span class="list-number">{{ leader[0]?.count }} {{sparkies | translate}}</span>
+
+    <!-- <div class="dot-pattern-li " *ngIf="leader?.hasDots" style="display:none;">
+      <div class="dots ">
+        <i class="fa fa-circle "></i>
+      </div>
+      <div class="dots ">
+        <i class="fa fa-circle "></i>
+      </div>
+      <div class="dots ">
+        <i class="fa fa-circle "></i>
+      </div>
+    </div> -->
+
+  </li>
+
+</ul>

@@ -1,0 +1,73 @@
+<div class="custom-row tiles-container" [ngClass]="templateClass">
+    <div class="custom-col col-md-4 col-sm-6 col-xs-12" *ngFor="let worksheet of live">
+        <div class="date-status-live">Ends on {{worksheet?.expiryDate | amDateFormat:'Do MMM'}}</div>
+        <!-- tile creation -->
+        <div class="card worksheet-card" [ngClass]="{'revise-card':  worksheet?.shieldState?.toLowerCase() === 'full' && for=='worksheets'}" [ngStyle]="{'background': worksheet?.contentImage ? ('url('+worksheet?.contentImage+') no-repeat center center/cover') : ('url('+worksheetImageDefault+')  no-repeat center center/cover')}">
+            <div class="worksheet-card-layer"></div>
+            <div class="worksheet-card-ct-area">
+                <h3 class="card-title" [innerHTML]="worksheet?.contentName"></h3>
+                <ng-container *ngIf="worksheet?.buttonState?.toLowerCase() === 'start'">
+                    <div class="tile-text-area">
+                        <p class="card-text">
+                            <span class="categories-cleared">
+                <!-- <span class="concept-tagline">{{worksheet?.questionCompleted}}</span> -->
+                            <span class="concept-tagline">
+                  <span *ngIf="worksheet?.questionCompleted === 1">
+                    {{ 'question completed' | translate:{ completed: worksheet?.questionAttempted, total: worksheet?.questionCompleted } }}
+                  </span>
+                            <span *ngIf="worksheet?.questionCompleted>1">
+                    {{ 'questions completed' | translate:{ completed: worksheet?.questionAttempted, total: worksheet?.questionCompleted } }}
+                  </span>
+                            </span>
+                            </span>
+                        </p>
+                    </div>
+                </ng-container>
+                <div class="btn-container" style="display: -webkit-flex;" *ngIf="worksheet?.contentStatus">
+                    <button type="button" class="btn-holder" *ngIf="worksheet?.buttonState==='start'" [ngClass]="{
+                                                              'btn-start': worksheet?.buttonState==='start' } " (click)="startWorksheets(worksheet)">
+            <span class="status-label">{{ 'attempt worksheet' | translate }}</span>
+          </button>
+                    <!-- combined class and changes in .submitted for "line-height":.0 -->
+                    <span class="btn-holder submitted" *ngIf="worksheet?.buttonState==='submitted'">
+            <span class="status-label">submitted</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- OLDER -->
+    <div class="custom-col col-md-4 col-sm-6 col-xs-12" *ngFor="let worksheet of older">
+        <div class="date-status-older" [ngStyle]="{'color': 'paleolivegreen'}">Submitted on {{worksheet?.expiryDate | amDateFormat:'Do MMM'}}</div>
+        <!-- tile creation -->
+        <div class="card worksheet-card" [ngClass]="{'revise-card':  worksheet?.shieldState?.toLowerCase() === 'full' && for=='worksheets'}" [ngStyle]="{'background': worksheet?.contentImage ? ('url('+worksheet?.contentImage+') no-repeat center center/cover') : ('url('+worksheetImageDefault+')  no-repeat center center/cover')}">
+            <div class="worksheet-card-layer"></div>
+            <div class="worksheet-card-ct-area">
+                <h3 class="card-title" [innerHTML]="worksheet?.contentName"></h3>
+                <ng-container *ngIf="worksheet?.contentStatus?.toLowerCase() === 'deactive' && templateClass == 'template1'">
+                    <div class="tile-text-area">
+                        <p class="card-text">
+                            <span class="categories-cleared">
+                <!-- <span class="concept-tagline">{{worksheet?.questionCompleted}}</span> -->
+                            <span class="concept-tagline">
+                  <span *ngIf="worksheet?.questionCompleted <= 1">
+                    {{ 'question completed' | translate:{ completed: worksheet?.questionAttempted, total: worksheet?.questionCompleted } }}
+                  </span>
+                            <span *ngIf="worksheet?.questionCompleted>1">
+                    {{ 'questions completed' | translate:{ completed: worksheet?.questionAttempted, total: worksheet?.questionCompleted } }}
+                  </span>
+                            </span>
+                            </span>
+                        </p>
+                    </div>
+                </ng-container>
+                <div class="btn-container" style="display: -webkit-flex;" *ngIf="worksheet?.contentStatus">
+                    <button type="button " class="btn-holder " *ngIf="worksheet?.contentStatus==='deactive' " [ngClass]="{
+            'btn-submitted': worksheet?.contentStatus?.toLowerCase()==='deactive' } " (click)="worksheetReport(worksheet)">
+            <span class="status-label ">{{ 'see report' | translate }}</span>
+          </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

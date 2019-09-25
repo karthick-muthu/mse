@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<root>
+	<module>
+		<name>Module 1</name>
+		<topics><!-- [ Topic 1 ] -->
+			<name><![CDATA[Topic 1]]></name>
+			<expand>true</expand>
+			<pages>
+				<id>1</id>
+				<name><![CDATA[Page 1]]></name>
+			</pages>
+			<pages>
+				<id>2</id>
+				<name><![CDATA[Page 2]]></name>
+			</pages>
+		</topics>
+		<topics> <!-- [ Topic 2 ] -->
+			<name><![CDATA[Topic 2]]></name>
+			<expand>true</expand>
+			<pages>
+				<id>1</id>
+				<name><![CDATA[Page 1]]></name>
+			</pages>
+			<pages>
+				<id>2</id>
+				<name><![CDATA[Page 2]]></name>
+			</pages>
+			<pages>
+				<id>3</id>
+				<name><![CDATA[Page 2]]></name>
+			</pages>
+		</topics>
+		<topics> <!-- [ Topic 3 ] -->
+			<name><![CDATA[Topic 3]]></name>
+			<expand>true</expand>
+			<pages>
+				<id>1</id>
+				<name><![CDATA[Page 1]]></name>
+			</pages>
+			<pages>
+				<id>2</id>
+				<name><![CDATA[Page 2]]></name>
+			</pages>
+			<pages>
+				<id>3</id>
+				<name><![CDATA[Page 3]]></name>
+			</pages>
+			<pages>
+				<id>4</id>
+				<name><![CDATA[Page 4]]></name>
+			</pages>
+			<pages>
+				<id>5</id>
+				<name><![CDATA[Page 5]]></name>
+			</pages>
+		</topics>
+		<topics> <!-- [ Topic 4 ] -->
+			<name><![CDATA[Topic 4]]></name>
+			<expand>true</expand>
+			<pages>
+				<id>1</id>
+				<name><![CDATA[Page 1]]></name>
+			</pages>
+			<pages>
+				<id>2</id>
+				<name><![CDATA[Page 2]]></name>
+			</pages>
+			<pages>
+				<id>3</id>
+				<name><![CDATA[Page 3]]></name>
+			</pages>
+			<pages>
+				<id>4</id>
+				<name><![CDATA[Page 4]]></name>
+			</pages>
+			<pages>
+				<id>5</id>
+				<name><![CDATA[Page 5]]></name>
+			</pages>
+		</topics>
+	</module>
+</root>

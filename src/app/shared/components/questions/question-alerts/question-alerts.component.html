@@ -1,0 +1,43 @@
+<!-- <div id="questionAlert" class="container question-alerts" *ngIf="showMessages()" [ngClass]="getMessageClass()">
+  <div class="row">
+    <ng-container [ngSwitch]="messageToDisplay?.class">
+      <div class="left-icon col-2" *ngSwitchCase="'ribbongreen'">
+        <img alt="Mistake help me To learn" src="assets/common/images/mistakes-badge.png" width="80" />
+      </div>
+      <i class="fa fa-minus-circle left-icon col-2" *ngSwitchCase="'ribbonred'"></i>
+    </ng-container>
+    <p class="alert-text col-8" [msMaths]="messageToDisplay?.message"></p>
+    <span class="close-alert col-2" (click)="closeAlert()">{{ 'close' | translate }}</span>
+  </div>
+</div> -->
+<!-- <div class="container question-alerts alert-info">
+    <div class="row">
+      <i class="fa fa-info-circle left-icon col-2"></i>
+      <p class="alert-text col-8">
+        A message Warning popup.
+      </p>
+      <span class="close-alert col-2" (click)="closeAlert()">
+        close
+      </span>
+    </div>
+  </div>
+  <div class="container question-alerts alert-warning">
+    <div class="row">
+      <i class="fa fa-exclamation-triangle left-icon col-2"></i>
+      <p class="alert-text col-8">
+        A message Infomation popup.
+      </p>
+      <span class="close-alert col-2" (click)="closeAlert()">
+        close
+      </span>
+    </div>
+  </div> -->
+<div class="main-container" id="questionAlert" [ngStyle]="questionAlertStyle">
+  <div id="questionAlertContainer" class="container question-alerts" *ngIf="showMessages()"
+    [ngClass]="getMessageClass()">
+    <div class="row">
+      <p class="alert-text col-9" [msMaths]="messageToDisplay?.message"></p>
+      <span class="close-alert col-3" (click)="closeAlert()">{{ 'close' | translate }}</span>
+    </div>
+  </div>
+</div>
